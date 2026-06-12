@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('promotions_images', function (Blueprint $table) {
             $table->id();
             $table->string("imagen");
+            $table->string("desc", 50);
+            $table->datetime("vige");
             $table->timestamps();
         });
     }

@@ -10,7 +10,10 @@ class Product_Image extends Model
     use HasFactory;
 
     protected $table ='promotions_images';
+
     protected $attributes = [
-        'imagen'=>'string'
+        'imagen'=>'string',
+        'desc'=>'string',
+        'vige'=>'datetime'
     ];
 }
