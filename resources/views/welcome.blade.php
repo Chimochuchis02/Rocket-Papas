@@ -17,6 +17,66 @@
     <link href="https://fonts.googleapis.com/css2?family=TuFuente:wght@400;700&display=swap" rel="stylesheet">
 </head>
 
+<style>
+    html,
+    body {
+        height: 100%;
+        scroll-behavior: smooth;
+    }
+
+    body {
+        display: flex;
+        width: 100%;
+        /* Ya lo tienes en la línea 23 */
+        flex-direction: column;
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+        /* Evita scroll horizontal no deseado */
+    }
+
+    .container-fluid {
+        width: 100% !important;
+        padding-right: 0 !important;
+        padding-left: 0 !important;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    main,
+    .container-fluid {
+        /* Ajusta según que clase principal */
+        flex: 1;
+    }
+
+    /* Clase para la animación de las redes sociales */
+    .social-icon-footer {
+        transition: all 0.3s ease-in-out;
+        text-decoration: none;
+    }
+
+    .social-icon-footer:hover {
+        transform: translateY(-5px) scale(1.1);
+        background-position: 1 !important;
+        background-color: rgba(255, 255, 255, 0.9) !important;
+        /* Se vuelve casi blanco sólido */
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Colores específicos al pasar el mouse (opcional para más detalle) */
+    .fb-hover:hover {
+        color: #1877F2 !important;
+    }
+
+    .ig-hover:hover {
+        color: #FF1493 !important;
+    }
+
+    .wa-hover:hover {
+        color: #25D366 !important;
+    }
+</style>
+
 <body class="antialiased">
     <nav class="navbar navbar-expand-xl navbar-light bg-white fixed-top shadow-sm py-3">
         <div class="container-fluid px-lg-5">
@@ -141,21 +201,21 @@
         </section>
     </Main>
 
-    <footer class="text-white py-5" style="background-color: #2e2b2b;">
+    <footer class="text-white py-5" style="background-color: #fdfcfc;">
         <div class="container">
             <div class="row align-items-center text-center text-md-start">
                 <!-- Datos de Contacto -->
                 <div class="col-md-4 mb-4 mb-md-0">
-                    <p class="h5 mb-3"><i class="fa-solid fa-phone me-2"></i> +52 1 871 426 2173</p>
-                    <p class="h5"><i class="fa-solid fa-location-dot me-2"></i> Residencial Campestre la Rosita, 27250
+                    <p class="h5 mb-3" style="color:black;"><i class="fa-solid fa-phone me-2"></i> +52 1 871 426 2173</p>
+                    <p class="h5" style="color:black;"><i class="fa-solid fa-location-dot me-2"></i> Residencial Campestre la Rosita, 27250
                         Torreón, Coah.</p>
-                    <a href="#" style="text-decoration: none; color:white;">
-                        <p class="h5 mb-3">Politicas De Seguridad</p>
+                    <a href="#" style="text-decoration: none; color:black;">
+                        <p class="h5 mb-3" >Politicas De Seguridad</p>
                     </a>
                 </div>
 
                 <!-- Logo Central -->
-                <div class="col-md-4 text-center mb-4 mb-md-0">
+                <div class="col-md-4 text-center mb-4 mb-md-0" style="color:black;">
                     <img src="{{ asset('img/Rocke.png') }}" class="rounded-circle shadow mb-2" style="width: 120px;">
                     <h4 class="fw-bold">Rocket Papas</h4>
                     <small class="d-block">Hecho para antojar</small>
@@ -166,22 +226,22 @@
                     <h5 class="fw-bold mb-3">¡Síguenos en redes sociales!</h5>
                     <div class="d-flex justify-content-center justify-content-md-end gap-3">
                         <a href="https://www.facebook.com/people/Rocket-Papas/61555615209607/?locale=es_LA"
-                            class="social-icon-footer fb-hover text-white bg-white bg-opacity-25 rounded-circle d-flex align-items-center justify-content-center shadow-sm"
+                            class="social-icon-footer fb-hover text-black bg-black bg-opacity-25 rounded-circle d-flex align-items-center justify-content-center shadow-sm"
                             style="width: 45px; height: 45px; color: #1877F2;"><i
                                 class="fa-brands fa-facebook-f"></i></a>
                         <a href="https://www.instagram.com/rocketpapas/"
-                            class="social-icon-footer ig-hover text-white bg-white bg-opacity-25 rounded-circle d-flex align-items-center justify-content-center shadow-sm"
+                            class="social-icon-footer ig-hover text-black bg-black bg-opacity-25 rounded-circle d-flex align-items-center justify-content-center shadow-sm"
                             style="width: 45px; height: 45px; color: #FF1493;"><i
                                 class="fa-brands fa-instagram"></i></a>
                         <a href="https://wa.me/5218714262173"
-                            class="social-icon-footer wa-hover text-white bg-white bg-opacity-25 rounded-circle d-flex align-items-center justify-content-center shadow-sm"
+                            class="social-icon-footer wa-hover text-black bg-black bg-opacity-25 rounded-circle d-flex align-items-center justify-content-center shadow-sm"
                             style="width: 45px; height: 45px; color: #25D366;"><i class="fa-brands fa-whatsapp"></i></a>
                     </div>
                 </div>
             </div>
 
-            <div class="text-center mt-5 pt-4 border-top border-white border-opacity-25">
-                <small>&copy; Copyright 2026 - Rocket Papas - Todos los derechos Reservados</small>
+            <div class="text-center mt-5 pt-4 border-top border-black border-opacity-25">
+                <small style="color:black;">&copy; Copyright 2026 - Rocket Papas - Todos los derechos Reservados</small>
             </div>
         </div>
     </footer>
