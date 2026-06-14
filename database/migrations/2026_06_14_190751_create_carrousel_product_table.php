@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('promotions_images', function (Blueprint $table) {
+        Schema::create('carrousel_product', function (Blueprint $table) {
             $table->id();
-            $table->string("imagen");
-            $table->string("desc", 50);
-            $table->datetime("vige");
+            $table->foreignId('product_id')->constrained->OnDelete('cascade');
+            $table->foreignId('carrousel_id')->constrained->OnDelet('cascade');
+            $table->integer('sort_order')->default(0);
             $table->timestamps();
         });
     }
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('promotions_images');
+        Schema::dropIfExists('carrousel_product');
     }
 };
