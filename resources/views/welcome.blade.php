@@ -139,27 +139,23 @@
                     <!-- CAMBIO 3: Añadimos ps-lg-5 para que el texto no pegue al borde del monitor, pero el fondo sí -->
                     <div class="col-lg-8 col-xl-7 col-xxl-6 ps-lg-5">
                         <div class="mb-5 text-center text-xl-start ps-lg-5">
-                            <div class="badge bg-warning text-dark mb-3 px-3 py-2 rounded-pill fw-bold shadow-sm">
-                                BIENVENIDO A EASY PEASY ENGLISH
-                            </div>
-
                             <h1 class="display-3 fw-bold mb-4" style="line-height: 1.1;">
-                                Hablar inglés es <br> <span style="color: #FFD43B;">posible</span>
-                                <i class="fa-solid fa-lemon ms-2" style="color:yellow;"></i>
+                                Abrimos toda la semana de <br> <span style="color: #FFD43B;">1 a 9 pm</span>
+                                <i class="fa-solid fa-rocket ms-2" style="color:red;"></i>
                             </h1>
 
                             <p class="lead fw-normal mb-5 opacity-90">
-                                Clases personalizadas diseñadas para que hables desde los primeros <strong>7
-                                    meses</strong>.
-                                En <strong>Torreon, Coahuila...</strong>Tu camino al bilingüismo empieza aquí de la
-                                forma
-                                más divertida.
+                                Las icónicas papas de la ciudad con el queso más cremoso y combinaciones que te harán
+                                volver en <strong>segundos</strong>.
+                                En <strong>Torreon, Coahuila...</strong>Tu camino a las mejores papas de la galaxia
+                                empieza aquí de la forma más
+                                <strong>deliciosa</strong>
                             </p>
 
                             <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
                                 <a class="btn btn-lg px-5 py-3 shadow-lg fw-bold text-white" href="#contacto"
                                     style="background-color: #FF1493; border-radius: 50px; border: none;">
-                                    <i class="fa-brands fa-whatsapp me-2"></i>Mensaje a Whatsapp
+                                    <i class="fa-regular fa-bowl-food" style="color: rgb(255, 0, 0);"></i>Ver Menu
                                 </a>
                                 <a class="btn btn-lg px-5 py-3 fw-bold shadow-sm" href="./Cursos.html"
                                     style="background-color: #FFD43B; border-radius: 50px; color: #000; border: none;">
@@ -206,11 +202,13 @@
             <div class="row align-items-center text-center text-md-start">
                 <!-- Datos de Contacto -->
                 <div class="col-md-4 mb-4 mb-md-0">
-                    <p class="h5 mb-3" style="color:black;"><i class="fa-solid fa-phone me-2"></i> +52 1 871 426 2173</p>
-                    <p class="h5" style="color:black;"><i class="fa-solid fa-location-dot me-2"></i> Residencial Campestre la Rosita, 27250
+                    <p class="h5 mb-3" style="color:black;"><i class="fa-solid fa-phone me-2"></i> +52 1 871 426 2173
+                    </p>
+                    <p class="h5" style="color:black;"><i class="fa-solid fa-location-dot me-2"></i> Residencial
+                        Campestre la Rosita, 27250
                         Torreón, Coah.</p>
                     <a href="#" style="text-decoration: none; color:black;">
-                        <p class="h5 mb-3" >Politicas De Seguridad</p>
+                        <p class="h5 mb-3">Politicas De Seguridad</p>
                     </a>
                 </div>
 
