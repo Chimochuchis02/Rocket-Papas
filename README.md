@@ -84,3 +84,20 @@ Aqui esta una foto de lo que tuve que hacer con la documentacion al lado para po
 Y finalmente en este codigo se encuentra la base madre o la base para poder correr los archivos con sus clases respectivas para hacer seeders, la cual en este caso, lo unico que hace es el usuario administrador es correr su clase para insertar dichos datos directamente en el servidor...ya sea en MySql o ya en un servidor en la nube, de lo cual hare la documentacion de esa parte tambien y la cual se encuentra en la parte de totalmente abajo de todo esto, esto es solo el comienzo.
 
 <h2> Base De datos y su arquitectura desde 0</h2>
+![alt text](Documentation_image(03).png)
+
+
+![alt text](Documentation_image(04).png)
+
+
+![alt text](Documentation_image(table_child_1).png)
+
+
+![alt text](Documentation_image(table_child_2).png)
+
+
+![alt text](Documentation_image(table_carrousels).png)
+
+
+![alt text](Documentation_image(table_pivot).png)
+

@@ -12,7 +12,6 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('promotions', function (Blueprint $table) {
-            $table->id();
             $table->foreignId('id')->primary()->constrained('products')->OnDelete('cascade');
             $table->boolean('is_Active');
             $table->date('start_date');

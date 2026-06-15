@@ -2,18 +2,16 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
-class Product_Image extends Model
+use Iluminate\Database\Eloquent\Relations\belongsTo;
+class Promotion extends Model
 {
-    use HasFactory;
+    protected $table ='promotions';
+    protected $fillable = ['id_products', 'is_Active', 'start_date', 'end_date'];
 
-    protected $table ='promotions_images';
-
-    protected $attributes = [
-        'imagen'=>'string',
-        'desc'=>'string',
-        'vige'=>'datetime'
-    ];
+    public function product()
+    {
+        return $this->belongsTo(Product::class, 'id');
+    }
+    
 }

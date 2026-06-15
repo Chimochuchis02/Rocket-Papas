@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('carrousel_product', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('product_id')->constrained->OnDelete('cascade');
-            $table->foreignId('carrousel_id')->constrained->OnDelet('cascade');
+            $table->foreignId('product_id')->constrained('products')->OnDelete('cascade');
+            $table->foreignId('carrousel_id')->constrained('carrousels')->OnDelete('cascade');
             $table->integer('sort_order')->default(0);
             $table->timestamps();
         });
