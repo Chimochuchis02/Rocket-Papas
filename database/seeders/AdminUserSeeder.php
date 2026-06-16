@@ -17,6 +17,7 @@ class AdminUserSeeder extends Seeder
             'name' => 'Admin',
             'email' => 'admin@rocketpapas.com',
             'password' => Hash::make('papasdeotragalaxia'),
+            'role' => 'admin',
         ]);
     }
 }
