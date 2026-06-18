@@ -8,7 +8,6 @@ use App\Models\Dish;
 use App\Models\Promotion;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
@@ -69,12 +68,14 @@ class ProductController extends Controller
             if ($request->tipo === 'dish') {
                 Dish::create([
                     'id' => $product->id, // Comparten el mismo ID por integridad relacional
+                    'is_active' => $request->has('is_active'),
                 ]);
             } elseif ($request->tipo === 'promotion') {
                 Promotion::create([
                     'id' => $product->id,
                     'start_date' => $request->start_date,
                     'end_date' => $request->end_date,
+                    'is_active' => $request->has('is_active'),
                 ]);
             }
 
@@ -126,7 +127,7 @@ class ProductController extends Controller
         DB::beginTransaction();
 
         try {
-            // Si el administrador subió una imagen nueva, borramos la vieja del disco para no acumular basura
+            // Si el administrador subió una imagen nueva, borro la imagen vieja del disco para no acumular basura
             if ($request->hasFile('imagen')) {
                 if ($product->imagen) {
                     Storage::disk('public')->delete($product->imagen);
@@ -135,13 +136,13 @@ class ProductController extends Controller
                 $product->imagen = $imagePath;
             }
 
-            // Actualizamos los campos de la tabla padre
+            // Actualizo los campos de la tabla padre
             $product->nombre = $request->nombre;
             $product->precio = $request->precio;
             $product->desc = $request->desc;
             $product->save();
 
-            // Actualizamos la tabla hija correspondiente
+            // Actualizo la tabla hija correspondiente
             if ($product->tipo === 'dish' && $product->dish) {
                 $product->dish->update([
                 ]);
@@ -169,7 +170,7 @@ class ProductController extends Controller
         DB::beginTransaction();
 
         try {
-            // Borramos físicamente el archivo de imagen del servidor para no dejar residuos
+            // Borro físicamente el archivo de imagen del servidor para no dejar residuos
             if ($product->imagen) {
                 Storage::disk('public')->delete($product->imagen);
             }
