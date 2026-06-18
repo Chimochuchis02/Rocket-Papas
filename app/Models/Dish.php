@@ -9,7 +9,7 @@ class Dish extends Model
 {
     protected $table = 'dishes';
 
-    protected $fillable = ['id_products', 'is_Active'];
+    protected $fillable = ['id', 'is_Active'];
 
     public function product()
     {

@@ -7,7 +7,7 @@ use Iluminate\Database\Eloquent\Relations\belongsTo;
 class Promotion extends Model
 {
     protected $table ='promotions';
-    protected $fillable = ['id_products', 'is_Active', 'start_date', 'end_date'];
+    protected $fillable = ['id', 'is_Active', 'start_date', 'end_date'];
 
     public function product()
     {
