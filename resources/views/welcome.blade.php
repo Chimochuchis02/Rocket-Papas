@@ -75,6 +75,24 @@
     .wa-hover:hover {
         color: #25D366 !important;
     }
+
+    #button1 {
+        background-color: #FFD43B;
+    }
+
+    #button2 {
+        background-color: #FFD43B;
+    }
+
+    #button1:hover {
+        background-color: rgb(255, 0, 0);
+        transition-duration: 500ms;
+    }
+
+    #button2:hover {
+        background-color: rgb(255, 0, 0);
+        transition-duration: 500ms;
+    }
 </style>
 
 <body class="antialiased">
@@ -123,54 +141,25 @@
 
     <Main>
         <!-- Hero Section -->
-        <section class="w-100 overflow-hidden" style="background-color: #00AEEF; color: white;">
-            <!-- Decoración de fondo -->
-            <div class="position-absolute translate-middle rounded-circle d-none d-lg-block"
-                style="width: 300px; height: 300px; background-color: #FF1493; top: 10%; left: -5%; opacity: 0.8;">
-            </div>
-
-            <!-- CAMBIO 1: Cambiamos px-5 por px-0 para que el contenido toque las orillas -->
-            <div class="container-fluid px-0 position-relative" style="z-index: 2;">
-
-                <!-- CAMBIO 2: Añadimos g-0 para eliminar el espacio entre columnas y que la imagen pegue a la derecha -->
-                <div class="row g-0 align-items-center justify-content-center">
-
-                    <!-- Texto y CTAs -->
-                    <!-- CAMBIO 3: Añadimos ps-lg-5 para que el texto no pegue al borde del monitor, pero el fondo sí -->
-                    <div class="col-lg-8 col-xl-7 col-xxl-6 ps-lg-5">
-                        <div class="mb-5 text-center text-xl-start ps-lg-5">
-                            <h1 class="display-3 fw-bold mb-4" style="line-height: 1.1;">
-                                Abrimos toda la semana de <br> <span style="color: #FFD43B;">1 a 9 pm</span>
-                                <i class="fa-solid fa-rocket ms-2" style="color:red;"></i>
-                            </h1>
-
-                            <p class="lead fw-normal mb-5 opacity-90">
-                                Las icónicas papas de la ciudad con el queso más cremoso y combinaciones que te harán
-                                volver en <strong>segundos</strong>.
-                                En <strong>Torreon, Coahuila...</strong>Tu camino a las mejores papas de la galaxia
-                                empieza aquí de la forma más
-                                <strong>deliciosa</strong>
-                            </p>
-
-                            <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
-                                <a class="btn btn-lg px-5 py-3 shadow-lg fw-bold text-white" href="#contacto"
-                                    style="background-color: #FF1493; border-radius: 50px; border: none;">
-                                    <i class="fa-regular fa-bowl-food" style="color: rgb(255, 0, 0);"></i>Ver Menu
-                                </a>
-                                <a class="btn btn-lg px-5 py-3 fw-bold shadow-sm" href="./Cursos.html"
-                                    style="background-color: #FFD43B; border-radius: 50px; color: #000; border: none;">
-                                    Ver cursos
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Imagen Flotante -->
-                    <div class="col-xl-4 col-xxl-6 d-none d-xl-block text-center position-relative mt-5 pt-4">
-                        <div class="p-3 bg-white rounded-5 shadow-lg transform-hover" style="transition: 0.3s;">
-                            <img class="img-fluid rounded-5 w-100" src="public/img/Happy_House.png"
-                                alt="Clase en Easy Peasy English" style="object-fit: cover; max-height: 550px;" />
-                        </div>
+        <section class="w-100 overflow-hidden position-relative"
+            style="background-image: url('{{ asset('/img/Portada_Hero_Section_Better.png') }}'); 
+                background-size: cover; 
+                background-position: center; 
+                background-repeat: no-repeat; 
+                color: white;  object-fit: cover; max-height: 600px; width: auto; display: inline-block; height:500px;">
+            <div class="position-relative w-100" style="height: 500px;">
+                <div class="position-absolute bottom-0 start-0 mb-4 ms-4 ms-md-5 ps-lg-5" style="z-index: 3;">
+                    <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
+                        <a class="btn btn-lg px-5 py-3 shadow-lg fw-bold" href="#"
+                            style="border-radius: 50px; border: none;" id="button1">
+                            <i class="fa-regular fa-star me-2" style="color: #000;"></i>
+                            Ver Menu
+                        </a>
+                        <a class="btn btn-lg px-4.5 py-3 fw-bold shadow-sm text-white" href="#"
+                            style="border-radius: 50px; border: none;" id="button2">
+                            <i class="fa-regular fa-star me-2" style="color: #000;"></i>
+                            Hacer Pedido
+                        </a>
                     </div>
                 </div>
             </div>
@@ -193,7 +182,24 @@
         </section>
 
         <!-- Mapa Section -->
-        <section class="w-100 overflow-hidden" style="background-color: #00AEEF; color: white;">
+        <section class="container my-5">
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <div class="list-group shadow" id="lista-sucursales">
+                        <button type="button" class="list-group-item list-group-item-action active"
+                            onclick="moverMapa(25.5616, -103.4306)">HEB Independencia</button>
+                        <button type="button" class="list-group-item list-group-item-action"
+                            onclick="moverMapa(25.5415, -103.4112)">HEB Revolución</button>
+                        <button type="button" class="list-group-item list-group-item-action"
+                            onclick="moverMapa(25.5562, -103.4402)">Soriana Constitución</button>
+                        <button type="button" class="list-group-item list-group-item-action"
+                            onclick="moverMapa(25.5215, -103.4185)">AlSuper La Rosita</button>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div id="map" class="shadow rounded" style="width: 100%; height: 450px;"></div>
+                </div>
+            </div>
         </section>
     </Main>
 
@@ -246,5 +252,39 @@
 </body>
 
 <script src="{{ asset('public/js/bootstrap.min.js') }}"></script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_MAPS_API_KEY') }}&callback=initMap" async
+    defer></script>
+
+<script>
+    let map;
+    let markers = [];
+
+    function initMap() {
+        // Centro inicial: Torreón
+        const torreonCentro = { lat: 25.5439, lng: -103.4190 };
+
+        map = new google.maps.Map(document.getElementById("map"), {
+            zoom: 13,
+            center: torreonCentro,
+            styles: [ /* Aquí puedes pegar estilos personalizados de Snazzy Maps si quieres ponerlo oscuro */]
+        });
+
+        // Agregamos un marcador de ejemplo en la sucursal activa inicial (HEB Independencia)
+        const marker = new google.maps.Marker({
+            position: { lat: 25.5616, lng: -103.4306 },
+            map: map,
+            title: "Rocket Papas - HEB Independencia",
+            animation: google.maps.Animation.DROP
+        });
+    }
+
+    // Función mágica para mover el mapa suavemente cuando dan clic en la lista
+    function moverMapa(lat, lng) {
+        const nuevaUbicacion = new google.maps.LatLng(lat, lng);
+        map.panTo(nuevaUbicacion);
+        map.setZoom(16); // Hace zoom al local específico
+    }
+</script>
 
 </html>
