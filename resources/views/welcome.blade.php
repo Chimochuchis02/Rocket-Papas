@@ -76,6 +76,11 @@
         color: #25D366 !important;
     }
 
+    .uber-icon-hover:hover {
+        filter: none; !important: important;
+        transition: 0.3s ease;
+    }
+
     #button1 {
         background-color: #FFD43B;
     }
@@ -145,7 +150,7 @@
     <nav class="navbar navbar-expand-xl navbar-light bg-white fixed-top shadow-sm py-3">
         <div class="container-fluid px-lg-5">
             <!-- Logo con el Cohete -->
-            <a class="navbar-brand d-flex align-items-center" href="index.html">
+            <a class="navbar-brand d-flex align-items-center" href="#Hero">
                 <img src="{{ asset('img/Rocke.png') }}" class="rounded-circle shadow-sm me-2"
                     style="width: 55px; height: 55px; border: 2px solid #FFF;">
                 <div class="d-none d-sm-block">
@@ -166,19 +171,19 @@
             <div class="collapse navbar-collapse" id="navEnglishJoy">
                 <ul class="navbar-nav mx-auto mb-2 mb-lg-0 fw-bold text-uppercase" style="font-size: 0.85rem;">
                     <li class="nav-item px-2">
-                        <a class="nav-link text-dark" href="#">Inicio</a>
+                        <a class="nav-link text-dark" href="#Hero">Inicio</a>
                     </li>
                     <li class="nav-item px-2">
-                        <a class="nav-link text-dark" href="#">Promociones</a>
+                        <a class="nav-link text-dark" href="#Promotions">Promociones</a>
                     </li>
                     <li class="nav-item px-2">
-                        <a class="nav-link text-dark" href="#">Platillos</a>
+                        <a class="nav-link text-dark" href="#Dishes">Platillos</a>
                     </li>
                     <li class="nav-item px-2">
-                        <a class="nav-link text-dark" href="#">Recorrido 3D</a>
+                        <a class="nav-link text-dark" href="#3D">Recorrido 3D</a>
                     </li>
                     <li class="nav-item px-2">
-                        <a class="nav-link text-dark" href="#">Ubicaciones</a>
+                        <a class="nav-link text-dark" href="#Map">Ubicaciones</a>
                     </li>
                 </ul>
             </div>
@@ -187,14 +192,14 @@
 
     <Main>
         <!-- Hero Section -->
-        <section class="w-100 overflow-hidden position-relative"
-            style="background-image: url('{{ asset('/img/Portada_Hero_Section_Better.png') }}'); 
+        <section class="w-100 overflow-hidden position-relative" style="background-image: url('{{ asset('/img/Portada_Hero_Section_Better.png') }}'); 
                 background-size: cover; 
                 background-position: center; 
                 background-repeat: no-repeat; 
-                color: white;  object-fit: cover; max-height: 600px; width: auto; display: inline-block; height:500px;">
-            <div class="position-relative w-100" style="height: 500px;">
-                <div class="position-absolute bottom-0 start-0 mb-4 ms-4 ms-md-5 ps-lg-5" style="z-index: 3;">
+                color: white;  object-fit: cover; max-height: 650px; width: auto; display: inline-block; height:525px;"
+            id="Hero">
+            <div class="position-relative w-150" style="height: 500px;">
+                <div class="position-absolute bottom-0 start-0 mb-1 ms-4 ms-md-5 ps-lg-5" style="z-index: 3;">
                     <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
                         <a class="btn btn-lg px-5 py-3 shadow-lg fw-bold" href="#"
                             style="border-radius: 50px; border: none;" id="button1">
@@ -212,7 +217,7 @@
         </section>
 
         <!-- Nosotros Section -->
-        <section class="w-100 overflow-hidden" style="background-color: #FFFF; color: #000;">
+        <section class="w-100 overflow-hidden" style="background-color: #FFFF; color: #000;" id="Us">
             <h4 Style=" color: rgb(255,0,0); " class="box"> ¿Quienes Somos? </h4>
             <h1 style="color: #000; font-family: DiloWord; font-weight: 600;"> SOMOS ROCKET PAPAS <i
                     class="fa-solid fa-rocket fa-xl" style="color: rgb(255, 0, 0);"></i> </h1>
@@ -227,28 +232,29 @@
                         style="color: rgb(255, 0, 0);"></i> INGREDIENTES DE CALIDAD </p>
                 <p style="font-family:DiloWord; font-weight: 600;"> <i class="fa-solid fa-house"
                         style="color: rgb(255, 0, 0);"></i> SERVICIO A DOMICILIO</p>
-                <p style="font-family: DiloWord; font-weight: 600;"><i></i> SABOR QUE TE HACE VOLVER </p>
+                <p style="font-family: DiloWord; font-weight: 600;"><i class="fa-solid fa-droplet"
+                        style="color: rgb(255, 0, 0);"></i> SABOR QUE TE HACE VOLVER </p>
             </div>
             <div>
-            <img src="{{ asset('/img/Cheeseburguer + Papas.JPG') }}">
+                <img src="{{ asset('/img/Cheeseburguer + Papas.JPG') }}">
             </div>
             <div class="text-center mt-5 pt-4 border-top border-black border-opacity-25"></div>
         </section>
 
         <!-- Promociones Section -->
-        <section class="w-100 overflow-hidden" style="background-color: #00AEEF; color: white;">
+        <section class="w-100 overflow-hidden" style="background-color: #00AEEF; color: white;" id="Promotions">
         </section>
 
         <!-- Platillos Section -->
-        <section class="w-100 overflow-hidden" style="background-color: #00AEEF; color: white;">
+        <section class="w-100 overflow-hidden" style="background-color: #00AEEF; color: white;" id="Dishes">
         </section>
 
         <!-- Visor 3D Section -->
-        <section class="w-100 overflow-hidden" style="background-color: #00AEEF; color: white;">
+        <section class="w-100 overflow-hidden" style="background-color: #00AEEF; color: white;" id="3D">
         </section>
 
         <!-- Mapa Section -->
-        <section class="container my-5">
+        <section class="container my-5" id="Map">
             <div class="row">
                 <div class="col-md-4 mb-3">
                     <div class="list-group shadow" id="lista-sucursales">
@@ -301,10 +307,23 @@
                             class="social-icon-footer fb-hover text-black bg-black bg-opacity-25 rounded-circle d-flex align-items-center justify-content-center shadow-sm"
                             style="width: 45px; height: 45px; color: #1877F2;"><i
                                 class="fa-brands fa-facebook-f"></i></a>
+
                         <a href="https://www.instagram.com/rocketpapas/"
                             class="social-icon-footer ig-hover text-black bg-black bg-opacity-25 rounded-circle d-flex align-items-center justify-content-center shadow-sm"
                             style="width: 45px; height: 45px; color: #FF1493;"><i
                                 class="fa-brands fa-instagram"></i></a>
+
+                        <a href="https://wa.me/5218714262173"
+                            class="social-icon-footer wa-hover text-black bg-black bg-opacity-25 rounded-circle d-flex align-items-center justify-content-center shadow-sm"
+                            style="width: 45px; height: 45px; color: #25D366;"><i class="fa-brands fa-whatsapp"></i></a>
+
+                        <a href="https://www.ubereats.com/mx/search?q=Rocket%20papas"
+                            class="social-icon-footer text-black bg-black bg-opacity-25 rounded-circle d-flex align-items-center justify-content-center shadow-sm"
+                            style="width: 45px; height: 45px;">
+                            <img src="{{ asset('img/uber-eats-icon.png') }}"
+                                style="width: 32px; height: 32px; object-fit: contain; filter: grayscale(100%) brightness(0.3); transform: scale(1.2);"
+                                class="uber-icon-hover" /></a>
+
                         <a href="https://wa.me/5218714262173"
                             class="social-icon-footer wa-hover text-black bg-black bg-opacity-25 rounded-circle d-flex align-items-center justify-content-center shadow-sm"
                             style="width: 45px; height: 45px; color: #25D366;"><i class="fa-brands fa-whatsapp"></i></a>
