@@ -93,6 +93,52 @@
         background-color: rgb(255, 0, 0);
         transition-duration: 500ms;
     }
+
+    @font-face {
+        font-family: 'DiloWord';
+        src: url('/Fonts/DiloWorld.ttf') format('truetype');
+        font-weight: 600;
+    }
+
+    @font-face {
+        font-family: 'Caveat-variableFont_wgth';
+        src: url('/Fonts/Caveat-variableFont_wgth.ttf') format('truetype');
+
+    }
+
+    @font-face {
+        font-family: 'PlayfairDisplay';
+        src: url('/Fonts/Playfair_Display/PlayfairDisplay-VariableFont_wght.ttf') format('truetype');
+    }
+
+    @font-face {
+        font-family: 'Ubuntu-bold';
+        src: url('/Fonts/Ubuntu/Ubuntu-bold.ttf') format('truetype');
+    }
+
+    @font-face {
+        font-family: 'Ubuntu-boldItalic';
+        src: url('/Fonts/Ubuntu/Ubuntu-boldItalic.ttf') format('truetype');
+    }
+
+    @font-face {
+        font-family: 'Ubuntu-MediumItalic';
+        src: url('/Fonts/Ubuntu/Ubuntu-MediumItalic.ttf') format('truetype');
+    }
+
+    @font-face {
+        font-family: 'Ubuntu-Regular';
+        src: url('/Fonts/Ubuntu/Ubuntu-Regular.ttf') format('truetype');
+    }
+
+    .content-box {
+        columns: 3 auto;
+        column-span: 1px;
+    }
+
+    .box {
+        column
+    }
 </style>
 
 <body class="antialiased">
@@ -166,7 +212,27 @@
         </section>
 
         <!-- Nosotros Section -->
-        <section class="w-100 overflow-hidden" style="background-color: #00AEEF; color: white;">
+        <section class="w-100 overflow-hidden" style="background-color: #FFFF; color: #000;">
+            <h4 Style=" color: rgb(255,0,0); " class="box"> ¿Quienes Somos? </h4>
+            <h1 style="color: #000; font-family: DiloWord; font-weight: 600;"> SOMOS ROCKET PAPAS <i
+                    class="fa-solid fa-rocket fa-xl" style="color: rgb(255, 0, 0);"></i> </h1>
+            <p style="font-family: PlayfairDisplay; ">Nacimos en 2019 en Torreon, Coahuila, con un concepto diferente
+                diferente de comida rapida: papas
+                rellenas en conos, hamburguesas jugosas, alitas irresistibles y mucho mas</p>
+            <h2 style="color: #000; font-family: Bebas Neue;"> <strong> INGREDIENTES DE CALIDAD, SABOR UNICO Y EL MEJOR
+                    SERVICIO A DOMICILIO
+                </strong></h2>
+            <div class="content-box">
+                <p style="font-family: DiloWord; font-weight: 600;"><i class="fa-regular fa-star"
+                        style="color: rgb(255, 0, 0);"></i> INGREDIENTES DE CALIDAD </p>
+                <p style="font-family:DiloWord; font-weight: 600;"> <i class="fa-solid fa-house"
+                        style="color: rgb(255, 0, 0);"></i> SERVICIO A DOMICILIO</p>
+                <p style="font-family: DiloWord; font-weight: 600;"><i></i> SABOR QUE TE HACE VOLVER </p>
+            </div>
+            <div>
+            <img src="{{ asset('/img/Cheeseburguer + Papas.JPG') }}">
+            </div>
+            <div class="text-center mt-5 pt-4 border-top border-black border-opacity-25"></div>
         </section>
 
         <!-- Promociones Section -->
@@ -200,7 +266,9 @@
                     <div id="map" class="shadow rounded" style="width: 100%; height: 450px;"></div>
                 </div>
             </div>
+
         </section>
+        <div class="text-center mt-5 pt-4 border-top border-black border-opacity-25"></div>
     </Main>
 
     <footer class="text-white py-5" style="background-color: #fdfcfc;">
@@ -261,7 +329,6 @@
     let markers = [];
 
     function initMap() {
-        // Centro inicial: Torreón
         const torreonCentro = { lat: 25.5439, lng: -103.4190 };
 
         map = new google.maps.Map(document.getElementById("map"), {
@@ -270,7 +337,6 @@
             styles: [ /* Aquí puedes pegar estilos personalizados de Snazzy Maps si quieres ponerlo oscuro */]
         });
 
-        // Agregamos un marcador de ejemplo en la sucursal activa inicial (HEB Independencia)
         const marker = new google.maps.Marker({
             position: { lat: 25.5616, lng: -103.4306 },
             map: map,
@@ -279,11 +345,10 @@
         });
     }
 
-    // Función mágica para mover el mapa suavemente cuando dan clic en la lista
     function moverMapa(lat, lng) {
         const nuevaUbicacion = new google.maps.LatLng(lat, lng);
         map.panTo(nuevaUbicacion);
-        map.setZoom(16); // Hace zoom al local específico
+        map.setZoom(16);
     }
 </script>
 
