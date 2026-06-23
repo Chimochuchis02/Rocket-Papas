@@ -356,7 +356,7 @@
     </footer>
 </body>
 
-<script src="{{ asset('public/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('js/bootstrap.min.js') }}"></script>
 
 <script src="https://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_MAPS_API_KEY') }}&callback=initMap" async
     defer></script>

@@ -1,1 +1,1 @@
-<img src="{{ asset('images/logo-rocketpapas.png') }}" alt="Rocket Papas Logo" {{ $attributes->merge(['class' => 'h-20 w-auto mx-auto']) }}>
+<img src="{{ asset('img/Logo_Rocket_Papas_sin_circulo.png') }}" alt="Rocket Papas Logo" {{ $attributes->merge(['class' => 'h-20 w-auto mx-auto']) }}>

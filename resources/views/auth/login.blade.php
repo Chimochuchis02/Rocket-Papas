@@ -5,7 +5,7 @@
         <x-application-logo class="w-24 h-24 object-contain" />
         </a>
         <h2 class="mt-4 text-2xl font-black text-gray-950 tracking-tight text-center uppercase">
-            Inicio De Sesion Administrativo
+            Rocket Papas
         </h2>
         <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Hecho para antojar, protegido para ganar</p>
     </div>
