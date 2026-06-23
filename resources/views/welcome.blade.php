@@ -27,12 +27,10 @@
     body {
         display: flex;
         width: 100%;
-        /* Ya lo tienes en la línea 23 */
         flex-direction: column;
         margin: 0;
         padding: 0;
         overflow-x: hidden;
-        /* Evita scroll horizontal no deseado */
     }
 
     .container-fluid {
@@ -45,11 +43,10 @@
 
     main,
     .container-fluid {
-        /* Ajusta según que clase principal */
         flex: 1;
     }
 
-    /* Clase para la animación de las redes sociales */
+
     .social-icon-footer {
         transition: all 0.3s ease-in-out;
         text-decoration: none;
@@ -59,11 +56,9 @@
         transform: translateY(-5px) scale(1.1);
         background-position: 1 !important;
         background-color: rgba(255, 255, 255, 0.9) !important;
-        /* Se vuelve casi blanco sólido */
         box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
     }
 
-    /* Colores específicos al pasar el mouse (opcional para más detalle) */
     .fb-hover:hover {
         color: #1877F2 !important;
     }
@@ -77,7 +72,7 @@
     }
 
     .uber-icon-hover:hover {
-        filter: none; !important: important;
+        filter: none;
         transition: 0.3s ease;
     }
 
@@ -87,6 +82,7 @@
 
     #button2 {
         background-color: #FFD43B;
+        color: #000;
     }
 
     #button1:hover {
@@ -96,6 +92,7 @@
 
     #button2:hover {
         background-color: rgb(255, 0, 0);
+        color: #FFF;
         transition-duration: 500ms;
     }
 
@@ -138,11 +135,20 @@
 
     .content-box {
         columns: 3 auto;
-        column-span: 1px;
+        column-span: 0px;
     }
 
     .box {
         column
+    }
+
+    #parr1,
+    #parr2,
+    #parr3 {
+        font-family: 'PlayfairDisplay';
+        font-weight: 550;
+        line-height: 32px;
+        text-align: center;
     }
 </style>
 
@@ -203,12 +209,12 @@
                     <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
                         <a class="btn btn-lg px-5 py-3 shadow-lg fw-bold" href="#"
                             style="border-radius: 50px; border: none;" id="button1">
-                            <i class="fa-regular fa-star me-2" style="color: #000;"></i>
+                            <i class="fa-regular fa-star me-2" style="color: #000;" id="star"></i>
                             Ver Menu
                         </a>
-                        <a class="btn btn-lg px-4.5 py-3 fw-bold shadow-sm text-white" href="#"
+                        <a class="btn btn-lg px-4.5 py-3 fw-bold shadow-sm" href="#"
                             style="border-radius: 50px; border: none;" id="button2">
-                            <i class="fa-regular fa-star me-2" style="color: #000;"></i>
+                            <i class="fa-regular fa-star me-2" style="color: #000;" id="car"></i>
                             Hacer Pedido
                         </a>
                     </div>
@@ -218,26 +224,33 @@
 
         <!-- Nosotros Section -->
         <section class="w-100 overflow-hidden" style="background-color: #FFFF; color: #000;" id="Us">
-            <h4 Style=" color: rgb(255,0,0); " class="box"> ¿Quienes Somos? </h4>
-            <h1 style="color: #000; font-family: DiloWord; font-weight: 600;"> SOMOS ROCKET PAPAS <i
-                    class="fa-solid fa-rocket fa-xl" style="color: rgb(255, 0, 0);"></i> </h1>
-            <p style="font-family: PlayfairDisplay; ">Nacimos en 2019 en Torreon, Coahuila, con un concepto diferente
-                diferente de comida rapida: papas
-                rellenas en conos, hamburguesas jugosas, alitas irresistibles y mucho mas</p>
-            <h2 style="color: #000; font-family: Bebas Neue;"> <strong> INGREDIENTES DE CALIDAD, SABOR UNICO Y EL MEJOR
+            <h4 Style=" color: rgb(255,0,0); text-align: center;" class="box"> ¿Quienes Somos? </h4>
+            <h1 style="color: #000; font-family: DiloWord; font-weight: 700; text-align: center;"> SOMOS ROCKET PAPAS 🚀
+            </h1>
+
+            <p id="parr1">Nacimos en 2019 en Torreon, Coahuila, con un concepto</p>
+            <p id="parr2">diferente de comida rapida: papas
+                rellenas en conos,</p>
+            <p id="parr3">hamburguesas jugosas, alitas irresistibles y mucho mas</p>
+
+            <h2 style="color: #000; font-family: Bebas Neue; text-align: center;"> <strong> INGREDIENTES DE CALIDAD,
+                    SABOR UNICO Y EL MEJOR
                     SERVICIO A DOMICILIO
                 </strong></h2>
-            <div class="content-box">
-                <p style="font-family: DiloWord; font-weight: 600;"><i class="fa-regular fa-star"
+            <div class="content-box" style="text-align: center;">
+                <p style="font-family: DiloWord; font-weight: 1200;"><i class="fa-regular fa-star"
                         style="color: rgb(255, 0, 0);"></i> INGREDIENTES DE CALIDAD </p>
-                <p style="font-family:DiloWord; font-weight: 600;"> <i class="fa-solid fa-house"
+                <p style="font-family:DiloWord; font-weight: 1200;"> <i class="fa-solid fa-house"
                         style="color: rgb(255, 0, 0);"></i> SERVICIO A DOMICILIO</p>
-                <p style="font-family: DiloWord; font-weight: 600;"><i class="fa-solid fa-droplet"
+                <p style="font-family: DiloWord; font-weight: 1200;"><i class="fa-solid fa-droplet"
                         style="color: rgb(255, 0, 0);"></i> SABOR QUE TE HACE VOLVER </p>
             </div>
-            <div>
-                <img src="{{ asset('/img/Cheeseburguer + Papas.JPG') }}">
+
+            <div style="text-align: right; margin-right: 40px;">
+                <img src="{{ asset('img/Cheeseburguer_Papas.jpg') }}"
+                    style="border-radius: 36px;  height: 500px;  width: 550px;">
             </div>
+
             <div class="text-center mt-5 pt-4 border-top border-black border-opacity-25"></div>
         </section>
 
@@ -280,28 +293,33 @@
     <footer class="text-white py-5" style="background-color: #fdfcfc;">
         <div class="container">
             <div class="row align-items-center text-center text-md-start">
-                <!-- Datos de Contacto -->
                 <div class="col-md-4 mb-4 mb-md-0">
                     <p class="h5 mb-3" style="color:black;"><i class="fa-solid fa-phone me-2"></i> +52 1 871 426 2173
                     </p>
-                    <p class="h5" style="color:black;"><i class="fa-solid fa-location-dot me-2"></i> Residencial
-                        Campestre la Rosita, 27250
-                        Torreón, Coah.</p>
-                    <a href="#" style="text-decoration: none; color:black;">
-                        <p class="h5 mb-3">Politicas De Seguridad</p>
+                    <p class="h5" style="color:black;"><i class="fa-solid fa-location-dot me-2"></i> <strong> Torreon,
+                            Coahuila </strong>
+                    <p> <small style="color: #000; text-align: center;">Envios a toda la ciudad</small> </p>
+                    </p>
+                    <p class="h5 mb-3" style="color: #000;"> <i class="fa-regular fa-clock" style="color:  #000;"></i>
+                        <strong> Horario: </strong>
+                    <p> <small style="color: #000;"> Lunes-Domingo: 1pm-9pm </small> </p>
+                    </p>
                     </a>
                 </div>
 
                 <!-- Logo Central -->
                 <div class="col-md-4 text-center mb-4 mb-md-0" style="color:black;">
-                    <img src="{{ asset('img/Rocke.png') }}" class="rounded-circle shadow mb-2" style="width: 120px;">
-                    <h4 class="fw-bold">Rocket Papas</h4>
-                    <small class="d-block">Hecho para antojar</small>
+                    <a href="#Hero" style="text-decoration: none; color: #000;">
+                        <img src="{{ asset('img/Rocke.png') }}" class="rounded-circle shadow mb-2"
+                            style="width: 120px;">
+                        <h4 class="fw-bold">Rocket Papas</h4>
+                        <small class="d-block">Hecho para antojar</small>
+                    </a>
                 </div>
 
                 <!-- Redes Sociales -->
                 <div class="col-md-4 text-center text-md-end">
-                    <h5 class="fw-bold mb-3">¡Síguenos en redes sociales!</h5>
+                    <h5 class="fw-bold mb-3" style="color: #000;">¡Síguenos en redes sociales!</h5>
                     <div class="d-flex justify-content-center justify-content-md-end gap-3">
                         <a href="https://www.facebook.com/people/Rocket-Papas/61555615209607/?locale=es_LA"
                             class="social-icon-footer fb-hover text-black bg-black bg-opacity-25 rounded-circle d-flex align-items-center justify-content-center shadow-sm"
