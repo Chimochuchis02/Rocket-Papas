@@ -15,6 +15,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=TuFuente:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="icon/x-icon" href="img/Rocke.png">
 </head>
 
 <style>
@@ -133,6 +134,11 @@
         src: url('/Fonts/Ubuntu/Ubuntu-Regular.ttf') format('truetype');
     }
 
+    @font-face {
+        font-family: 'Bebas_Neue';
+        src: url('/Fonts/Bebas_Neue/BebasNeue-Regular.ttg') format('truetype');
+    }
+
     .content-box {
         columns: 3 auto;
         column-span: 0px;
@@ -223,34 +229,77 @@
         </section>
 
         <!-- Nosotros Section -->
-        <section class="w-100 overflow-hidden" style="background-color: #FFFF; color: #000;" id="Us">
-            <h4 Style=" color: rgb(255,0,0); text-align: center;" class="box"> ¿Quienes Somos? </h4>
-            <h1 style="color: #000; font-family: DiloWord; font-weight: 700; text-align: center;"> SOMOS ROCKET PAPAS 🚀
-            </h1>
+        <section class="container my-5 py-4" id="Ubicaciones">
+            <div class="row align-items-center g-5">
+                <div class="col-md-6 text-center text-md-start">
+                    <span class="text-danger font-weight-bold d-block mb-2 style-title-sub"
+                        style="font-family:Ubuntu-bold; font-size: 24px; text-align: center; letter-spacing: 8%; line-height: 150%;">
+                        ¿Quiénes Somos?
+                    </span>
+                    <h2 class="display-5 font-weight-black text-uppercase mb-4 tracking-tight"
+                        style="font-family: DiloWord; font-size: 55px; letter-spacing: 0.5%; line-height: 80%; text-align: center;">
+                        Somos Rocket Papas 🚀
+                    </h2>
 
-            <p id="parr1">Nacimos en 2019 en Torreon, Coahuila, con un concepto</p>
-            <p id="parr2">diferente de comida rapida: papas
-                rellenas en conos,</p>
-            <p id="parr3">hamburguesas jugosas, alitas irresistibles y mucho mas</p>
+                    <p class="text-secondary leading-relaxed mb-4"
+                        style="font-size: 24px; text-align: center; font-family: PlayfairDisplay; line-height: 32px; color: #000; ">
+                        Nacimos en 2019 en Torreón, Coahuila, con un concepto </p>
+                    <p class="text-secondary leading-relaxed mb-4"
+                        style="font-size: 24px; text-align: center; font-family: PlayfairDisplay; line-height: 32px; color: #000;">
+                        diferente de
+                        comida rápida:
+                        papas rellenas en conos,</p>
+                    <p class="text-secondary leading-relaxed mb-4"
+                        style="font-size: 24px; text-align: center; font-family: PlayfairDisplay; line-height: 32px; color: #000;">
+                        hamburguesas
+                        jugosas, alitas irresistibles y mucho más.</p>
 
-            <h2 style="color: #000; font-family: Bebas Neue; text-align: center;"> <strong> INGREDIENTES DE CALIDAD,
-                    SABOR UNICO Y EL MEJOR
-                    SERVICIO A DOMICILIO
-                </strong></h2>
-            <div class="content-box" style="text-align: center;">
-                <p style="font-family: DiloWord; font-weight: 1200;"><i class="fa-regular fa-star"
-                        style="color: rgb(255, 0, 0);"></i> INGREDIENTES DE CALIDAD </p>
-                <p style="font-family:DiloWord; font-weight: 1200;"> <i class="fa-solid fa-house"
-                        style="color: rgb(255, 0, 0);"></i> SERVICIO A DOMICILIO</p>
-                <p style="font-family: DiloWord; font-weight: 1200;"><i class="fa-solid fa-droplet"
-                        style="color: rgb(255, 0, 0);"></i> SABOR QUE TE HACE VOLVER </p>
+
+                    <h4 class="font-weight-black text-uppercase mb-5 tracking-wide text-dark"
+                        style="font-size: 32px; font-family: Bebas_Neue; font-weight: 600; line-height: 80%; letter-spacing: 4%; text-align: center;">
+                        Ingredientes de calidad, sabor único y el mejor servicio a domicilio
+                    </h4>
+
+                    <div class="row pt-2 text-center text-md-left">
+                        <div class="col-4">
+                            <div class="d-flex flex-column align-items-center flex-md-row gap-2">
+                                <i class="fa-solid fa-star fa-xl" style="color: rgb(255, 0, 0);"></i>
+                                <span class="font-weight-bold text-uppercase small text-dark d-block mt-1"
+                                    style="font-family: DiloWord; font-weight: 600; font-size: 20px; line-height: 140%;">
+                                    Ingredientes de Calidad
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="d-flex flex-column align-items-center flex-md-row gap-2">
+                                <i class="fa-solid fa-house fa-xl" style="color: rgb(255, 0, 0);"></i>
+                                <span class="font-weight-bold text-uppercase small text-dark d-block mt-1"
+                                    style="font-family: DiloWord; font-weight: 600; font-size: 20px; line-height: 140%;">
+                                    Servicio a Domicilio
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="d-flex flex-column align-items-center flex-md-row gap-2">
+                                <i class="fa-solid fa-fire fa-xl" style="color: rgb(255, 0, 0);"></i>
+                                <span class="font-weight-bold text-uppercase small text-dark d-block mt-1"
+                                    style="font-family: DiloWord; font-weight: 600; font-size: 20px; line-height: 140%;">
+                                    Sabor que te hace volver
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div
+                        class="position-relative overflow-hidden rounded-4 shadow-lg transition-transform duration-300 hover-scale">
+                        <img src="{{ asset('img/Cheeseburguer_Papas.jpg') }}"
+                            class="img-fluid w-100 h-auto d-block object-fit-cover" style="max-height: 480px;">
+                    </div>
+                </div>
+
             </div>
-
-            <div style="text-align: right; margin-right: 40px;">
-                <img src="{{ asset('img/Cheeseburguer_Papas.jpg') }}"
-                    style="border-radius: 36px;  height: 500px;  width: 550px;">
-            </div>
-
             <div class="text-center mt-5 pt-4 border-top border-black border-opacity-25"></div>
         </section>
 
