@@ -15,8 +15,8 @@ class CarrouselController extends Controller
      */
     public function index()
     {
-        $carruseles = Carrousel::withCount('products')->latest()->get();
-        return view('admin.carruseles.index', compact('carruseles'));
+        $carrouseles = Carrousel::withCount('products')->latest()->get();
+        return view('admin.carrouseles.index', compact('carrouseles'));
     }
 
     /**
@@ -24,47 +24,62 @@ class CarrouselController extends Controller
      */
     public function create()
     {
-        $productos = Product::where('active', true)->get();
-        return view('admin.carruseles.create', compact('productos'));
+        $carrouseles = Carrousel::where('is_Active', true)->get();
+        return view('admin.carrouseles.create', compact('carrouseles'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        $request->validate([
-            'titulo' => 'required|string|max:255|unique:carousels,title',
-            'is_active' => 'boolean',
-            'desc' => 'nullable|string|max:99',
-            'productos' => 'nullable|array', // Un arreglo de IDs de productos
-            'productos.*' => 'exists:products,id' // Valida que cada ID exista real en la DB
-        ]);
-
-        DB::beginTransaction();
-
-        try {
-            // 2. Se Crea el carrousel (Generando el slug unico)
-            $carousel = Carrousel::create([
-                'titulo' => $request->title,
-                'slug' => Str::slug($request->title),
-                'is_active' => $request->has('is_active')
+    { {
+            $validatedData = $request->validate([
+                'titulo' => 'required|string|max:50',
+                'desc' => 'nullable|string|max:250',
+                'precio' => 'nullable|numeric|min:0',
+                'imgs' => 'required|array',
+                'imgs.*' => 'image|mimes:jpeg,png,jpg,webp|max:2048', // Valida cada elemento del array
+                'model_3d_path' => 'nullable|file|max:10240', // Max 10MB para el modelo 3D (.glb)
             ]);
 
-            // 3. Si seleccionó productos, los metemos a la tabla pivote de un solo golpe
-            if ($request->has('productos')) {
-                // Usandoo attach() para agregar las relaciones iniciales
-                $carousel->products()->attach($request->productos);
+            // 1. Generamos el slug automáticamente del título
+            $slug = Str::slug($validatedData['titulo']);
+
+            // 2. Procesamos el array de múltiples imágenes
+            $rutasImagenes = [];
+            if ($request->hasFile('imgs')) {
+                foreach ($request->file('imgs') as $file) {
+                    $path = $file->store('carrouseles/imagenes', 'public');
+                    $rutasImagenes[] = $path;
+                }
             }
 
-            DB::commit();
-            return redirect()->route('carruseles.index')->with('success', '¡Carrusel creado con éxito!');
+            // 3. Procesamos el archivo del modelo 3D si existe
+            $rutaModel3D = null;
+            if ($request->hasFile('model_3d_path')) {
+                $rutaModel3D = $request->file('model_3d_path')->store('carrouseles/modelos', 'public');
+            }
 
-        } catch (\Exception $e) {
-            DB::rollBack();
-            return back()->withInput()->with('error', 'Error al crear el carrusel: ' . $e->getMessage());
+            DB::beginTransaction();
+            try {
+                Carrousel::create([
+                    'titulo' => $validatedData['titulo'],
+                    'slug' => $slug,
+                    'desc' => $validatedData['desc'] ?? null,
+                    'precio' => $validatedData['precio'] ?? null,
+                    'imgs' => $rutasImagenes, // Importante: En tu Modelo añade -> protected $casts = ['imgs' => 'array'];
+                    'model_3d_path' => $rutaModel3D,
+                ]);
+
+                DB::commit();
+                return redirect()->route('carrouseles.index')->with('success', '¡Carrusel creado con éxito!');
+            } catch (\Exception $e) {
+                DB::rollBack();
+                return back()->withInput()->with('error', 'Error: ' . $e->getMessage());
+            }
         }
     }
+
 
     /**
      * Display the specified resource.
@@ -81,9 +96,9 @@ class CarrouselController extends Controller
     {
         // Cargamos los productos que ya pertenecen a este carrusel
         $carrousel->load('products');
-        
+
         // Traemos todos los productos disponibles en el menú de Rocket Papas
-        $productos = Product::where('active', true)->get();
+        $productos = Product::where('is_Active', true)->get();
 
         return view('admin.carruseles.edit', compact('carousel', 'productos'));
     }

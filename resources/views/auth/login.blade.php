@@ -1,8 +1,7 @@
 <x-guest-layout>
-    <!-- Contenedor del Logo de Rocket Papas -->
     <div class="flex flex-col items-center mb-6">
         <a href=" /">
-        <x-application-logo class="w-24 h-24 object-contain" />
+            <x-application-logo class="w-24 h-24 object-contain" />
         </a>
         <h2 class="mt-4 text-2xl font-black text-gray-950 tracking-tight text-center uppercase">
             Rocket Papas
@@ -42,7 +41,8 @@
                 <input id="remember_me" type="checkbox"
                     class="rounded border-gray-300 text-red-600 shadow-sm focus:ring-yellow-400 dark:bg-gray-900 dark:border-gray-700"
                     name="remember">
-                    <span class="ms-2 text-sm font-medium text-gray-600 dark:text-gray-400">{{ __('Mantener sesión abierta') }}</span>
+                <span
+                    class="ms-2 text-sm font-medium text-gray-600 dark:text-gray-400">{{ __('Mantener sesión abierta') }}</span>
             </label>
         </div>
 

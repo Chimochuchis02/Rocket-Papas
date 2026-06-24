@@ -7,9 +7,10 @@ class Carrousel extends Model
 {
     protected $table = 'carrousels';
 
-    protected $fillable = ['titulo', 'slug', 'desc', 'is_Active'];
+    protected $fillable = ['titulo', 'slug', 'desc', 'imgs','model_3D_path', 'is_Active'];
+    protected $casts = ['imgs' => 'array'];
 
-    public function product()
+    public function products()
     {
         return $this->belongsToMany(Product::class, 'carrousel_product');
     }

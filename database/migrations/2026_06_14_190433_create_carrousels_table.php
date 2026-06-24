@@ -13,10 +13,12 @@ return new class extends Migration
     {
         Schema::create('carrousels', function (Blueprint $table) {
             $table->id();
-            $table->String('titulo', 15);
-            $table->String('slug');
-            $table->String('desc', 50);
-            $table->boolean('is_Active');
+            $table->String('titulo', 50);
+            $table->String('slug', 50);
+            $table->String('desc', 150)->nullable();
+            $table->json('imgs')->nullable();
+            $table->String('model_3D_path')->nullable();
+            $table->boolean('is_Active')->default(true);
             $table->timestamps();
         });
     }
