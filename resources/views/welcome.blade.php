@@ -267,25 +267,77 @@
         </section>
 
         <!-- Mapa Section -->
-        <section class="container my-5" id="Map">
-            <div class="row">
-                <div class="col-md-4 mb-3">
-                    <div class="list-group shadow" id="lista-sucursales">
-                        <button type="button" class="list-group-item list-group-item-action active"
-                            onclick="moverMapa(25.5616, -103.4306)">HEB Independencia</button>
-                        <button type="button" class="list-group-item list-group-item-action"
-                            onclick="moverMapa(25.5415, -103.4112)">HEB Revolución</button>
-                        <button type="button" class="list-group-item list-group-item-action"
-                            onclick="moverMapa(25.5562, -103.4402)">Soriana Constitución</button>
-                        <button type="button" class="list-group-item list-group-item-action"
-                            onclick="moverMapa(25.5215, -103.4185)">AlSuper La Rosita</button>
+        <section class="container my-5" id="Map" x-data="{ sucursal: 'independencia' }">
+            <div class="row g-4 align-items-center">
+
+                <div class="col-md-4">
+                    <div class="list-group shadow-sm rounded-3 overflow-hidden">
+                        <button type="button" class="list-group-item list-group-item-action p-3 font-weight-bold"
+                            :class="sucursal === 'independencia' ? 'active bg-primary border-primary text-white' : 'text-secondary'"
+                            @click="sucursal = 'independencia'">
+                            HEB Independencia
+                        </button>
+
+                        <button type="button" class="list-group-item list-group-item-action p-3 font-weight-bold"
+                            :class="sucursal === 'revolucion' ? 'active bg-primary border-primary text-white' : 'text-secondary'"
+                            @click="sucursal = 'revolucion'">
+                            HEB Revolución
+                        </button>
+
+                        <button type="button" class="list-group-item list-group-item-action p-3 font-weight-bold"
+                            :class="sucursal === 'constitucion' ? 'active bg-primary border-primary text-white' : 'text-secondary'"
+                            @click="sucursal = 'constitucion'">
+                            Soriana Constitución
+                        </button>
+
+                        <button type="button" class="list-group-item list-group-item-action p-3 font-weight-bold"
+                            :class="sucursal === 'rosita' ? 'active bg-primary border-primary text-white' : 'text-secondary'"
+                            @click="sucursal = 'rosita'">
+                            AlSuper La Rosita
+                        </button>
                     </div>
                 </div>
-                <div class="col-md-8">
-                    <div id="map" class="shadow rounded" style="width: 100%; height: 450px;"></div>
-                </div>
-            </div>
 
+                <div class="col-md-8">
+                    <div class="w-100 rounded-4 shadow-sm border border-light overflow-hidden bg-light"
+                        style="height: 400px;">
+                        <div x-show="sucursal === 'independencia'" class="w-100 h-100" x-cloak>
+                            <iframe
+                                src="https://maps.google.com/maps?q=H-E-B%20Independencia,%20Torre%C3%B3n&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                                class="w-100 h-100 border-0" allowfullscreen="" loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
+                        </div>
+
+                        <div x-show="sucursal === 'revolucion'" class="w-100 h-100" x-cloak>
+                            <iframe
+                                src="https://maps.google.com/maps?q=H-E-B%20Revoluci%C3%B3n,%20Torre%C3%B3n&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                                class="w-100 h-100 border-0" allowfullscreen="" loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
+                        </div>
+
+
+                        <div x-show="sucursal === 'constitucion'" class="w-100 h-100" x-cloak>
+                            <iframe
+                                src="https://maps.google.com/maps?q=Soriana%20H%C3%A9per%20Constituci%C3%B3n,%20Torre%C3%B3n&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                                class="w-100 h-100 border-0" allowfullscreen="" loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
+                        </div>
+
+                        <div x-show="sucursal === 'rosita'" class="w-100 h-100" x-cloak>
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d450.0693032155668!2d-103.4188891533775!3d25.519902710523766!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x868fdb88d2c30c13%3A0xac1020d5df33b3dc!2sROCKET%20PAPAS!5e0!3m2!1ses!2smx!4v1782320742355!5m2!1ses!2smx"
+                                class="w-100 h-100 border-0" allowfullscreen="" loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
         </section>
         <div class="text-center mt-5 pt-4 border-top border-black border-opacity-25"></div>
     </Main>
@@ -350,43 +402,16 @@
             </div>
 
             <div class="text-center mt-5 pt-4 border-top border-black border-opacity-25">
-                <small style="color:black;">&copy; Copyright 2026 - Rocket Papas - Todos los derechos Reservados</small>
+                <p class="text-secondary small">
+                    <span id="sys-cmark" style="cursor: default; user-select: none;">&copy;</span>
+                    Copyright 2026 - Rocket Papas - Todos los derechos Reservados
+                </p>
             </div>
         </div>
     </footer>
 </body>
 
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-
-<script src="https://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_MAPS_API_KEY') }}&callback=initMap" async
-    defer></script>
-
-<script>
-    let map;
-    let markers = [];
-
-    function initMap() {
-        const torreonCentro = { lat: 25.5439, lng: -103.4190 };
-
-        map = new google.maps.Map(document.getElementById("map"), {
-            zoom: 13,
-            center: torreonCentro,
-            styles: [ /* Aquí puedes pegar estilos personalizados de Snazzy Maps si quieres ponerlo oscuro */]
-        });
-
-        const marker = new google.maps.Marker({
-            position: { lat: 25.5616, lng: -103.4306 },
-            map: map,
-            title: "Rocket Papas - HEB Independencia",
-            animation: google.maps.Animation.DROP
-        });
-    }
-
-    function moverMapa(lat, lng) {
-        const nuevaUbicacion = new google.maps.LatLng(lat, lng);
-        map.panTo(nuevaUbicacion);
-        map.setZoom(16);
-    }
-</script>
+@vite(['resources/js/app.js'])
 
 </html>
