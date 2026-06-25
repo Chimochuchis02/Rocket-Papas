@@ -241,16 +241,16 @@
                         Somos Rocket Papas 🚀
                     </h2>
 
-                    <p class="text-secondary leading-relaxed mb-4"
-                        style="font-size: 24px; text-align: center; font-family: PlayfairDisplay; line-height: 32px; color: #000; ">
+                    <p class="leading-relaxed mb-4"
+                        style="font-size: 20.5px; text-align: center; font-family: PlayfairDisplay; line-height: 32px; color: #000; ">
                         Nacimos en 2019 en Torreón, Coahuila, con un concepto </p>
-                    <p class="text-secondary leading-relaxed mb-4"
-                        style="font-size: 24px; text-align: center; font-family: PlayfairDisplay; line-height: 32px; color: #000;">
+                    <p class="leading-relaxed mb-4"
+                        style="font-size: 20.5px; text-align: center; font-family: PlayfairDisplay; line-height: 32px; color: #000;">
                         diferente de
                         comida rápida:
                         papas rellenas en conos,</p>
-                    <p class="text-secondary leading-relaxed mb-4"
-                        style="font-size: 24px; text-align: center; font-family: PlayfairDisplay; line-height: 32px; color: #000;">
+                    <p class="leading-relaxed mb-4"
+                        style="font-size: 20.5px; text-align: center; font-family: PlayfairDisplay; line-height: 32px; color: #000;">
                         hamburguesas
                         jugosas, alitas irresistibles y mucho más.</p>
 
@@ -300,7 +300,6 @@
                 </div>
 
             </div>
-            <div class="text-center mt-5 pt-4 border-top border-black border-opacity-25"></div>
         </section>
 
         <!-- Promociones Section -->
