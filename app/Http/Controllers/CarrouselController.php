@@ -38,14 +38,12 @@ class CarrouselController extends Controller
                 'desc' => 'nullable|string|max:250',
                 'precio' => 'nullable|numeric|min:0',
                 'imgs' => 'required|array',
-                'imgs.*' => 'image|mimes:jpeg,png,jpg,webp|max:2048', // Valida cada elemento del array
-                'model_3d_path' => 'nullable|file|max:10240', // Max 10MB para el modelo 3D (.glb)
+                'imgs.*' => 'image|mimes:jpeg,png,jpg,webp|max:2048',
+                'model_3D_path' => 'nullable|file|max:10240',
             ]);
 
-            // 1. Generamos el slug automáticamente del título
             $slug = Str::slug($validatedData['titulo']);
 
-            // 2. Procesamos el array de múltiples imágenes
             $rutasImagenes = [];
             if ($request->hasFile('imgs')) {
                 foreach ($request->file('imgs') as $file) {
@@ -54,10 +52,9 @@ class CarrouselController extends Controller
                 }
             }
 
-            // 3. Procesamos el archivo del modelo 3D si existe
             $rutaModel3D = null;
-            if ($request->hasFile('model_3d_path')) {
-                $rutaModel3D = $request->file('model_3d_path')->store('carrouseles/modelos', 'public');
+            if ($request->hasFile('model_3D_path')) {
+                $rutaModel3D = $request->file('model_3D_path')->store('carrouseles/modelos', 'public');
             }
 
             DB::beginTransaction();
@@ -68,7 +65,7 @@ class CarrouselController extends Controller
                     'desc' => $validatedData['desc'] ?? null,
                     'precio' => $validatedData['precio'] ?? null,
                     'imgs' => $rutasImagenes, // Importante: En tu Modelo añade -> protected $casts = ['imgs' => 'array'];
-                    'model_3d_path' => $rutaModel3D,
+                    'model_3D_path' => $rutaModel3D,
                 ]);
 
                 DB::commit();
