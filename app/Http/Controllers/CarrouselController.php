@@ -15,7 +15,7 @@ class CarrouselController extends Controller
      */
     public function index()
     {
-        $carrouseles = Carrousel::withCount('products')->latest()->get();
+        $carrouseles = Carrousel::withCount('products')->latest()->paginate(5);
         return view('admin.carrouseles.index', compact('carrouseles'));
     }
 

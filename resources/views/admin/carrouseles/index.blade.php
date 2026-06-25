@@ -52,8 +52,8 @@
                                             URL:</span>
                                         <code
                                             class="text-sm bg-gray-100 dark:bg-gray-950 px-2 py-1 rounded text-red-500 font-mono block mt-1 break-all">
-                                                            {{ $carousel->slug }}
-                                                        </code>
+                                                                                                                            {{ $carousel->slug }}
+                                                                                                                        </code>
                                     </div>
 
                                     <div>
@@ -106,7 +106,11 @@
                             </div>
                         </div>
                 @endforeach
+                    <div class="mt-2 px-3">
+                        {{ $carrouseles->links() }}
+                    </div>
             @endif
+
 
             </div>
         </div>
