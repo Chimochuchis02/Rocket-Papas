@@ -69,7 +69,7 @@ class CarrouselController extends Controller
                 ]);
 
                 DB::commit();
-                return redirect()->route('carrouseles.index')->with('success', '¡Carrusel creado con éxito!');
+                return back()->with('success', '¡Carrusel creado con éxito!');
             } catch (\Exception $e) {
                 DB::rollBack();
                 return back()->withInput()->with('error', 'Error: ' . $e->getMessage());
@@ -91,13 +91,13 @@ class CarrouselController extends Controller
      */
     public function edit(Carrousel $carrousel)
     {
-        // Cargamos los productos que ya pertenecen a este carrusel
+        // Carga los productos que ya pertenecen a este carrusel
         $carrousel->load('products');
 
-        // Traemos todos los productos disponibles en el menú de Rocket Papas
+        // Traem todos los productos disponibles en el menú de Rocket Papas
         $productos = Product::where('is_Active', true)->get();
 
-        return view('admin.carruseles.edit', compact('carousel', 'productos'));
+        return view('admin.carrouseles.edit', compact('carousel', 'productos'));
     }
 
     /**

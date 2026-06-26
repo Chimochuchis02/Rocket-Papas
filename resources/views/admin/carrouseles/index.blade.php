@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="flex justify-between items-center" style="align-items: flex-end;">
+    <div class="flex justify-between items-center">
         <a href="{{ route('carrouseles.create') }}"
             class="px-5 py-2.5 bg-yellow-500 hover:bg-yellow-600 text-white font-bold rounded-lg text-sm uppercase tracking-wider shadow-md transition duration-150">
             + Nuevo Banner
@@ -16,8 +16,10 @@
                     class="text-center p-8 bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm">
                     <p class="text-white-500 dark:text-gray-400 font-medium">No hay carruseles registrados actualmente.</p>
                 </div>
+
             @else
                 @foreach($carrouseles as $carousel)
+
                     <div x-data="{ open: false }"
                         class="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm overflow-hidden">
 
@@ -52,8 +54,8 @@
                                             URL:</span>
                                         <code
                                             class="text-sm bg-gray-100 dark:bg-gray-950 px-2 py-1 rounded text-red-500 font-mono block mt-1 break-all">
-                                                                                                                                                                                                                            {{ $carousel->slug }}
-                                                                                                                                                                                                                        </code>
+                                                        {{ $carousel->slug }}
+                                                                                                                                                                                                                                                                                                                                                                                                                        </code>
                                     </div>
 
                                     <div>
@@ -106,11 +108,13 @@
                                                 @method('PATCH') <!-- Uso PATCH porque solo se va a modificar un campo -->
 
                                                 @if($carousel->is_Active)
-                                                    <button type="submit" class="btn btn-warning btn-sm">
+                                                    <button type="submit" class="btn btn-warning btn-sm" data-bs-toggle="tooltip"
+                                                        title="Desactivar">
                                                         <i class="fa-solid fa-eye-slash me-1"></i> Desactivar
                                                     </button>
                                                 @else
-                                                    <button type="submit" class="btn btn-success btn-sm">
+                                                    <button type="submit" class="btn btn-success btn-sm" data-bs-toggle="tooltip"
+                                                        title="Activar">
                                                         <i class="fa-solid fa-eye me-1"></i> Activar
                                                     </button>
                                                 @endif
