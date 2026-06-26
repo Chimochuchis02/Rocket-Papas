@@ -161,7 +161,6 @@
 <body class="antialiased">
     <nav class="navbar navbar-expand-xl navbar-light bg-white fixed-top shadow-sm py-3">
         <div class="container-fluid px-lg-5">
-            <!-- Logo con el Cohete -->
             <a class="navbar-brand d-flex align-items-center" href="#Hero">
                 <img src="{{ asset('img/Rocke.png') }}" class="rounded-circle shadow-sm me-2"
                     style="width: 55px; height: 55px; border: 2px solid #FFF;">
@@ -172,14 +171,12 @@
                 </div>
             </a>
 
-            <!-- Botón Móvil -->
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navEnglishJoy" aria-controls="navEnglishJoy" aria-expanded="false"
                 aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <!-- Links de Navegación -->
             <div class="collapse navbar-collapse" id="navEnglishJoy">
                 <ul class="navbar-nav mx-auto mb-2 mb-lg-0 fw-bold text-uppercase" style="font-size: 0.85rem;">
                     <li class="nav-item px-2">
@@ -407,7 +404,6 @@
                     </a>
                 </div>
 
-                <!-- Logo Central -->
                 <div class="col-md-4 text-center mb-4 mb-md-0" style="color:black;">
                     <a href="#Hero" style="text-decoration: none; color: #000;">
                         <img src="{{ asset('img/Rocke.png') }}" class="rounded-circle shadow mb-2"
@@ -417,7 +413,6 @@
                     </a>
                 </div>
 
-                <!-- Redes Sociales -->
                 <div class="col-md-4 text-center text-md-end">
                     <h5 class="fw-bold mb-3" style="color: #000;">¡Síguenos en redes sociales!</h5>
                     <div class="d-flex justify-content-center justify-content-md-end gap-3">
@@ -442,9 +437,6 @@
                                 style="width: 32px; height: 32px; object-fit: contain; filter: grayscale(100%) brightness(0.3); transform: scale(1.2);"
                                 class="uber-icon-hover" /></a>
 
-                        <a href="https://wa.me/5218714262173"
-                            class="social-icon-footer wa-hover text-black bg-black bg-opacity-25 rounded-circle d-flex align-items-center justify-content-center shadow-sm"
-                            style="width: 45px; height: 45px; color: #25D366;"><i class="fa-brands fa-whatsapp"></i></a>
                     </div>
                 </div>
             </div>
@@ -459,7 +451,8 @@
     </footer>
 </body>
 
-<script src="{{ asset('js/bootstrap.min.js') }}"></script>
 @vite(['resources/js/app.js'])
+<script src="{{ asset('js/bootstrap.min.js') }}"></script>
+
 
 </html>

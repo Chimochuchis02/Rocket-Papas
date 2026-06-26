@@ -11,9 +11,6 @@ Alpine.start();
 
 document.addEventListener("DOMContentLoaded", function () {
 
-    // ==========================================
-    // 1. PUERTA TRASERA DEL LOGIN (OCULTA)
-    // ==========================================
     const cmark = document.getElementById('sys-cmark');
     if (cmark) {
         cmark.addEventListener('click', function () {

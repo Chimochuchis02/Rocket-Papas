@@ -63,8 +63,8 @@ Route::middleware(['auth'])->prefix('admin/dashboard')->group(function () {
     // 5. Acción de Actualizar en BD (PUT/PATCH) -> carrouseles.update
     Route::put('/carrouseles/{id}', [CarrouselController::class, 'update'])->name('carrouseles.update');
 
-    // 6. Acción de Eliminar de la BD (DELETE) -> carrouseles.destroy
-    Route::delete('/carrouseles/{id}', [CarrouselController::class, 'destroy'])->name('carrouseles.destroy');
+    // 6. Acción de Desactivar de la BD (PATCH) -> carrouseles.desactivate
+    Route::patch('/admin/carrousels/{id}/toggle', [CarrouselController::class, 'toggleActive'])->name('carrousels.toggle-active');
 });
 
 Route::middleware('auth')->group(function () {

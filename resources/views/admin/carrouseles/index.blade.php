@@ -52,8 +52,8 @@
                                             URL:</span>
                                         <code
                                             class="text-sm bg-gray-100 dark:bg-gray-950 px-2 py-1 rounded text-red-500 font-mono block mt-1 break-all">
-                                                                                                                            {{ $carousel->slug }}
-                                                                                                                        </code>
+                                                                                                                                                                                                                            {{ $carousel->slug }}
+                                                                                                                                                                                                                        </code>
                                     </div>
 
                                     <div>
@@ -99,6 +99,23 @@
                                                 </div>
                                             </div>
                                         @endif
+                                        <div class="pt-4">
+                                            <form action="{{ route('carrousels.toggle-active', $carousel->id) }}" method="POST"
+                                                class="d-inline">
+                                                @csrf
+                                                @method('PATCH') <!-- Uso PATCH porque solo se va a modificar un campo -->
+
+                                                @if($carousel->is_Active)
+                                                    <button type="submit" class="btn btn-warning btn-sm">
+                                                        <i class="fa-solid fa-eye-slash me-1"></i> Desactivar
+                                                    </button>
+                                                @else
+                                                    <button type="submit" class="btn btn-success btn-sm">
+                                                        <i class="fa-solid fa-eye me-1"></i> Activar
+                                                    </button>
+                                                @endif
+                                            </form>
+                                        </div>
 
                                     </div>
                                 </div>
@@ -110,7 +127,6 @@
                         {{ $carrouseles->links() }}
                     </div>
             @endif
-
 
             </div>
         </div>

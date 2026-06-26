@@ -140,10 +140,15 @@ class CarrouselController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Carrousel $carrousel)
+    public function toggleActive($id)
     {
-        $carrousel->delete();
+        $carrousel = Carrousel::findOrFail($id);
 
-        return redirect()->route('carruseles.index')->with('success', 'Carrusel eliminado permanentemente.');
+        $carrousel->is_Active = !$carrousel->is_Active;
+        $carrousel->save();
+
+        $status = $carrousel->is_Active ? 'activado' : 'desactivado';
+
+        return redirect()->route('carrouseles.index')->with('success', 'Carrusel Ha Sido {$status} Correctamente.');
     }
 }
