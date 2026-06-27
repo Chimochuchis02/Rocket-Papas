@@ -54,8 +54,8 @@
                                             URL:</span>
                                         <code
                                             class="text-sm bg-gray-100 dark:bg-gray-950 px-2 py-1 rounded text-red-500 font-mono block mt-1 break-all">
-                                                        {{ $carousel->slug }}
-                                                                                                                                                                                                                                                                                                                                                                                                                        </code>
+                                                                        {{ $carousel->slug }}
+                                                                                                                                                                                                                                                                                                                                                                                                                                        </code>
                                     </div>
 
                                     <div>
@@ -120,6 +120,12 @@
                                                 @endif
                                             </form>
                                         </div>
+                                        
+                                        <a href="{{ route('carrouseles.edit', $carousel->id) }}"
+                                            class="btn btn-zinc shadow-sm rounded-3 d-flex align-items-center justify-content-center border border-white border-opacity-10"
+                                            style="width: 38px; height: 38px;" data-bs-toggle="tooltip" title="Editar">
+                                            <i class="bi bi-pencil-fill text-white small"></i>
+                                        </a>
 
                                     </div>
                                 </div>

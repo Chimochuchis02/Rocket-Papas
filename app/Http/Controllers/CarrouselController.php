@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use BcMath\Number;
 use Illuminate\Http\Request;
 use App\Models\Carrousel;
 use App\Models\Product;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class CarrouselController extends Controller
 {
@@ -39,7 +41,7 @@ class CarrouselController extends Controller
                 'precio' => 'nullable|numeric|min:0',
                 'imgs' => 'required|array',
                 'imgs.*' => 'image|mimes:jpeg,png,jpg,webp|max:2048',
-                'model_3D_path' => 'nullable|file|max:10240',
+                'model_3D_path' => 'nullable|file|max:30240',
             ]);
 
             $slug = Str::slug($validatedData['titulo']);
@@ -89,52 +91,85 @@ class CarrouselController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Carrousel $carrousel)
+    public function edit($id)
     {
-        // Carga los productos que ya pertenecen a este carrusel
-        $carrousel->load('products');
-
-        // Traem todos los productos disponibles en el menú de Rocket Papas
-        $productos = Product::where('is_Active', true)->get();
-
-        return view('admin.carrouseles.edit', compact('carousel', 'productos'));
+        // Por ahora y paara completar este primer modulo y su CRUD....solo busca el id del carrousel...ya que productos aun no hay y eso da errores, al intentar buscar algo que no existe
+        $carrousel = Carrousel::findOrFail($id);
+        return view('admin.carrouseles.edit', compact('carrousel'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Carrousel $carrousel)
+    public function update(Request $request, $id)
     {
-        $request->validate([
-            'titulo' => 'required|string|max:255|unique:carousels,title,' . $carrousel->id,
-            'desc' => 'nullable|string|max:99',
-            'is_active' => 'boolean',
-            'productos' => 'nullable|array',
-            'productos.*' => 'exists:products,id'
+        $carrousel = Carrousel::findOrFail($id);
+
+        $validatedData = $request->validate([
+            'titulo' => 'nullable|string|max:50',
+            'desc' => 'nullable|string|max:250',
+            'precio' => 'nullable|numeric|min:0',
+            'imgs' => 'nullable|array',
+            'imgs.*' => 'image|mimes:jpeg,png,jpg,webp|max:2048',
+            'model_3D_path' => 'nullable|file|max:30240',
         ]);
 
-        DB::beginTransaction();
+        $slug = Str::slug($validatedData['titulo']);
 
+        $rutasImagenes = $carrousel->imgs;
+        if ($request->hasFile('imgs')) {
+
+            if (!empty($carrousel->imgs) && is_array($carrousel->imgs)) {
+                foreach ($carrousel->imgs as $viejaImagen) {
+                    if (Storage::disk('public')->exists($viejaImagen)) {
+                        Storage::disk('public')->delete($viejaImagen);
+                    }
+                }
+            }
+
+
+            $rutasImagenes = [];
+            foreach ($request->file('imgs') as $file) {
+                $path = $file->store('carrouseles/imagenes', 'public');
+                $rutasImagenes[] = $path;
+            }
+        }
+
+        $rutaModel3D = $carrousel->model_3D_path;
+        if ($request->hasFile('model_3D_path')) {
+            if (!empty($carrousel->model_3D_path) && Storage::disk('public')->exists($carrousel->model_3D_path)) {
+                Storage::disk('public')->delete($carrousel->model_3D_path);
+            }
+
+            $rutaModel3D = $request->file('model_3D_path')->store('carrouseles/modelos', 'public');
+        }
+
+        DB::beginTransaction();
         try {
-            // Se Actualizan los datos básicos
             $carrousel->update([
-                'titulo' => $request->title,
-                'slug' => Str::slug($request->title),
-                'is_active' => $request->has('is_active')
+                'titulo' => $validatedData['titulo'],
+                'slug' => $slug,
+                'desc' => $validatedData['desc'] ?? null,
+                'precio' => $validatedData['precio'] ?? null,
+                'imgs' => $rutasImagenes,
+                'model_3D_path' => $rutaModel3D,
             ]);
 
-            // CIBERSEGURIDAD/OPTIMIZACIÓN: sync()
-            // Si el admin desmarcó 2 productos y marcó 3 nuevos, sync() computa la diferencia,
-            // borra los que ya no van y agrega los nuevos de un solo golpe SQL, evitando vulnerabilidades.
-            $carrousel->products()->sync($request->productos ?? []);
-
             DB::commit();
-            return redirect()->route('carruseles.index')->with('success', 'Carrusel actualizado con éxito.');
-
+            return redirect()->route('carrouseles.index')->with('success', '¡Carrusel actualizado con éxito!');
         } catch (\Exception $e) {
             DB::rollBack();
-            return back()->with('error', 'Error al actualizar el carrusel: ' . $e->getMessage());
+            if ($request->hasFile('model_3D_path') && $rutaModel3D !== $carrousel->model_3D_path) {
+                Storage::disk('public')->delete($rutaModel3D);
+            }
+
+            return back()->withInput()->with('error', 'Error al actualizar: ' . $e->getMessage());
         }
+
+
+
+
+
     }
 
     /**
