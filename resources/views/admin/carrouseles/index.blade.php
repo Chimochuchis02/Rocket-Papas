@@ -1,15 +1,15 @@
 <x-app-layout>
-    <div class="flex justify-between items-center">
-        <a href="{{ route('carrouseles.create') }}"
-            class="px-5 py-2.5 bg-yellow-500 hover:bg-yellow-600 text-white font-bold rounded-lg text-sm uppercase tracking-wider shadow-md transition duration-150">
-            + Nuevo Banner
-        </a>
-    </div>
-
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
 
     <div class="py-12 bg-gray-50 dark:bg-gray-900 min-h-screen">
         <div class="max-w-4xl mx-auto sm:px-6 lg:px-8 space-y-4">
+            
+            <div class="flex justify-between items-center">
+                <a href="{{ route('carrouseles.create') }}"
+                    class="px-5 py-2.5 bg-yellow-500 hover:bg-yellow-600 text-white font-bold rounded-lg text-sm uppercase tracking-wider shadow-md transition duration-150">
+                    + Nuevo Banner
+                </a>
+            </div>
 
             @if($carrouseles->isEmpty())
                 <div
@@ -54,8 +54,8 @@
                                             URL:</span>
                                         <code
                                             class="text-sm bg-gray-100 dark:bg-gray-950 px-2 py-1 rounded text-red-500 font-mono block mt-1 break-all">
-                                                                        {{ $carousel->slug }}
-                                                                                                                                                                                                                                                                                                                                                                                                                                        </code>
+                                                                                                        {{ $carousel->slug }}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </code>
                                     </div>
 
                                     <div>
@@ -120,7 +120,7 @@
                                                 @endif
                                             </form>
                                         </div>
-                                        
+
                                         <a href="{{ route('carrouseles.edit', $carousel->id) }}"
                                             class="btn btn-zinc shadow-sm rounded-3 d-flex align-items-center justify-content-center border border-white border-opacity-10"
                                             style="width: 38px; height: 38px;" data-bs-toggle="tooltip" title="Editar">
