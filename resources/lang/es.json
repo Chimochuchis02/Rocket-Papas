@@ -23,7 +23,6 @@
     "passwords.sent": "¡Te hemos enviado por correo el enlace para restablecer tu contraseña!",
     "passwords.throttled": "Por favor espera antes de intentar de nuevo.",
     "passwords.token": "Este token de restablecimiento de contraseña es inválido.",
-    
     "Cancel": "Cancelar",
     "Are you sure you want to delete your account?": "¿Seguro que quiere borrar la cuenta?"
 }
