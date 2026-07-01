@@ -42,8 +42,8 @@ Route::middleware(['auth'])->prefix('admin/dashboard')->group(function () {
     // 5. Acción de Actualizar en BD (PUT/PATCH) -> productos.update
     Route::put('/productos/{id}', [ProductController::class, 'update'])->name('productos.update');
 
-    // 6. Acción de Eliminar de la BD (DELETE) -> productos.destroy
-    Route::delete('/productos/{id}', [ProductController::class, 'destroy'])->name('productos.destroy');
+    // 6. Acción de Activar/Desactivar de la BD (DELETE) -> productos.toggleActive
+    Route::patch('/admin/productos/{id}/toggle-active', [ProductController::class, 'toggleActive'])->name('productos.toggleActive');
 
 });
 

@@ -12,7 +12,7 @@
             @if($productos->isEmpty())
                 <div
                     class="text-center p-8 bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm">
-                    <p class="text-white-500 dark:text-gray-400 font-medium">No hay carruseles registrados actualmente.</p>
+                    <p class="text-white-500 dark:text-gray-400 font-medium">No hay Productos registrados actualmente.</p>
                 </div>
 
             @else
@@ -55,8 +55,8 @@
                                             style="color: #000;">Precio:</span>
                                         <code
                                             class="text-sm bg-gray-100 dark:bg-gray-950 px-2 py-1 rounded text-red-500 font-mono block mt-1 break-all">
-                                                                {{ $producto->precio }}
-                                                            </code>
+                                                                                                                                        {{ $producto->precio }}
+                                                                                                                                    </code>
                                     </div>
 
                                     <div>
@@ -84,27 +84,48 @@
                                                     </div>
                                                 @endif
                                             </div>
+                                            @if ($producto->type === 'promotion' && $producto->promotion)
+                                                <span class="text-xs font-bold text-gray-400 uppercase tracking-widest block mb-2"
+                                                    style="color: #000;">Fecha De Inicio De Promocion:</span>
+                                                <code
+                                                    class="text-sm bg-gray-100 dark:bg-gray-950 px-2 py-1 rounded text-red-500 font-mono block mt-1 break-all">
+                                                                    {{ $producto->promotion->start_date }}
+                                                                </code>
+                                                <span class="text-xs font-bold text-gray-400 uppercase tracking-widest block mb-2"
+                                                    style="color: #000;">Fecha De Finalizacion De Promocion:</span>
+                                                <code
+                                                    class="text-sm bg-gray-100 dark:bg-gray-950 px-2 py-1 rounded text-red-500 font-mono block mt-1 break-all">
+                                                                        {{ $producto->promotion->end_date }}
+                                                                </code>
+                                            @endif
+
+                                            <div class="pt-4">
+                                                <form action="{{ route('productos.toggleActive', $producto->id) }}"
+                                                    method="POST" class="d-inline">
+                                                    @csrf
+                                                    @method('PATCH') <!-- Uso PATCH porque solo se va a modificar un campo -->
+
+                                                    @if($producto->type === 'promotion' && $producto->promotion->is_Active || $producto->type === 'dish' && $producto->dish->is_Active)
+                                                        <button type="submit" class="btn btn-warning btn-sm"
+                                                            data-bs-toggle="tooltip" title="Desactivar">
+                                                            <i class="fa-solid fa-eye-slash me-1"></i> Desactivar
+                                                        </button>
+                                                    @else
+                                                        <button type="submit" class="btn btn-success btn-sm"
+                                                            data-bs-toggle="tooltip" title="Activar">
+                                                            <i class="fa-solid fa-eye me-1"></i> Activar
+                                                        </button>
+                                                    @endif
+                                                </form>
+                                            </div>
                                         </div>
-
-                                        @if ($producto->type === 'promotion' && $producto->promotion)
-                                            <span class="text-xs font-bold text-gray-400 uppercase tracking-widest block mb-2"
-                                                style="color: #000;">Fecha De Inicio De Promocion:</span>
-                                            <code
-                                                class="text-sm bg-gray-100 dark:bg-gray-950 px-2 py-1 rounded text-red-500 font-mono block mt-1 break-all">
-                                                    {{ $producto->promotion->start_date }}
-                                                </code>
-                                            <span class="text-xs font-bold text-gray-400 uppercase tracking-widest block mb-2"
-                                                style="color: #000;">Fecha De Finalizacion De Promocion:</span>
-                                            <code
-                                                class="text-sm bg-gray-100 dark:bg-gray-950 px-2 py-1 rounded text-red-500 font-mono block mt-1 break-all">
-                                                    {{ $producto->promotion->end_date }}
-                                                </code>
-                                        @endif
                                     </div>
-                                </div>
 
+                                </div>
                             </div>
                         </div>
+
+
                 @endforeach
                     <div class="mt-2 px-3">
                         {{ $productos->links() }}

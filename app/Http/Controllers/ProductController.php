@@ -38,9 +38,9 @@ class ProductController extends Controller
     {
         $validatedData = $request->validate([
             // Datos Básicos
-            'nombre' => 'required|string|max:25',
+            'nombre' => 'required|string|max:100',
             'precio' => 'required|numeric|min:0',
-            'desc' => 'nullable|string|max:99',
+            'desc' => 'nullable|string|max:199',
             'image_path' => 'required|image|mimes:jpeg,png,jpg,webp|max:2048',
             'type' => 'required|in:dish,promotion',
 
@@ -70,14 +70,12 @@ class ProductController extends Controller
             if ($validatedData['type'] === 'dish') {
                 Dish::create([
                     'id' => $product->id,
-                    'is_Active' => $request->has('is_Active'),
                 ]);
             } elseif ($validatedData['type'] === 'promotion') {
                 Promotion::create([
                     'id' => $product->id,
                     'start_date' => $validatedData['start_date'],
                     'end_date' => $validatedData['end_date'],
-                    'is_Active' => $request->has('is_Active'),
                 ]);
             }
 
@@ -176,25 +174,33 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($id)
+    public function toggleActive($id)
     {
-        $product = Product::findOrFail($id);
+        $producto = Product::with(['dish', 'promotion'])->findOrFail($id);
         DB::beginTransaction();
 
         try {
-            // 🛠️ CORRECCIÓN 2: Ajustado a 'image_path'
-            if ($product->image_path) {
-                Storage::disk('public')->delete($product->image_path);
+            // Identificamos el tipo y volteamos el booleano 'is_Active' de la tabla hija
+            if ($producto->type === 'dish' && $producto->dish) {
+
+                $producto->dish->update([
+                    'is_Active' => !$producto->dish->is_Active
+                ]);
+
+            } elseif ($producto->type === 'promotion' && $producto->promotion) {
+
+                $producto->promotion->update([
+                    'is_Active' => !$producto->promotion->is_Active
+                ]);
+
             }
 
-            $product->delete();
-
             DB::commit();
-            return redirect()->route('productos.index')->with('success', 'Producto eliminado permanentemente.');
+            return back()->with('success', '¡El estado del producto se modificó correctamente!');
 
         } catch (\Exception $e) {
             DB::rollBack();
-            return back()->with('error', 'No se pudo eliminar el producto: ' . $e->getMessage());
+            return back()->with('error', 'Error al cambiar el estado: ' . $e->getMessage());
         }
     }
 }
