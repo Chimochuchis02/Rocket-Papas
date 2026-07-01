@@ -12,7 +12,7 @@
             @if($productos->isEmpty())
                 <div
                     class="text-center p-8 bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm">
-                    <p class="text-white-500 dark:text-gray-400 font-medium">No hay productos registrados actualmente.</p>
+                    <p class="text-white-500 dark:text-gray-400 font-medium">No hay carruseles registrados actualmente.</p>
                 </div>
 
             @else
@@ -28,8 +28,12 @@
                                     class="px-2.5 py-1 text-xs font-black uppercase rounded bg-yellow-500/10 text-yellow-500 border border-yellow-500/20">
                                     ID: {{ $producto->id }}
                                 </span>
+                                <span
+                                    class="px-2.5 py-1 text-xs font-black uppercase rounded bg-yellow-500/10 text-yellow-500 border border-yellow-500/20">
+                                    Tipo: {{ $producto->type }}
+                                </span>
                                 <span class="text-lg tracking-wide uppercase font-black"
-                                    style="color: #000;">{{ $producto->titulo }}</span>
+                                    style="color: #000;">{{ $producto->nombre }}</span>
                             </div>
 
                             <svg class="w-5 h-5 text-gray-500 transform transition-transform duration-200"
@@ -51,13 +55,14 @@
                                             style="color: #000;">Precio:</span>
                                         <code
                                             class="text-sm bg-gray-100 dark:bg-gray-950 px-2 py-1 rounded text-red-500 font-mono block mt-1 break-all">
-                                                            {{ $producto->precio }}
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </code>
+                                                                {{ $producto->precio }}
+                                                            </code>
                                     </div>
 
                                     <div>
                                         <span class="text-xs font-bold text-gray-400 uppercase tracking-widest block"
-                                            style="color: #000;">Descripción:</span>
+                                            style="color: #000;">Descripción
+                                            Comercial:</span>
                                         <p class="text-sm text-gray-600 dark:text-gray-300 mt-1 font-medium leading-relaxed"
                                             style="color: #000;">
                                             {{ $producto->desc ?? 'Sin descripción añadida.' }}
@@ -69,31 +74,31 @@
                                         <div>
                                             <span class="text-xs font-bold text-gray-400 uppercase tracking-widest block mb-2"
                                                 style="color: #000;">Imágenes
-                                                del producto:</span>
+                                                del platillo/promocion:</span>
                                             <div class="grid grid-cols-3 gap-2">
-                                                @foreach($producto->image_path as $img)
+                                                @if($producto->image_path)
                                                     <div
                                                         class="aspect-square bg-gray-200 dark:bg-gray-950 rounded-lg overflow-hidden border border-gray-200 dark:border-gray-800">
-                                                        <img src="{{ asset('storage/' . $img) }}"
+                                                        <img src="{{ asset('storage/' . $producto->image_path) }}"
                                                             class="w-full h-full object-cover hover:scale-110 transition duration-200">
                                                     </div>
-                                                @endforeach
-
+                                                @endif
                                             </div>
                                         </div>
 
-                                        @if($producto->type === 'promotion')
-                                            <div>
-                                                <span class="text-xs font-bold text-gray-400 uppercase tracking-widest block mb-2"
-                                                    style="color: #000;">Fecha de inicio:</span>
-                                                <div
-                                                    class="w-full h-48 bg-gray-100 dark:bg-gray-950 rounded-xl overflow-hidden relative border border-gray-200 dark:border-gray-800">
-                                                    {$promotion->start_date}
-                                                </div>
-                                                <span class="text-xs font-bold text-gray-400 uppercase tracking-widest blick mb-2"
-                                                    style="color: #000;">Fecha de finalizacion</span>
-                                                    {$promotion->end_date}
-                                            </div>
+                                        @if ($producto->type === 'promotion' && $producto->promotion)
+                                            <span class="text-xs font-bold text-gray-400 uppercase tracking-widest block mb-2"
+                                                style="color: #000;">Fecha De Inicio De Promocion:</span>
+                                            <code
+                                                class="text-sm bg-gray-100 dark:bg-gray-950 px-2 py-1 rounded text-red-500 font-mono block mt-1 break-all">
+                                                    {{ $producto->promotion->start_date }}
+                                                </code>
+                                            <span class="text-xs font-bold text-gray-400 uppercase tracking-widest block mb-2"
+                                                style="color: #000;">Fecha De Finalizacion De Promocion:</span>
+                                            <code
+                                                class="text-sm bg-gray-100 dark:bg-gray-950 px-2 py-1 rounded text-red-500 font-mono block mt-1 break-all">
+                                                    {{ $producto->promotion->end_date }}
+                                                </code>
                                         @endif
                                     </div>
                                 </div>

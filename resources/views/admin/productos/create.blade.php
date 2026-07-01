@@ -1,8 +1,18 @@
 <x-app-layout>
-    <div class="py-12">
+    <div class="py-12 bg-gray-50 dark:bg-gray-900 min-h-screen">
+        <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
+
+            <div class="flex justify-between items-center">
+                <a href="{{ route('productos.index') }}"
+                    class="px-5 py-2.5 bg-yellow-500 hover:bg-yellow-600 text-white font-bold rounded-lg text-sm uppercase tracking-wider shadow-md transition duration-150">
+                    Ver Inventario
+                </a>
+            </div>
+        </div>
+
         <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
             <div
-                class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-6 text-gray-900 dark:text-gray-100">
+                class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-5 text-gray-900 dark:text-gray-100">
 
                 @if (session('success'))
                     <div
@@ -81,7 +91,8 @@
                     <div id="campos-promocion" class="hidden space-y-6">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div class="flex flex-col">
-                                <label for="start_date" class="font-semibold mb-1" style="color: #000;">Fecha de Inicio
+                                <label for="start_date" class="font-semibold mb-1" style="color: #000;">Fecha de
+                                    Inicio
                                     de la
                                     Promoción*:</label>
                                 <input type="date" name="start_date" id="start_date" value="{{ old('start_date') }}"
@@ -90,7 +101,8 @@
                             </div>
 
                             <div class="flex flex-col">
-                                <label for="end_date" class="font-semibold mb-1" style="color: #000;">Fecha de Fin de la
+                                <label for="end_date" class="font-semibold mb-1" style="color: #000;">Fecha de Fin
+                                    de la
                                     Promoción*:</label>
                                 <input type="date" name="end_date" id="end_date" value="{{ old('end_date') }}"
                                     class="rounded-md border-gray-300 dark:bg-gray-700 dark:text-white"
