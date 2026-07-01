@@ -38,7 +38,6 @@ class CarrouselController extends Controller
             $validatedData = $request->validate([
                 'titulo' => 'required|string|max:50',
                 'desc' => 'nullable|string|max:250',
-                'precio' => 'nullable|numeric|min:0',
                 'imgs' => 'required|array',
                 'imgs.*' => 'image|mimes:jpeg,png,jpg,webp|max:2048',
                 'model_3D_path' => 'nullable|file|max:30240',
@@ -66,7 +65,7 @@ class CarrouselController extends Controller
                     'slug' => $slug,
                     'desc' => $validatedData['desc'] ?? null,
                     'precio' => $validatedData['precio'] ?? null,
-                    'imgs' => $rutasImagenes, // Importante: En tu Modelo añade -> protected $casts = ['imgs' => 'array'];
+                    'imgs' => $rutasImagenes, // Importante: En el Modelo añado -> protected $casts = ['imgs' => 'array'];
                     'model_3D_path' => $rutaModel3D,
                 ]);
 

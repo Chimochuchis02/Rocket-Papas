@@ -12,7 +12,7 @@ return new class extends Migration {
     {
         Schema::create('dishes', function (Blueprint $table) {
             $table->foreignId('id')->primary()->constrained('products')->OnDelete('cascade');
-            $table->boolean('is_Active');
+            $table->boolean('is_Active')->default(true);
             $table->timestamps();
         });
     }

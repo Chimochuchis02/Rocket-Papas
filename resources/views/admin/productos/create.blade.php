@@ -14,13 +14,20 @@
 
                 @if ($errors->any())
                     <div
-                        class="mb-6 p-4 bg-red-100 dark:bg-red-900 border-l-4 border-red-500 text-red-700 dark:text-red-200 rounded shadow">
-                        <p class="font-bold mb-2">⚠️ Error de Validación:</p>
-                        <ul class="list-disc pl-5 text-sm space-y-1">
+                        style="background: #f8d7da; color: #721c24; padding: 15px; margin-bottom: 20px; border-radius: 5px;">
+                        <strong>¡Fallo de validación!</strong>
+                        <ul>
                             @foreach ($errors->all() as $error)
                                 <li>{{ $error }}</li>
                             @endforeach
                         </ul>
+                    </div>
+                @endif
+
+                @if (session('error'))
+                    <div
+                        style="background: #f8d7da; color: #721c24; padding: 15px; margin-bottom: 20px; border-radius: 5px;">
+                        {{ session('error') }}
                     </div>
                 @endif
 
@@ -29,54 +36,65 @@
                     @csrf
 
                     <div class="flex flex-col">
-                        <label for="nombre" class="font-semibold mb-1" style="color: #000;">Nombre Del Producto*:</label>
+                        <label for="nombre" class="font-semibold mb-1" style="color: #000;">Nombre Del
+                            Producto*:</label>
                         <input type="text" name="nombre" id="nombre" value="{{ old('nombre') }}"
-                            class="rounded-md border-gray-300 dark:bg-gray-700 dark:text-white" style="color: #FFF;" required />
-                    </div>
-
-                    <div class="flex flex-col">
-                        <label for="desc" class="font-semibold mb-1" style="color: #000;">Descripción (Opcional):</label>
-                        <textarea name="desc" id="desc" rows="3"
-                            class="rounded-md border-gray-300 dark:bg-gray-700 dark:text-white" style="color: #FFF;">{{ old('desc') }}</textarea>
+                            class="rounded-md border-gray-300 dark:bg-gray-700 dark:text-white" style="color: #FFF;"
+                            required />
                     </div>
 
                     <div class="flex flex-col">
                         <label for="precio" class="font-semibold mb-1" style="color: #000;">Precio*:</label>
                         <input type="number" name="precio" id="precio" step="0.01" value="{{ old('precio') }}"
-                            class="rounded-md border-gray-300 dark:bg-gray-700 dark:text-white" style="color: #FFF;" required />
+                            class="rounded-md border-gray-300 dark:bg-gray-700 dark:text-white" style="color: #FFF;"
+                            required />
+                    </div>
+
+                    <div class="flex flex-col">
+                        <label for="desc" class="font-semibold mb-1" style="color: #000;">Descripción
+                            (Opcional):</label>
+                        <textarea name="desc" id="desc" rows="3"
+                            class="rounded-md border-gray-300 dark:bg-gray-700 dark:text-white"
+                            style="color: #FFF;">{{ old('desc') }}</textarea>
+                    </div>
+
+                    <div class="flex flex-col">
+                        <label for="image_path" class="font-semibold mb-1" style="color: #000;">Imagen del
+                            Producto*:</label>
+                        <input type="file" name="image_path" id="image_path" accept="image/*"
+                            value="{{ old('image_path') }}"
+                            class="file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-yellow-50 file:text-yellow-700 hover:file:bg-yellow-100"
+                            style="color: #000;" required />
                     </div>
 
                     <div class="flex flex-col">
                         <label for="type" class="font-semibold mb-1" style="color: #000;">Tipo de Registro*:</label>
                         <select name="type" id="type"
                             class="rounded-md border-gray-300 dark:bg-gray-700 dark:text-white" required>
-                            <option value="" style="color: #FFF;">-- Selecciona una opción --</option>
+                            <option value="" style="color: #FFF;">-- Seleccione una opción --</option>
                             <option value="dish" {{ old('type') == 'dish' ? 'selected' : '' }}>Platillo</option>
                             <option value="promotion" {{ old('type') == 'promotion' ? 'selected' : '' }}>Promoción
                                 Especial</option>
                         </select>
                     </div>
 
-                    <div class="flex flex-col">
-                        <label for="image_path" class="font-semibold mb-1" style="color: #000;">Imagen del Producto*:</label>
-                        <input type="file" name="image_path" id="image_path" accept="image/*"
-                            class="file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-yellow-50 file:text-yellow-700 hover:file:bg-yellow-100"
-                            style="color: #000;" required />
-                    </div>
-
                     <div id="campos-promocion" class="hidden space-y-6">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div class="flex flex-col">
-                                <label for="start_date" class="font-semibold mb-1" style="color: #000;">Fecha de Inicio de la
+                                <label for="start_date" class="font-semibold mb-1" style="color: #000;">Fecha de Inicio
+                                    de la
                                     Promoción*:</label>
                                 <input type="date" name="start_date" id="start_date" value="{{ old('start_date') }}"
-                                    class="rounded-md border-gray-300 dark:bg-gray-700 dark:text-white" style="color: #FFF;" />
+                                    class="rounded-md border-gray-300 dark:bg-gray-700 dark:text-white"
+                                    style="color: #FFF;" required />
                             </div>
 
                             <div class="flex flex-col">
-                                <label for="end_date" class="font-semibold mb-1" style="color: #000;">Fecha de Fin de la Promoción*:</label>
+                                <label for="end_date" class="font-semibold mb-1" style="color: #000;">Fecha de Fin de la
+                                    Promoción*:</label>
                                 <input type="date" name="end_date" id="end_date" value="{{ old('end_date') }}"
-                                    class="rounded-md border-gray-300 dark:bg-gray-700 dark:text-white" style="color: #FFF;" />
+                                    class="rounded-md border-gray-300 dark:bg-gray-700 dark:text-white"
+                                    style="color: #FFF;" required />
                             </div>
                         </div>
                     </div>

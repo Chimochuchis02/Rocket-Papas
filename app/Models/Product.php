@@ -10,7 +10,7 @@ class Product extends Model
 {
     protected $table = 'products';
 
-    protected $fillabe = ['nombre', 'desc', 'precio', 'image_path', 'type'];
+    protected $fillable = ['nombre', 'desc', 'precio', 'image_path', 'type'];
 
     public function dish()
     {

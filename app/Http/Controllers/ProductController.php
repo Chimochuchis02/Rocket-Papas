@@ -16,7 +16,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $productos = Product::with(['dish', 'promotion'])->latest()->get();
+
+        $productos = Product::with(['dish', 'promotion'])->latest()->paginate(5);
         return view('admin.productos.index', compact('productos'));
     }
 
@@ -25,6 +26,8 @@ class ProductController extends Controller
      */
     public function create()
     {
+        $platillo = Dish::where('is_Active', true)->get();
+        $promotion = Promotion::where('is_Active', true)->get();
         return view('admin.productos.create');
     }
 
@@ -38,10 +41,10 @@ class ProductController extends Controller
             'nombre' => 'required|string|max:25',
             'precio' => 'required|numeric|min:0',
             'desc' => 'nullable|string|max:99',
-            'image_path' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
+            'image_path' => 'required|image|mimes:jpeg,png,jpg,webp|max:2048',
             'type' => 'required|in:dish,promotion',
 
-            // Promociones
+            // Datos Promociones
             'start_date' => 'nullable|required_if:type,promotion|date',
             'end_date' => 'nullable|required_if:type,promotion|date|after_or_equal:start_date',
         ]);
@@ -61,30 +64,37 @@ class ProductController extends Controller
                 'type' => $validatedData['type'],
                 'precio' => $validatedData['precio'],
                 'desc' => $validatedData['desc'] ?? null,
-                'image_path' => $rutaImagen, // Asignada la ruta real
+                'image_path' => $validatedData['image_path'], // Asignada la ruta real
             ]);
 
             if ($validatedData['type'] === 'dish') {
                 Dish::create([
                     'id' => $product->id,
-                    'is_active' => $request->has('is_active'),
+                    'is_Active' => $request->has('is_Active'),
                 ]);
             } elseif ($validatedData['type'] === 'promotion') {
                 Promotion::create([
                     'id' => $product->id,
                     'start_date' => $validatedData['start_date'],
                     'end_date' => $validatedData['end_date'],
-                    'is_active' => $request->has('is_active'),
+                    'is_Active' => $request->has('is_Active'),
                 ]);
             }
 
             DB::commit();
-            return redirect()->route('productos.index')->with('success', '¡Producto creado con éxito!');
+            return back()->with('success', '¡Producto creado con éxito!');
 
         } catch (\Exception $e) {
             DB::rollBack();
             return back()->withInput()->with('error', 'Error al guardar el producto: ' . $e->getMessage());
         }
+
+        if (isset($validatedData['image_path'])) {
+            Storage::disk('public')->delete($validatedData['image_path']);
+        }
+
+        return back()->withInput()->with('error', 'Error al guardar el producto: ' . $e->getMessage());
+
     }
 
     /**
