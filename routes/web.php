@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\AdminUser;
 use App\Http\Controllers\CarrouselController;
 use App\Http\Controllers\ProductController;
+use App\Models\Product;
 
 
 /*
@@ -19,7 +20,8 @@ use App\Http\Controllers\ProductController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $productos = Product::with('dish', 'promotion')->latest()->get();
+    return view('welcome', compact('productos'));
 });
 
 Route::get('admin/dashboard', function () {

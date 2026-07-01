@@ -300,15 +300,100 @@
         </section>
 
         <!-- Promociones Section -->
-        <section class="w-100 overflow-hidden" style="background-color: #00AEEF; color: white;" id="Promotions">
+        <section x-data="{ 
+        activePage: 0, 
+        totalPages: {{ ceil($productos->where('type', 'promotion')->count() / 3) }} }"
+            class="py-12 bg-white dark:bg-gray-900" id="Promotions">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
+                <div class="flex justify-between items-center mb-8">
+                    <div>
+                        <span
+                            class="text-yellow-500 font-bold text-sm uppercase tracking-wider block mb-1">Promociones</span>
+                        <h2 class="text-3xl font-black text-gray-900 dark:text-white uppercase tracking-wide">
+                            Las Mejores Promos <span
+                                class="text-yellow-500 font-serif italic lowercase font-normal">para ti</span>
+                        </h2>
+                    </div>
+
+                    <template x-if="totalPages > 1">
+                        <div class="flex gap-2">
+                            <button @click="activePage = (activePage === 0) ? totalPages - 1 : activePage - 1"
+                                class="p-2.5 bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 text-gray-800 dark:text-white rounded-full shadow-sm transition">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                        d="M15 19l-7-7 7-7" />
+                                </svg>
+                            </button>
+                            <button @click="activePage = (activePage === totalPages - 1) ? 0 : activePage + 1"
+                                class="p-2.5 bg-gray-900 hover:bg-black text-white rounded-full shadow-sm transition">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                        d="M9 5l7 7-7 7" />
+                                </svg>
+                            </button>
+                        </div>
+                    </template>
+                </div>
+
+                <div class="overflow-hidden relative w-full">
+                    <div class="flex w-full transition-transform duration-500 ease-in-out"
+                        :style="`transform: translateX(-${activePage * 100}%);`"
+                        style="width: {{ ceil($productos->where('type', 'promotion')->count() / 3) * 100 }}%;">
+
+                        @foreach($productos->where('type', 'promotion')->chunk(3) as $chunk)
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 px-2 w-full flex-shrink-0">
+
+                                @foreach($chunk as $promo)
+                                    <div
+                                        class="bg-white dark:bg-gray-800 rounded-2xl border border-gray-100 dark:border-gray-700 shadow-sm overflow-hidden flex flex-col justify-between group transition duration-300 hover:shadow-md">
+
+                                        <div class="aspect-square bg-gray-50 dark:bg-gray-950 overflow-hidden relative">
+                                            <img src="{{ asset('storage/' . $promo->image_path) }}"
+                                                class="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+                                                alt="{{ $promo->nombre }}">
+                                        </div>
+
+                                        <div class="p-6 flex-1 flex flex-col justify-between">
+                                            <div>
+                                                <h3
+                                                    class="text-lg font-black text-gray-900 dark:text-white uppercase tracking-wide">
+                                                    {{ $promo->nombre }}
+                                                </h3>
+                                                <p class="text-sm text-gray-500 dark:text-gray-400 mt-2 leading-relaxed">
+                                                    {{ $promo->desc ?? 'Sin descripción comercial.' }}
+                                                </p>
+                                            </div>
+
+                                            <div
+                                                class="mt-6 flex items-center justify-between border-t border-gray-100 dark:border-gray-700 pt-4">
+                                                <span class="text-xs text-gray-400 font-bold uppercase tracking-widest">Precio
+                                                    Especial</span>
+                                                <span class="text-2xl font-black text-red-600 dark:text-red-400 font-mono">
+                                                    ${{ number_format($promo->precio, 2) }}
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                @endforeach
+
+                            </div>
+                        @endforeach
+
+                    </div>
+                </div>
+
+            </div>
+
         </section>
 
         <!-- Platillos Section -->
-        <section class="w-100 overflow-hidden" style="background-color: #00AEEF; color: white;" id="Dishes">
+        <section id="Dishes">
         </section>
 
         <!-- Visor 3D Section -->
-        <section class="w-100 overflow-hidden" style="background-color: #00AEEF; color: white;" id="3D">
+        <section id="3D">
         </section>
 
         <!-- Mapa Section -->
