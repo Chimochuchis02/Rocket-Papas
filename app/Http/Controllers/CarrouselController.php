@@ -126,7 +126,6 @@ class CarrouselController extends Controller
                 }
             }
 
-
             $rutasImagenes = [];
             foreach ($request->file('imgs') as $file) {
                 $path = $file->store('carrouseles/imagenes', 'public');

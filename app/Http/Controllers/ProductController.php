@@ -36,6 +36,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+
         $validatedData = $request->validate([
             // Datos Básicos
             'nombre' => 'required|string|max:100',
@@ -101,6 +102,7 @@ class ProductController extends Controller
     public function show($id)
     {
         // 🛠️ CORRECCIÓN 4: Adaptado al mapeo manual de {id} de tus rutas
+
         $product = Product::with(['dish', 'promotion'])->findOrFail($id);
         return view('admin.productos.show', compact('product'));
     }
@@ -110,8 +112,9 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        $product = Product::with(['dish', 'promotion'])->findOrFail($id);
-        return view('admin.productos.edit', compact('product'));
+
+        $producto = Product::with(['dish', 'promotion'])->findOrFail($id);
+        return view('admin.productos.edit', compact('producto'));
     }
 
     /**
@@ -120,51 +123,51 @@ class ProductController extends Controller
     public function update(Request $request, $id)
     {
         $product = Product::findOrFail($id);
-
-        // 🛠️ CORRECCIÓN 3: Se vuelven nullables las fechas para que no truenen al editar un platillo plano
         $validatedData = $request->validate([
-            'nombre' => 'required|string|max:50',
+            'nombre' => 'required|string|max:100',
             'precio' => 'required|numeric|min:0',
-            'desc' => 'nullable|string|max:99',
+            'desc' => 'nullable|string|max:199',
             'image_path' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
             'start_date' => 'nullable|date',
             'end_date' => 'nullable|date|after_or_equal:start_date',
         ]);
 
-        DB::beginTransaction();
+        $imagePath = $product->image_path;
 
-        try {
-            // 🛠️ CORRECCIÓN 2: Unificación total de nombres del archivo ('image_path')
-            if ($request->hasFile('image_path')) {
-                if ($product->image_path) {
-                    Storage::disk('public')->delete($product->image_path);
-                }
-                $imagePath = $request->file('image_path')->store('productos', 'public');
-                $product->image_path = $imagePath;
+        if ($request->hasFile('image_path')) {
+
+            if ($product->image_path && Storage::disk('public')->exists($product->image_path)) {
+                Storage::disk('public')->delete($product->image_path);
             }
 
-            // Actualizo los campos de la tabla padre
-            $product->nombre = $validatedData['nombre'];
-            $product->precio = $validatedData['precio'];
-            $product->desc = $validatedData['desc'];
-            $product->save();
+            $imagePath = $request->file('image_path')->store('productos', 'public');
+        }
 
-            // Actualizo la tabla hija correspondiente
+        DB::beginTransaction();
+        // Actualizo los campos de la tabla padre
+        try {
+            $product->update([
+                'nombre' => $validatedData['nombre'],
+                'precio' => $validatedData['precio'],
+                'desc' => $validatedData['desc'],
+                'image_path' => $imagePath
+
+            ]);
+
             if ($product->type === 'dish' && $product->dish) {
                 $product->dish->update([
-                    'is_active' => $request->has('is_active'),
+                    'is_active' => $request->has('is_Active'),
                 ]);
             } elseif ($product->type === 'promotion' && $product->promotion) {
                 $product->promotion->update([
                     'start_date' => $validatedData['start_date'],
                     'end_date' => $validatedData['end_date'],
-                    'is_active' => $request->has('is_active'),
+                    'is_active' => $request->has('is_Active'),
                 ]);
             }
 
             DB::commit();
             return redirect()->route('productos.index')->with('success', '¡Producto actualizado correctamente!');
-
         } catch (\Exception $e) {
             DB::rollBack();
             return back()->with('error', 'Error al actualizar el producto: ' . $e->getMessage());

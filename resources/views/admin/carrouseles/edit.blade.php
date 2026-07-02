@@ -4,7 +4,7 @@
             <div class="col-md-10">
                 <div class="card bg-dark border-secondary shadow-lg">
                     <div class="card-header border-secondary d-flex justify-content-between align-items-center">
-                        <h4 class="mb-0">Editar Carrusel: {{ $carrousel->titulo }}</h4>
+                        <h4 class="mb-0">Editar Carrousel: {{ $carrousel->titulo }}</h4>
                         <a href="{{ route('carrouseles.index') }}" class="btn btn-outline-secondary btn-sm">Cancelar</a>
                     </div>
                     <div class="card-body">

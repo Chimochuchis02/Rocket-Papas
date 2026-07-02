@@ -55,8 +55,8 @@
                                             style="color: #000;">Precio:</span>
                                         <code
                                             class="text-sm bg-gray-100 dark:bg-gray-950 px-2 py-1 rounded text-red-500 font-mono block mt-1 break-all">
-                                                                                                                                        {{ $producto->precio }}
-                                                                                                                                    </code>
+                                                                                                                                                        {{ $producto->precio }}
+                                                                                                                                                    </code>
                                     </div>
 
                                     <div>
@@ -89,14 +89,14 @@
                                                     style="color: #000;">Fecha De Inicio De Promocion:</span>
                                                 <code
                                                     class="text-sm bg-gray-100 dark:bg-gray-950 px-2 py-1 rounded text-red-500 font-mono block mt-1 break-all">
-                                                                    {{ $producto->promotion->start_date }}
-                                                                </code>
+                                                                                            {{ $producto->promotion->start_date }}
+                                                                                        </code>
                                                 <span class="text-xs font-bold text-gray-400 uppercase tracking-widest block mb-2"
                                                     style="color: #000;">Fecha De Finalizacion De Promocion:</span>
                                                 <code
                                                     class="text-sm bg-gray-100 dark:bg-gray-950 px-2 py-1 rounded text-red-500 font-mono block mt-1 break-all">
-                                                                        {{ $producto->promotion->end_date }}
-                                                                </code>
+                                                                                                {{ $producto->promotion->end_date }}
+                                                                                        </code>
                                             @endif
 
                                             <div class="pt-4">
@@ -117,6 +117,15 @@
                                                         </button>
                                                     @endif
                                                 </form>
+                                            </div>
+
+                                            <div class="pt-3">
+                                                <a href="{{ route('productos.edit', $producto->id) }}"
+                                                    class="btn btn-zinc shadow-sm rounded-3 d-flex align-items-center justify-content-center border border-white border-opacity-10"
+                                                    style="width: 45px; height: 45px; background-color: blue; color: #FFF;"
+                                                    data-bs-toggle="tooltip" title="Editar">
+                                                    <i class="fa-solid fa-pencil" style="color: rgb(99, 230, 190);"></i>
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
