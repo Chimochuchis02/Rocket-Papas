@@ -7,7 +7,7 @@
                         <h4 class="mb-0" style="color: #FFF;">Editar Producto: {{ $producto->nombre }} del tipo ->
                             <strong>{{ $producto->type }}</strong>
                         </h4>
-                        <a href="{{ route('productos.index') }}" class="btn btn-outline-secondary btn-sm">Cancelar</a>
+                        <a href="{{ route('productos.index') }}" class="btn btn-danger">Cancelar</a>
                     </div>
                     <div class="card-body">
 
@@ -63,7 +63,7 @@
                                         Imagenes (.jpeg, .png, .jpg, .webp)</label>
                                     <input type="file" name="image_path" id="image_path"
                                         class="form-control bg-secondary text-white">
-                                    <small class="text-muted">Deje este campo vacío si no desea cambiar la imagen
+                                    <small style="color: #FFF;">Deje este campo vacío si no desea cambiar la imagen
                                         actual.</small>
                                 </div>
                                 <div class="col-md-6 text-center">
@@ -79,48 +79,40 @@
                                     @endif
                                 </div>
                                 <div>
-                                    @if($producto->type === 'promotion')
-                                        <div class="grid grid-cols-1 md:grid-cols-1 gap-5 pt-2">
-                                            <div class="flex">
-                                                <label for="start_date" class="form-label" style="color: #FFF;">Fecha De
-                                                    Inicio
-                                                    (Opcional)
-                                                    :</label>
-                                                <input type="date"
-                                                    class="rounded-md border-gray-300 dark:bg-gray-700 dark:text-white"
-                                                    id="start_date" name="start_date"
-                                                    value="{{ old('start_date', $producto->type === 'promotion' && $producto->promotion->start_date) }}">
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        @if($producto->type === 'promotion')
+                                            <label for="start_date" class="form-label" style="color: #FFF;">Fecha De Inicio
+                                                (Opcional)
+                                                :</label>
+                                            <input type="date"
+                                                class="rounded-md border-gray-300 dark:bg-gray-700 dark:text-white"
+                                                id="start_date" name="start_date"
+                                                value="{{ old('start_date', $producto->type === 'promotion' && $producto->promotion->start_date) }}">
 
-                                                <label for="end_date" class="form-label" style="color: #FFF;">Fecha De
-                                                    Finalizacion
-                                                    (Opcional) :</label>
-                                                <input type="date"
-                                                    class="rounded-md border-gray-300 dark:bg-gray-700 dark:text-white"
-                                                    id="end_date" name="end_date"
-                                                    value="{{ old('end_date', $producto->type === 'promotion' && $producto->promotion->end_date) }}">
-                                    @endif
-                                        </div>
-
+                                            <label for="end_date" class="form-label" style="color: #FFF;">Fecha De Finalizacion
+                                                (Opcional) :</label>
+                                            <input type="date"
+                                                class="rounded-md border-gray-300 dark:bg-gray-700 dark:text-white"
+                                                id="end_date" name="end_date"
+                                                value="{{ old('end_date', $producto->type === 'promotion' && $producto->promotion->end_date) }}">
+                                        @endif
                                     </div>
-
                                 </div>
                             </div>
+
+                            <hr class="border-secondary my-4">
+
+
+
+                            <div class="d-grid gap-2 mt-4">
+                                <button type="submit" class="btn btn-primary btn-lg">Actualizar Producto</button>
+                            </div>
+
+                        </form>
+
                     </div>
                 </div>
-
-                <hr class="border-secondary my-4">
-
-
-
-                <div class="d-grid gap-2 mt-4">
-                    <button type="submit" class="btn btn-primary btn-lg">Actualizar Producto</button>
-                </div>
-
-                </form>
-
             </div>
         </div>
-    </div>
-    </div>
     </div>
 </x-app-layout>
