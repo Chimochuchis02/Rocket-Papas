@@ -101,8 +101,6 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        // 🛠️ CORRECCIÓN 4: Adaptado al mapeo manual de {id} de tus rutas
-
         $product = Product::with(['dish', 'promotion'])->findOrFail($id);
         return view('admin.productos.show', compact('product'));
     }

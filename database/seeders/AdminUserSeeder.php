@@ -14,9 +14,16 @@ class AdminUserSeeder extends Seeder
     public function run(): void
     {
         DB::table('users')->insert([
-            'name' => 'Admin',
-            'email' => 'admin@rocketpapas.com',
-            'password' => Hash::make('papasdeotragalaxia'),
+            'name' => 'Alfonso Del Toro',
+            'email' => 'alfonsodtoro@rocketpapas.com',
+            'password' => Hash::make('Torillo2026'),
+            'role' => 'admin',
+        ]);
+
+        DB::table('users')->insert([
+            'name' => 'Montse Reyes',
+            'email'=> 'montser@rocketpapas.com',
+            'password' => Hash::make('Reyes2026'),
             'role' => 'admin',
         ]);
     }
