@@ -134,8 +134,10 @@ class MenuController extends Controller
     public function activate(Menu $menu)
     {
         DB::transaction(function () use ($menu) {
+
             Menu::query()->update(['is_Active' => 0]);
 
+            // 2. Encendemos únicamente el banner seleccionado
             $menu->update(['is_Active' => 1]);
         });
 
