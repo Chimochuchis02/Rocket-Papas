@@ -6,6 +6,7 @@ use App\Http\Middleware\AdminUser;
 use App\Http\Controllers\CarrouselController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\BannerController;
+use App\Http\Controllers\MenuController;
 use App\Models\Product;
 use App\Models\Banner;
 
@@ -70,6 +71,24 @@ Route::middleware(['auth'])->prefix('admin/dashboard')->group(function () {
 
     // 6. Acción de Activar/Desactivar de la BD (DELETE) -> banners.toggleActive
     Route::put('/admin/banners/{banner}/activate', [BannerController::class, 'activate'])->name('banners.activate');
+
+});
+
+Route::middleware(['auth'])->prefix('admin/dashboard')->group(function () {
+
+    Route::get('/menus', [MenuController::class, 'index'])->name('menus.index');
+
+    // 2. Formulario de Creación -> menus.create
+    Route::get('/menus/create', [MenuController::class, 'create'])->name('menus.create');
+
+    // 3. Acción de Guardar en BD (El formulario POST) -> menus.store
+    Route::post('/menus/store', [MenuController::class, 'store'])->name('menus.store');
+
+    // 4. Formulario de Edición (Pide el ID) -> menus.edit
+    Route::get('/menus/{id}/edit', [MenuController::class, 'edit'])->name('menus.edit');
+
+    // 5. Acción de Actualizar en BD (PUT/PATCH) -> menus.update
+    Route::put('/menus/{id}', [MenuController::class, 'update'])->name('menus.update');
 
 });
 
