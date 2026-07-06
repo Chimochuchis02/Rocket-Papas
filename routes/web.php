@@ -9,6 +9,7 @@ use App\Http\Controllers\BannerController;
 use App\Http\Controllers\MenuController;
 use App\Models\Product;
 use App\Models\Banner;
+use App\Models\Menu;
 
 
 /*
@@ -25,7 +26,8 @@ use App\Models\Banner;
 Route::get('/', function () {
     $productos = Product::with('dish', 'promotion')->latest()->get();
     $bannerActivo = Banner::where('is_Active', 1)->first();
-    return view('welcome', compact('bannerActivo' ,'productos'));
+    $menuActivo = Menu::where('is_Active', 1)->first();
+    return view('welcome', compact('bannerActivo' , 'menuActivo' , 'productos'));
 });
 
 Route::get('admin/dashboard', function () {

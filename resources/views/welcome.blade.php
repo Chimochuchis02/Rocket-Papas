@@ -215,11 +215,12 @@
             <div class="position-relative w-150" style="height: 500px;">
                 <div class="position-absolute bottom-0 start-0 mb-1 ms-4 ms-md-5 ps-lg-5" style="z-index: 3;">
                     <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
-                        <a class="btn btn-lg px-5 py-3 shadow-lg fw-bold" href="#"
-                            style="border-radius: 50px; border: none;" id="button1">
+                        <a class="btn btn-lg px-5 py-3 shadow-lg fw-bold" data-bs-toggle="modal"
+                            data-bs-target="#modalMenuRocket" style="border-radius: 50px; border: none;" id="button1">
                             <i class="fa-regular fa-star me-2" style="color: #000;" id="star"></i>
-                            Ver Menu
+                            Menu
                         </a>
+
                         <a class="btn btn-lg px-4.5 py-3 fw-bold shadow-sm" href="#"
                             style="border-radius: 50px; border: none;" id="button2">
                             <i class="fa-regular fa-star me-2" style="color: #000;" id="car"></i>
@@ -458,6 +459,63 @@
             </div>
         </div>
     </footer>
+
+    <!-- Modal del Menu -->
+    <div class="modal fade" id="modalMenuRocket" tabindex="-1" aria-labelledby="modalMenuRocketLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <!-- modal-lg para que tenga buen tamaño en escritorio -->
+            <div class="modal-content bg-dark text-white border-0 shadow-2xl" style="border-radius: 20px;">
+
+                <!-- Encabezado del Modal -->
+                <div class="modal-header border-0 pb-0">
+                    <h5 class="modal-title fw-black text-uppercase tracking-wider" id="modalMenuRocketLabel"
+                        style="color: #ffc107;">
+                        {{ $menuActivo ? $menuActivo->titulo : 'Nuestro Menú' }}
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+
+                <!-- Cuerpo del Modal (Carrousel de Imágenes) -->
+                <div class="modal-body p-4">
+                    @if($menuActivo && is_array($menuActivo->images_menus) && count($menuActivo->images_menus) > 0)
+
+                        <div id="carouselMenuRocket" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                                @foreach($menuActivo->images_menus as $index => $imagen)
+                                    <div class="carousel-item {{ $index === 0 ? 'active' : '' }}">
+                                        <img src="{{ asset('storage/' . $imagen) }}" class="d-block w-100 rounded-3 shadow-md"
+                                            style="max-height: 75vh; object-fit: contain;" alt="Parte del Menú">
+                                    </div>
+                                @endforeach
+                            </div>
+
+                            @if(count($menuActivo->images_menus) > 1)
+                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselMenuRocket"
+                                    data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span style="color: #FFF;">Anterior</span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#carouselMenuRocket"
+                                    data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span style="color: #FFF;">Siguiente</span>
+                                </button>
+                            @endif
+                        </div>
+
+                    @else
+                        <div class="text-center py-5">
+                            <i class="fa-solid fa-utensils fa-3x mb-3 text-muted"></i>
+                            <p class="fs-5 opacity-75">Estamos cocinando los últimos precios. ¡Pídelo por teléfono!</p>
+                        </div>
+                    @endif
+                </div>
+
+            </div>
+        </div>
+    </div>
 </body>
 
 @vite(['resources/js/app.js'])

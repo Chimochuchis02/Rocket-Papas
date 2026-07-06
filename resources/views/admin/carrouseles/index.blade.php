@@ -7,7 +7,7 @@
             <div class="flex justify-between items-center">
                 <a href="{{ route('carrouseles.create') }}"
                     class="px-5 py-2.5 bg-yellow-500 hover:bg-yellow-600 text-white font-bold rounded-lg text-sm uppercase tracking-wider shadow-md transition duration-150">
-                    + Nuevo Banner
+                    + Nuevo Carrousel
                 </a>
             </div>
 
