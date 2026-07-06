@@ -8,6 +8,7 @@
                     + Nuevo Banner
                 </a>
             </div>
+            
             @if (session('success'))
                 <div
                     class="mb-6 p-4 bg-green-100 dark:bg-green-900 border-l-4 border-green-500 text-green-700 dark:text-green-200 rounded shadow flex items-center">

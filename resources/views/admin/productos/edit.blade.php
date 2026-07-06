@@ -10,6 +10,14 @@
                         <a href="{{ route('productos.index') }}" class="btn btn-danger">Cancelar</a>
                     </div>
                     <div class="card-body">
+                        @if (session('success'))
+                            <div
+                                class="mb-6 p-4 bg-green-100 dark:bg-green-900 border-l-4 border-green-500 text-green-700 dark:text-green-200 rounded shadow flex items-center">
+                                <span class="mr-2"><i class="fa-solid fa-check"
+                                        style="color: rgb(99, 230, 190);"></i></span>
+                                <p class="font-bold">{{ session('success') }}</p>
+                            </div>
+                        @endif
 
                         @if ($errors->any())
                             <div
@@ -89,7 +97,8 @@
                                                 id="start_date" name="start_date"
                                                 value="{{ old('start_date', $producto->type === 'promotion' && $producto->promotion->start_date) }}">
 
-                                            <label for="end_date" class="form-label" style="color: #FFF;">Fecha De Finalizacion
+                                            <label for="end_date" class="form-label" style="color: #FFF;">Fecha De
+                                                Finalizacion
                                                 (Opcional) :</label>
                                             <input type="date"
                                                 class="rounded-md border-gray-300 dark:bg-gray-700 dark:text-white"

@@ -9,6 +9,26 @@
                 </a>
             </div>
 
+            @if (session('success'))
+                <div
+                    class="mb-6 p-4 bg-green-100 dark:bg-green-900 border-l-4 border-green-500 text-green-700 dark:text-green-200 rounded shadow flex items-center">
+                    <span class="mr-2"><i class="fa-solid fa-check" style="color: rgb(99, 230, 190);"></i></span>
+                    <p class="font-bold">{{ session('success') }}</p>
+                </div>
+            @endif
+
+            @if ($errors->any())
+                <div
+                    class="mb-6 p-4 bg-red-100 dark:bg-red-900 border-l-4 border-red-500 text-red-700 dark:text-red-200 rounded shadow">
+                    <p class="font-bold mb-2">⚠️ Error de Validación:</p>
+                    <ul class="list-disc pl-5 text-sm space-y-1">
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
             @if($productos->isEmpty())
                 <div
                     class="text-center p-8 bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm">
@@ -55,8 +75,8 @@
                                             style="color: #000;">Precio:</span>
                                         <code
                                             class="text-sm bg-gray-100 dark:bg-gray-950 px-2 py-1 rounded text-red-500 font-mono block mt-1 break-all">
-                                                                                                                                                        {{ $producto->precio }}
-                                                                                                                                                    </code>
+                                                                                                                                                                        {{ $producto->precio }}
+                                                                                                                                                                    </code>
                                     </div>
 
                                     <div>
@@ -89,14 +109,14 @@
                                                     style="color: #000;">Fecha De Inicio De Promocion:</span>
                                                 <code
                                                     class="text-sm bg-gray-100 dark:bg-gray-950 px-2 py-1 rounded text-red-500 font-mono block mt-1 break-all">
-                                                                                            {{ $producto->promotion->start_date }}
-                                                                                        </code>
+                                                                                                                    {{ $producto->promotion->start_date }}
+                                                                                                                </code>
                                                 <span class="text-xs font-bold text-gray-400 uppercase tracking-widest block mb-2"
                                                     style="color: #000;">Fecha De Finalizacion De Promocion:</span>
                                                 <code
                                                     class="text-sm bg-gray-100 dark:bg-gray-950 px-2 py-1 rounded text-red-500 font-mono block mt-1 break-all">
-                                                                                                {{ $producto->promotion->end_date }}
-                                                                                        </code>
+                                                                                                                        {{ $producto->promotion->end_date }}
+                                                                                                                </code>
                                             @endif
 
                                             <div class="pt-4">

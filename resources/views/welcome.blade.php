@@ -201,12 +201,17 @@
 
     <Main>
         <!-- Hero Section -->
-        <section class="w-100 overflow-hidden position-relative" style="background-image: url('{{ asset('/img/Portada_Hero_Section_Better.png') }}'); 
+        <section class="w-100 overflow-hidden position-relative" style="background-image: url('{{ $bannerActivo ? asset('storage/' . $bannerActivo->image_banner) : asset('/img/Portada_Hero_Section_Better.png') }}'); 
                 background-size: cover; 
                 background-position: center; 
                 background-repeat: no-repeat; 
-                color: white;  object-fit: cover; max-height: 650px; width: auto; display: inline-block; height:525px;"
-            id="Hero">
+                color: white; 
+                object-fit: cover; 
+                max-height: 650px; 
+                width: auto; 
+                display: inline-block; 
+                height: 525px;" id="Hero">
+
             <div class="position-relative w-150" style="height: 500px;">
                 <div class="position-absolute bottom-0 start-0 mb-1 ms-4 ms-md-5 ps-lg-5" style="z-index: 3;">
                     <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">

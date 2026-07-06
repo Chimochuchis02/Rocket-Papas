@@ -7,6 +7,7 @@ use App\Http\Controllers\CarrouselController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\BannerController;
 use App\Models\Product;
+use App\Models\Banner;
 
 
 /*
@@ -22,7 +23,8 @@ use App\Models\Product;
 
 Route::get('/', function () {
     $productos = Product::with('dish', 'promotion')->latest()->get();
-    return view('welcome', compact('productos'));
+    $bannerActivo = Banner::where('is_Active', 1)->first();
+    return view('welcome', compact('bannerActivo' ,'productos'));
 });
 
 Route::get('admin/dashboard', function () {

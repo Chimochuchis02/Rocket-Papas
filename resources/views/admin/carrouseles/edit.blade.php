@@ -9,6 +9,27 @@
                     </div>
                     <div class="card-body">
 
+                        @if (session('success'))
+                            <div
+                                class="mb-6 p-4 bg-green-100 dark:bg-green-900 border-l-4 border-green-500 text-green-700 dark:text-green-200 rounded shadow flex items-center">
+                                <span class="mr-2"><i class="fa-solid fa-check"
+                                        style="color: rgb(99, 230, 190);"></i></span>
+                                <p class="font-bold">{{ session('success') }}</p>
+                            </div>
+                        @endif
+
+                        @if ($errors->any())
+                            <div
+                                class="mb-6 p-4 bg-red-100 dark:bg-red-900 border-l-4 border-red-500 text-red-700 dark:text-red-200 rounded shadow">
+                                <p class="font-bold mb-2">⚠️ Error de Validación:</p>
+                                <ul class="list-disc pl-5 text-sm space-y-1">
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+
                         <form action="{{ route('carrouseles.update', $carrousel->id) }}" method="POST"
                             enctype="multipart/form-data">
                             @csrf
