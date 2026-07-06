@@ -16,8 +16,8 @@ class MenuController extends Controller
      */
     public function index()
     {
-        $menu = Menu::latest()->paginate(5);
-        return view('admin.menus.index', compact('menu'));
+        $menus = Menu::latest()->paginate(5);
+        return view('admin.menus.index', compact('menus'));
     }
 
     /**
@@ -53,7 +53,7 @@ class MenuController extends Controller
             try {
                 $menu = Menu::create([
                     'titulo' => $validatedData['titulo'],
-                    'images_menus' => $validatedData['images_menus'], // Asignada la ruta real
+                    'images_menus' => $rutasImagenes, // Asignada la ruta real
                 ]);
 
                 DB::commit();
@@ -131,8 +131,15 @@ class MenuController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function activate(Menu $menu)
     {
-        //
+        DB::transaction(function () use ($menu) {
+            Menu::query()->update(['is_Active' => 0]);
+
+            $menu->update(['is_Active' => 1]);
+        });
+
+        return redirect()->route('menus.index')
+            ->with('success', '¡Nuevo menu asignado exitosamente a la Landing!');
     }
 }

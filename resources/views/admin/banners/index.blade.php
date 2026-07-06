@@ -79,6 +79,7 @@
                                                     </div>
                                                 @endif
                                             </div>
+                                            
                                             <div class="mt-4 flex items-center justify-between">
                                                 @if($banner->is_Active)
                                                     <!-- Badge Esmeralda de Banner Actual -->

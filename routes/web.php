@@ -90,6 +90,9 @@ Route::middleware(['auth'])->prefix('admin/dashboard')->group(function () {
     // 5. Acción de Actualizar en BD (PUT/PATCH) -> menus.update
     Route::put('/menus/{id}', [MenuController::class, 'update'])->name('menus.update');
 
+    // 6. Accion de cambiar los menus en la base de datos(PATCH) -> menus.activate
+    Route::put('/admin/menus/{menu}/activate', [MenuController::class, 'activate'])->name('menus.activate');
+
 });
 
 Route::middleware(['auth'])->prefix('admin/dashboard')->group(function () {

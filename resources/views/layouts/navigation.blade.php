@@ -122,10 +122,10 @@
                                 </button>
                             </x-slot>
                             <x-slot name="content">
-                                <x-dropdown-link :href="route('banners.index')">
+                                <x-dropdown-link :href="route('menus.index')">
                                     Ver Menus
                                 </x-dropdown-link>
-                                <x-dropdown-link :href="route('banners.create')">
+                                <x-dropdown-link :href="route('menus.create')">
                                     Crear Nuevo
                                 </x-dropdown-link>
                             </x-slot>
@@ -203,8 +203,8 @@
 
             <div class="border-t border-gray-700 my-2"></div>
             <span class="block px-4 py-1 text-xs font-semibold text-gray-400 uppercase">Menus</span>
-            <x-responsive-nav-link :href="route('banners.index')">Ver Menus</x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('banners.create')">Crear Nuevo</x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('menus.index')">Ver Menus</x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('menus.create')">Crear Nuevo</x-responsive-nav-link>
         </div>
 
         <div class="pt-4 pb-1 border-t border-gray-700">
