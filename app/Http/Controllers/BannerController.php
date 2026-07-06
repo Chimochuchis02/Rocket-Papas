@@ -123,17 +123,19 @@ class BannerController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function toggleActive($id)
+    public function activate(Banner $banner)
     {
-        $banner = Banner::findOrFail($id);
-        DB::beginTransaction();
+        // Usamos una transacción para asegurarnos de que si algo falla, no nos quedemos sin banner
+    DB::transaction(function () use ($banner) {
+        
+        // 1. Apagamos TODOS los banners existentes de golpe
+        Banner::query()->update(['is_Active' => 0]);
 
-        $banner->is_Active = !$banner->is_Active;
-        $banner->save();
+        // 2. Encendemos únicamente el banner seleccionado
+        $banner->update(['is_Active' => 1]);
+    });
 
-        $status = $banner->is_Active ? 'activado' : 'desactivado';
-
-        return redirect()->route('banners.index')->with('success', 'Banner Ha Sido {$status} Correctamente.');
-
+    return redirect()->route('banners.index')
+        ->with('success', '¡Nueva portada asignada exitosamente a la Landing!');
     }
 }

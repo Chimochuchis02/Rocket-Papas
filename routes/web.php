@@ -67,7 +67,7 @@ Route::middleware(['auth'])->prefix('admin/dashboard')->group(function () {
     Route::put('/banners/{id}', [BannerController::class, 'update'])->name('banners.update');
 
     // 6. Acción de Activar/Desactivar de la BD (DELETE) -> banners.toggleActive
-    Route::patch('/admin/banners/{id}/toggle-active', [BannerController::class, 'toggleActive'])->name('banners.toggleActive');
+    Route::put('/admin/banners/{banner}/activate', [BannerController::class, 'activate'])->name('banners.activate');
 
 });
 

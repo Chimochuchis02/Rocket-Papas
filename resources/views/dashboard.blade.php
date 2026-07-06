@@ -33,8 +33,43 @@
                             </svg>
                         </div>
                         <h3 class="text-2xl font-black uppercase tracking-wide">Carrouseles</h3>
-                        <p class="text-sm mt-2 opacity-80">Modificar los diseños dinámicos de los banners y la landing
+                        <p class="text-sm mt-2 opacity-80">Modificar los diseños dinámicos de los carrouseles de la
+                            landing
                             page</p>
+                    </div>
+                </a>
+
+                <a href="{{ route('banners.create') }}" class="group block">
+                    <div
+                        class="bg-amber-600 hover:bg-amber-500 text-white p-8 rounded-2xl shadow-lg transition-all duration-300 transform group-hover:-translate-y-2 group-hover:shadow-2xl flex flex-col items-center justify-center text-center border border-amber-700 h-64">
+                        <div class="mb-4 text-white opacity-90">
+                            <svg class="w-16 h-16" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z">
+                                </path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-black uppercase tracking-wide">Banners</h3>
+                        <p class="text-sm mt-2 opacity-80">Modificar las imagenes del banner de la "Hero Section" de la
+                            landing page</p>
+                    </div>
+                </a>
+
+                <a href="{{ route('banners.create') }}" class="group block">
+                    <div
+                        class="bg-red-600 hover:bg-red-500 text-white p-8 rounded-2xl shadow-lg transition-all duration-300 transform group-hover:-translate-y-2 group-hover:shadow-2xl flex flex-col items-center justify-center text-center border border-red-700 h-64">
+                        <div class="mb-4 text-white opacity-90">
+                            <svg class="w-16 h-16" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z">
+                                </path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-black uppercase tracking-wide">Menus</h3>
+                        <p class="text-sm mt-2 opacity-80">Modificar las imagenes del menu del boton "Ver Menu" de la
+                            landing page</p>
                     </div>
                 </a>
 
