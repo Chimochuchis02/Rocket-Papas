@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('carrousels', function (Blueprint $table) {
             $table->id();
-            $table->String('titulo', 50);
-            $table->String('slug', 50);
-            $table->String('desc', 150)->nullable();
+            $table->String('titulo', 250);
+            $table->String('slug', 250);
+            $table->String('desc', 299)->nullable();
             $table->json('imgs')->nullable();
             $table->String('model_3D_path')->nullable();
             $table->boolean('is_Active')->default(true);

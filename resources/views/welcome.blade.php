@@ -156,6 +156,24 @@
         line-height: 32px;
         text-align: center;
     }
+
+    .group-hover-action:hover .hover-overlay {
+        opacity: 1 !important;
+    }
+
+    .group-hover-action:hover img {
+        transform: scale(1.03);
+    }
+
+    .positioning-arrows {
+        width: 5%;
+    }
+
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+        background-size: 50%;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+    }
 </style>
 
 <body class="antialiased">
@@ -306,11 +324,151 @@
         </section>
 
         <!-- Promociones Section -->
-        <section id="Promotions">
-            <div>
+        <section id="Promotions" class="py-5 bg-white">
+            <div class="container">
+                <div class="mb-4 position-relative">
+                    <span class="text-uppercase fw-black tracking-wider text-warning small"
+                        style="font-size: 2.1rem; font-family: Bebas_Neue;">PROMOCIONES</span>
+                    <h2 class="display-4 fw-black text-uppercase tracking-wide mt-1 mb-0"
+                        style="font-family: 'Lilita One', 'Arial Black', sans-serif; color: #000;">
+                        LAS MEJORES PROMOS <span class="text-warning"
+                            style="font-family: cursive; text-transform: none; font-size: 2.5rem; position: relative; top: -5px;">Para
+                            ti</span>
+                    </h2>
+                </div>
 
+                @isset($productos)
+                    @php
+                        $promosFiltradas = $productos->filter(function ($p) {
+                            return $p->promotion;
+                        });
+                    @endphp
+
+                    @if($promosFiltradas->count() > 0)
+
+                        <div id="carouselPromosRocket" class="carousel slide" data-bs-ride="false" data-bs-interval="false">
+                            <div class="carousel-inner px-md-5">
+                                @foreach($promosFiltradas->chunk(3) as $chunkIndex => $chunk)
+                                    <div class="carousel-item {{ $chunkIndex === 0 ? 'active' : '' }}">
+                                        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+
+                                            @foreach($chunk as $producto)
+                                                <div class="col">
+
+                                                    <div class="card h-100 border-0 shadow-lg overflow-hidden position-relative group-hover-action"
+                                                        style="border-radius: 16px; transition: transform 0.2s ease-in-out;">
+
+                                                        <div class="position-relative w-100"
+                                                            style="aspect-ratio: 1/1; overflow: hidden; background-color: #f8f9fa;">
+                                                            <img src="{{ asset('storage/' . $producto->image_path) }}"
+                                                                class="w-100 h-100 object-cover" alt="{{ $producto->nombre }}"
+                                                                style="object-fit: cover; transition: transform 0.3s ease;">
+
+                                                            <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center opacity-0 hover-overlay"
+                                                                style="background: rgba(0,0,0,0.5); transition: opacity 0.2s ease; backdrop-filter: blur(2px);">
+                                                                <button type="button"
+                                                                    class="btn btn-warning fw-black text-uppercase px-4 py-2 rounded-pill shadow-lg transform transition hover:scale-105"
+                                                                    data-bs-toggle="modal"
+                                                                    data-bs-target="#modalPromo{{ $producto->id }}">
+                                                                    Ver Detalles
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @endforeach
+
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+
+                            @if($promosFiltradas->count() > 3)
+                                <button class="carousel-control-prev positioning-arrows" type="button"
+                                    data-bs-target="#carouselPromosRocket" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon bg-dark p-3 rounded-circle" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Anterior</span>
+                                </button>
+                                <button class="carousel-control-next positioning-arrows" type="button"
+                                    data-bs-target="#carouselPromosRocket" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon bg-dark p-3 rounded-circle" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Siguiente</span>
+                                </button>
+                            @endif
+                        </div>
+
+                        @foreach($promosFiltradas as $producto)
+                            @php $promo = $producto->promotion; @endphp
+                            <div class="modal fade" id="modalPromo{{ $producto->id }}" tabindex="-1" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered modal-xl">
+                                    <div class="modal-content text-white border-0 shadow-2xl"
+                                        style="background-color: #1a1a1a; border-radius: 24px; overflow: hidden;">
+                                        <button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 m-4"
+                                            data-bs-dismiss="modal" aria-label="Close"
+                                            style="z-index: 10; filter: drop-shadow(0px 0px 4px rgba(0,0,0,0.8));"></button>
+                                        <div class="row g-0">
+                                            <div class="col-md-6 d-none d-md-block"
+                                                style="background: url('{{ asset('storage/' . $producto->image_path) }}') center/cover no-repeat; min-height: 450px;">
+                                            </div>
+                                            <div class="col-12 d-md-none">
+                                                <img src="{{ asset('storage/' . $producto->image_path) }}" class="w-100"
+                                                    style="max-height: 300px; object-fit: cover;">
+                                            </div>
+                                            <div
+                                                class="col-md-6 d-flex flex-column justify-content-center p-4 p-md-5 position-relative">
+                                                <span
+                                                    class="badge bg-danger text-white align-self-start mb-3 px-3 py-2 rounded-pill fw-bold text-uppercase tracking-wider">Tiempo
+                                                    Limitado</span>
+                                                <h3 class="display-6 fw-black text-uppercase mb-3"
+                                                    style="color: #ffc107; font-family: 'Lilita One', 'Arial Black', sans-serif;">
+                                                    {{ $producto->nombre }}
+                                                </h3>
+                                                <p class="text-light opacity-75 mb-4" style="font-size: 1.1rem; line-height: 1.6;">
+                                                    {{ $producto->desc ?? $producto->descripcion }}
+                                                </p>
+                                                <div
+                                                    class="bg-black bg-opacity-50 rounded-4 p-3 mb-4 border border-secondary border-opacity-25 shadow-sm">
+                                                    <div class="d-flex align-items-center mb-2">
+                                                        <div class="bg-success rounded-circle p-2 me-3 d-flex align-items-center justify-content-center"
+                                                            style="width: 32px; height: 32px;"><i
+                                                                class="fa-solid fa-play text-white small"></i></div>
+                                                        <span class="text-light fw-bold">Inicia: <span
+                                                                class="fw-normal opacity-75 ms-1">{{ \Carbon\Carbon::parse($promo->start_date)->translatedFormat('d \d\e F, Y') }}</span></span>
+                                                    </div>
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="bg-danger rounded-circle p-2 me-3 d-flex align-items-center justify-content-center"
+                                                            style="width: 32px; height: 32px;"><i
+                                                                class="fa-solid fa-stop text-white small"></i></div>
+                                                        <span class="text-light fw-bold">Termina: <span
+                                                                class="fw-normal opacity-75 ms-1">{{ \Carbon\Carbon::parse($promo->end_date)->translatedFormat('d \d\e F, Y') }}</span></span>
+                                                    </div>
+                                                </div>
+                                                <div
+                                                    class="mt-auto d-flex justify-content-between align-items-end pt-3 border-top border-secondary border-opacity-25">
+                                                    <div>
+                                                        <p class="small mb-0 fw-bold text-uppercase tracking-widest"
+                                                            style="color: #FFF">Promocion Unica</p>
+                                                        <p class="mb-0 fw-black text-white"
+                                                            style="font-size: 3rem; line-height: 1;"><span class="fs-3 me-1"
+                                                                style="color: #FFF;">$</span>{{ number_format($producto->precio, 2) }}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+
+                    @else
+                        <div class="col-12 text-center py-5">
+                            <p class="text-muted fs-5">No hay promociones activas en este momento. ¡Pregunta por nuestras
+                                dinámicas!</p>
+                        </div>
+                    @endif
+                @endisset
             </div>
-
         </section>
 
         <!-- Platillos Section -->
