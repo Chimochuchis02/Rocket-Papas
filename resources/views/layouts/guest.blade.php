@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=TuFuente:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="icon" type="icon/x-icon" href="img/Rocke.png">
+    <link rel="icon" type="icon/x-icon" href="{{ asset('img/Rocke.png') }}">
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
