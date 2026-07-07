@@ -322,78 +322,80 @@
         </section>
 
         <!-- Mapa Section -->
-        <section class="container my-5" id="Map" x-data="{ sucursal: 'independencia' }">
-            <div class="row g-4 align-items-center">
+        <div id="Map">
+            <section class="container my-5" x-data="{ sucursal: 'independencia' }">
+                <div class="row g-4 align-items-center" id="Map">
 
-                <div class="col-md-4">
-                    <div class="list-group shadow-sm rounded-3 overflow-hidden">
-                        <button type="button" class="list-group-item list-group-item-action p-3 font-weight-bold"
-                            :class="sucursal === 'independencia' ? 'active bg-primary border-primary text-white' : 'text-secondary'"
-                            @click="sucursal = 'independencia'">
-                            HEB Independencia
-                        </button>
+                    <div class="col-md-4">
+                        <div class="list-group shadow-sm rounded-3 overflow-hidden">
+                            <button type="button" class="list-group-item list-group-item-action p-3 font-weight-bold"
+                                :class="sucursal === 'independencia' ? 'active bg-primary border-primary text-white' : 'text-secondary'"
+                                @click="sucursal = 'independencia'">
+                                HEB Independencia
+                            </button>
 
-                        <button type="button" class="list-group-item list-group-item-action p-3 font-weight-bold"
-                            :class="sucursal === 'revolucion' ? 'active bg-primary border-primary text-white' : 'text-secondary'"
-                            @click="sucursal = 'revolucion'">
-                            HEB Revolución
-                        </button>
+                            <button type="button" class="list-group-item list-group-item-action p-3 font-weight-bold"
+                                :class="sucursal === 'revolucion' ? 'active bg-primary border-primary text-white' : 'text-secondary'"
+                                @click="sucursal = 'revolucion'">
+                                HEB Revolución
+                            </button>
 
-                        <button type="button" class="list-group-item list-group-item-action p-3 font-weight-bold"
-                            :class="sucursal === 'constitucion' ? 'active bg-primary border-primary text-white' : 'text-secondary'"
-                            @click="sucursal = 'constitucion'">
-                            Soriana Constitución
-                        </button>
+                            <button type="button" class="list-group-item list-group-item-action p-3 font-weight-bold"
+                                :class="sucursal === 'constitucion' ? 'active bg-primary border-primary text-white' : 'text-secondary'"
+                                @click="sucursal = 'constitucion'">
+                                Soriana Constitución
+                            </button>
 
-                        <button type="button" class="list-group-item list-group-item-action p-3 font-weight-bold"
-                            :class="sucursal === 'rosita' ? 'active bg-primary border-primary text-white' : 'text-secondary'"
-                            @click="sucursal = 'rosita'">
-                            AlSuper La Rosita
-                        </button>
+                            <button type="button" class="list-group-item list-group-item-action p-3 font-weight-bold"
+                                :class="sucursal === 'rosita' ? 'active bg-primary border-primary text-white' : 'text-secondary'"
+                                @click="sucursal = 'rosita'">
+                                AlSuper La Rosita
+                            </button>
+                        </div>
                     </div>
-                </div>
 
-                <div class="col-md-8">
-                    <div class="w-100 rounded-4 shadow-sm border border-light overflow-hidden bg-light"
-                        style="height: 400px;">
-                        <div x-show="sucursal === 'independencia'" class="w-100 h-100" x-cloak>
-                            <iframe
-                                src="https://maps.google.com/maps?q=H-E-B%20Independencia,%20Torre%C3%B3n&t=&z=16&ie=UTF8&iwloc=&output=embed"
-                                class="w-100 h-100 border-0" allowfullscreen="" loading="lazy"
-                                referrerpolicy="no-referrer-when-downgrade">
-                            </iframe>
+                    <div class="col-md-8">
+                        <div class="w-100 rounded-4 shadow-sm border border-light overflow-hidden bg-light"
+                            style="height: 400px;">
+                            <div x-show="sucursal === 'independencia'" class="w-100 h-100" x-cloak>
+                                <iframe
+                                    src="https://maps.google.com/maps?q=H-E-B%20Independencia,%20Torre%C3%B3n&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                                    class="w-100 h-100 border-0" allowfullscreen="" loading="lazy"
+                                    referrerpolicy="no-referrer-when-downgrade">
+                                </iframe>
+                            </div>
+
+                            <div x-show="sucursal === 'revolucion'" class="w-100 h-100" x-cloak>
+                                <iframe
+                                    src="https://maps.google.com/maps?q=H-E-B%20Revoluci%C3%B3n,%20Torre%C3%B3n&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                                    class="w-100 h-100 border-0" allowfullscreen="" loading="lazy"
+                                    referrerpolicy="no-referrer-when-downgrade">
+                                </iframe>
+                            </div>
+
+
+                            <div x-show="sucursal === 'constitucion'" class="w-100 h-100" x-cloak>
+                                <iframe
+                                    src="https://maps.google.com/maps?q=Soriana%20H%C3%A9per%20Constituci%C3%B3n,%20Torre%C3%B3n&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                                    class="w-100 h-100 border-0" allowfullscreen="" loading="lazy"
+                                    referrerpolicy="no-referrer-when-downgrade">
+                                </iframe>
+                            </div>
+
+                            <div x-show="sucursal === 'rosita'" class="w-100 h-100" x-cloak>
+                                <iframe
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d450.0693032155668!2d-103.4188891533775!3d25.519902710523766!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x868fdb88d2c30c13%3A0xac1020d5df33b3dc!2sROCKET%20PAPAS!5e0!3m2!1ses!2smx!4v1782320742355!5m2!1ses!2smx"
+                                    class="w-100 h-100 border-0" allowfullscreen="" loading="lazy"
+                                    referrerpolicy="no-referrer-when-downgrade">
+                                </iframe>
+                            </div>
+
                         </div>
-
-                        <div x-show="sucursal === 'revolucion'" class="w-100 h-100" x-cloak>
-                            <iframe
-                                src="https://maps.google.com/maps?q=H-E-B%20Revoluci%C3%B3n,%20Torre%C3%B3n&t=&z=16&ie=UTF8&iwloc=&output=embed"
-                                class="w-100 h-100 border-0" allowfullscreen="" loading="lazy"
-                                referrerpolicy="no-referrer-when-downgrade">
-                            </iframe>
-                        </div>
-
-
-                        <div x-show="sucursal === 'constitucion'" class="w-100 h-100" x-cloak>
-                            <iframe
-                                src="https://maps.google.com/maps?q=Soriana%20H%C3%A9per%20Constituci%C3%B3n,%20Torre%C3%B3n&t=&z=16&ie=UTF8&iwloc=&output=embed"
-                                class="w-100 h-100 border-0" allowfullscreen="" loading="lazy"
-                                referrerpolicy="no-referrer-when-downgrade">
-                            </iframe>
-                        </div>
-
-                        <div x-show="sucursal === 'rosita'" class="w-100 h-100" x-cloak>
-                            <iframe
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d450.0693032155668!2d-103.4188891533775!3d25.519902710523766!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x868fdb88d2c30c13%3A0xac1020d5df33b3dc!2sROCKET%20PAPAS!5e0!3m2!1ses!2smx!4v1782320742355!5m2!1ses!2smx"
-                                class="w-100 h-100 border-0" allowfullscreen="" loading="lazy"
-                                referrerpolicy="no-referrer-when-downgrade">
-                            </iframe>
-                        </div>
-
                     </div>
-                </div>
 
-            </div>
-        </section>
+                </div>
+            </section>
+        </div>
         <div class="text-center mt-5 pt-4 border-top border-black border-opacity-25"></div>
     </Main>
 

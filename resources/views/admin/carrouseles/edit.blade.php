@@ -47,12 +47,6 @@
                                     rows="3">{{ old('desc', $carrousel->desc) }}</textarea>
                             </div>
 
-                            <!--<div class="mb-3">
-                                <label for="precio" class="form-label">Precio (Opcional)</label>
-                                <input type="number" step="0.01" class="form-control bg-secondary text-white"
-                                    id="precio" name="precio" value="{{ old('precio', $carrousel->precio) }}">
-                            </div> -->
-
                             <hr class="border-secondary my-4">
 
                             <div class="row mb-4">

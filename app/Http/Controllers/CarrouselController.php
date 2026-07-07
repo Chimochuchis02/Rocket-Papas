@@ -36,11 +36,11 @@ class CarrouselController extends Controller
     public function store(Request $request)
     { {
             $validatedData = $request->validate([
-                'titulo' => 'required|string|max:50',
-                'desc' => 'nullable|string|max:250',
+                'titulo' => 'required|string|max:250',
+                'desc' => 'nullable|string|max:299',
                 'imgs' => 'required|array',
                 'imgs.*' => 'image|mimes:jpeg,png,jpg,webp|max:2048',
-                'model_3D_path' => 'nullable|file|max:30240',
+                'model_3D_path' => 'nullable|file|max:51240',
             ]);
 
             $slug = Str::slug($validatedData['titulo']);
@@ -101,7 +101,7 @@ class CarrouselController extends Controller
             'precio' => 'nullable|numeric|min:0',
             'imgs' => 'nullable|array',
             'imgs.*' => 'image|mimes:jpeg,png,jpg,webp|max:2048',
-            'model_3D_path' => 'nullable|file|max:30240',
+            'model_3D_path' => 'nullable|file|max:51240',
         ]);
 
         $slug = Str::slug($validatedData['titulo']);

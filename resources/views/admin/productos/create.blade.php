@@ -1,6 +1,6 @@
 <x-app-layout>
-    <div class="py-12 bg-gray-50 dark:bg-gray-900 min-h-screen">
-        <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
+    <div class="py-12">
+        <div class="max-w-4xl mx-auto sm:px-6 lg:px-8 space-y-4">
 
             <div class="flex justify-between items-center">
                 <a href="{{ route('productos.index') }}"
@@ -8,9 +8,7 @@
                     Ver Inventario
                 </a>
             </div>
-        </div>
 
-        <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
             <div
                 class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-5 text-gray-900 dark:text-gray-100">
 
@@ -78,7 +76,8 @@
                     </div>
 
                     <div class="flex flex-col">
-                        <label for="type" class="font-semibold mb-1" style="color: #000;">Tipo de Registro*:</label>
+                        <label for="type" class="font-semibold mb-1" style="color: #000;">Tipo de
+                            Registro*:</label>
                         <select name="type" id="type"
                             class="rounded-md border-gray-300 dark:bg-gray-700 dark:text-white" required>
                             <option value="" style="color: #FFF;">-- Seleccione una opción --</option>
@@ -101,7 +100,8 @@
                             </div>
 
                             <div class="flex flex-col">
-                                <label for="end_date" class="font-semibold mb-1" style="color: #000;">Fecha de Fin
+                                <label for="end_date" class="font-semibold mb-1" style="color: #000;">Fecha de
+                                    Fin
                                     de la
                                     Promoción*:</label>
                                 <input type="date" name="end_date" id="end_date" value="{{ old('end_date') }}"
@@ -121,7 +121,6 @@
             </div>
         </div>
     </div>
-
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const selectTipo = document.getElementById('type');

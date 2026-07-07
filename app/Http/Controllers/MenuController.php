@@ -35,7 +35,7 @@ class MenuController extends Controller
     public function store(Request $request)
     { {
             $validatedData = $request->validate([
-                'titulo' => 'required|string|max:99',
+                'titulo' => 'required|string|max:250',
                 'images_menus' => 'required|array',
                 'images_menus.*' => 'image|mimes:jpeg,png,jpg,webp|max:2048'
             ]);
@@ -90,7 +90,7 @@ class MenuController extends Controller
         $menu = Menu::findOrFail($id);
 
         $validatedData = $request->validate([
-            'titulo' => 'nullable|string|max:50',
+            'titulo' => 'nullable|string|max:250',
             'images_menus' => 'nullable|array',
             'images_menus.*' => 'image|mimes:jpeg,png,jpg,webp|max:2048',
         ]);

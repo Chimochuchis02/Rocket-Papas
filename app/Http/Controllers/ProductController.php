@@ -39,9 +39,9 @@ class ProductController extends Controller
 
         $validatedData = $request->validate([
             // Datos Básicos
-            'nombre' => 'required|string|max:100',
+            'nombre' => 'required|string|max:250',
             'precio' => 'required|numeric|min:0',
-            'desc' => 'nullable|string|max:199',
+            'desc' => 'nullable|string|max:299',
             'image_path' => 'required|image|mimes:jpeg,png,jpg,webp|max:2048',
             'type' => 'required|in:dish,promotion',
 
@@ -122,9 +122,9 @@ class ProductController extends Controller
     {
         $product = Product::findOrFail($id);
         $validatedData = $request->validate([
-            'nombre' => 'required|string|max:100',
+            'nombre' => 'required|string|max:250',
             'precio' => 'required|numeric|min:0',
-            'desc' => 'nullable|string|max:199',
+            'desc' => 'nullable|string|max:299',
             'image_path' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
             'start_date' => 'nullable|date',
             'end_date' => 'nullable|date|after_or_equal:start_date',
