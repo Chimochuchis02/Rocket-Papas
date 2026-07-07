@@ -136,7 +136,7 @@
 
     @font-face {
         font-family: 'Bebas_Neue';
-        src: url('/Fonts/Bebas_Neue/BebasNeue-Regular.ttg') format('truetype');
+        src: url('/Fonts/Bebas_Neue/BebasNeue-Regular.ttf') format('truetype');
     }
 
     .content-box {
@@ -327,13 +327,38 @@
         <section id="Promotions" class="py-5 bg-white">
             <div class="container">
                 <div class="mb-4 position-relative">
-                    <span class="text-uppercase fw-black tracking-wider text-warning small"
-                        style="font-size: 2.1rem; font-family: Bebas_Neue;">PROMOCIONES</span>
+                    <!-- 1. Palabra PROMOCIONES con degradado corregido -->
+                    <span class="text-uppercase fw-black tracking-wider d-inline-block" style="font-size: 2.1rem; 
+                    font-family: 'Bebas Neue', sans-serif; 
+                    background: linear-gradient(to right, #FF8A00, #ffc107); 
+                    -webkit-background-clip: text; 
+                    -webkit-text-fill-color: transparent;">
+                        PROMOCIONES
+                    </span>
+
                     <h2 class="display-4 fw-black text-uppercase tracking-wide mt-1 mb-0"
-                        style="font-family: 'Lilita One', 'Arial Black', sans-serif; color: #000;">
-                        LAS MEJORES PROMOS <span class="text-warning"
-                            style="font-family: cursive; text-transform: none; font-size: 2.5rem; position: relative; top: -5px;">Para
-                            ti</span>
+                        style="font-family: DiloWord; font-weight: 700; color: #000; letter-spacing: -2.5px;">
+                        LAS MEJORES PROMOS
+
+                        <span class="d-inline-block position-relative px-1" style="font-family: PlayfairDisplay; 
+                        text-transform: none; 
+                        font-size: 3.5rem; 
+                        position: relative; 
+                        top: -5px; 
+                        background: linear-gradient(to right, #FF8A00, #ffc107); 
+                        -webkit-background-clip: text; 
+                        -webkit-text-fill-color: transparent;
+                        z-index: 1; transform: rotate(-3deg);">
+                            Para ti
+
+                            <span class="position-absolute start-0 bottom-0 w-100" style="height: 6px; 
+                            background: linear-gradient(to right, #FF8A00, #ffc107); 
+                            border-radius: 4px; 
+                            z-index: -1; 
+                            transform: translateY(2px) rotate(-4deg); 
+                            opacity: 0.85;">
+                            </span>
+                        </span>
                     </h2>
                 </div>
 
@@ -387,12 +412,10 @@
                                 <button class="carousel-control-prev positioning-arrows" type="button"
                                     data-bs-target="#carouselPromosRocket" data-bs-slide="prev">
                                     <span class="carousel-control-prev-icon bg-dark p-3 rounded-circle" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Anterior</span>
                                 </button>
                                 <button class="carousel-control-next positioning-arrows" type="button"
                                     data-bs-target="#carouselPromosRocket" data-bs-slide="next">
                                     <span class="carousel-control-next-icon bg-dark p-3 rounded-circle" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Siguiente</span>
                                 </button>
                             @endif
                         </div>
@@ -471,13 +494,19 @@
             </div>
         </section>
 
+        <div class="text-center mt-5 pt-4 border-top border-black border-opacity-25"></div>
+
         <!-- Platillos Section -->
         <section id="Dishes">
         </section>
 
+        <div class="text-center mt-5 pt-4 border-top border-black border-opacity-25"></div>
+
         <!-- Visor 3D Section -->
         <section id="3D">
         </section>
+
+        <div class="text-center mt-5 pt-4 border-top border-black border-opacity-25"></div>
 
         <!-- Mapa Section -->
         <div id="Map">
