@@ -24,5 +24,9 @@
     "passwords.throttled": "Por favor espera antes de intentar de nuevo.",
     "passwords.token": "Este token de restablecimiento de contraseña es inválido.",
     "Cancel": "Cancelar",
-    "Are you sure you want to delete your account?": "¿Seguro que quiere borrar la cuenta?"
+    "Are you sure you want to delete your account?": "¿Seguro que quiere borrar la cuenta?",
+    "Showing": "Mostrando",
+    "to": "al",
+    "of": "de",
+    "results": "resultados"
 }
