@@ -672,6 +672,12 @@
                                 @click="sucursal = 'rosita'">
                                 AlSuper La Rosita
                             </button>
+
+                            <button type="button" class="list-group-item list-group-item-action p-3 font-weight-bold"
+                                :class="sucursal === 'bromo' ? 'active bg-primary border-primary text-white' : 'text-secondary'"
+                                @click="sucursal = 'bromo'">
+                                Loma Real II
+                            </button>
                         </div>
                     </div>
 
@@ -706,6 +712,14 @@
                             <div x-show="sucursal === 'rosita'" class="w-100 h-100" x-cloak>
                                 <iframe
                                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d450.0693032155668!2d-103.4188891533775!3d25.519902710523766!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x868fdb88d2c30c13%3A0xac1020d5df33b3dc!2sROCKET%20PAPAS!5e0!3m2!1ses!2smx!4v1782320742355!5m2!1ses!2smx"
+                                    class="w-100 h-100 border-0" allowfullscreen="" loading="lazy"
+                                    referrerpolicy="no-referrer-when-downgrade">
+                                </iframe>
+                            </div>
+
+                            <div x-show="sucursal === 'bromo'" class="w-100 h-100" x-cloak>
+                                <iframe
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d224.98379507961297!2d-103.3408013132296!3d25.547012151810474!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x868fc5004da05b33%3A0xe4b6451c179864e4!2sPollo%20Pechugon!5e0!3m2!1ses!2smx!4v1783608095120!5m2!1ses!2smx"
                                     class="w-100 h-100 border-0" allowfullscreen="" loading="lazy"
                                     referrerpolicy="no-referrer-when-downgrade">
                                 </iframe>
