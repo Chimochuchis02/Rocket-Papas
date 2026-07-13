@@ -18,7 +18,8 @@ class ProductController extends Controller
     {
 
         $productos = Product::with(['dish', 'promotion'])->latest()->paginate(5);
-        return view('admin.productos.index', compact('productos'));
+        $carrousel = Product::with('carrouseles')->get();
+        return view('admin.productos.index', compact('productos', 'carrousel'));
     }
 
     /**

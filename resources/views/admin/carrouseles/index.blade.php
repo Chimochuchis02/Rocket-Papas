@@ -74,8 +74,8 @@
                                             URL:</span>
                                         <code
                                             class="text-sm bg-gray-100 dark:bg-gray-950 px-2 py-1 rounded text-red-500 font-mono block mt-1 break-all">
-                                                                {{ $carousel->slug }}
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </code>
+                                                                        {{ $carousel->slug }}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </code>
                                     </div>
 
                                     <div>
@@ -115,7 +115,7 @@
                                                 <div
                                                     class="w-full h-48 bg-gray-100 dark:bg-gray-950 rounded-xl overflow-hidden relative border border-gray-200 dark:border-gray-800">
                                                     <model-viewer src="{{ asset('storage/' . $carousel->model_3D_path) }}"
-                                                        alt="Modelo 3D" auto-rotate camera-controls shadow-intensity="1"
+                                                        auto-rotate camera-controls shadow-intensity="1"
                                                         class="w-full h-full cursor-grab active:cursor-grabbing">
                                                     </model-viewer>
                                                 </div>
