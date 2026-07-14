@@ -29,3 +29,17 @@ window.addEventListener('load', () => {
         preloader.classList.add('preloader-hidden');
     }
 });
+
+window.addEventListener('load', removePreloader);
+
+    document.addEventListener('DOMContentLoaded', () => {
+        setTimeout(removePreloader, 3000);
+    });
+
+    function removePreloader() {
+        const preloader = document.getElementById('rocket-preloader');
+        if (preloader && !preloader.classList.contains('preloader-hidden')) {
+            preloader.classList.add('preloader-hidden');
+            setTimeout(() => preloader.remove(), 500);
+        }
+    }

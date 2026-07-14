@@ -742,22 +742,5 @@
 
 @vite(['resources/js/app.js', 'resources/css/index.css'])
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
-<script>
-    window.addEventListener('load', removePreloader);
-
-    document.addEventListener('DOMContentLoaded', () => {
-        setTimeout(removePreloader, 3000);
-    });
-
-    function removePreloader() {
-        const preloader = document.getElementById('rocket-preloader');
-        if (preloader && !preloader.classList.contains('preloader-hidden')) {
-            preloader.classList.add('preloader-hidden');
-            setTimeout(() => preloader.remove(), 500);
-        }
-    }
-</script>
-
-
+<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>s
 </html>
