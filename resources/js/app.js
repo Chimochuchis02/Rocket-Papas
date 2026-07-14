@@ -22,3 +22,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 })
+
+window.addEventListener('load', () => {
+    const preloader = document.getElementById('rocket-preloader');
+    if (preloader) {
+        preloader.classList.add('preloader-hidden');
+    }
+});

@@ -14,169 +14,23 @@
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=TuFuente:wght@400;700&display=swap" rel="stylesheet">
     <link rel="icon" type="icon/x-icon" href="img/Rocke.png">
 </head>
 
-<style>
-    html,
-    body {
-        height: 100%;
-        scroll-behavior: smooth;
-    }
-
-    body {
-        display: flex;
-        width: 100%;
-        flex-direction: column;
-        margin: 0;
-        padding: 0;
-        overflow-x: hidden;
-    }
-
-    .container-fluid {
-        width: 100% !important;
-        padding-right: 0 !important;
-        padding-left: 0 !important;
-        margin-right: auto;
-        margin-left: auto;
-    }
-
-    main,
-    .container-fluid {
-        flex: 1;
-    }
-
-
-    .social-icon-footer {
-        transition: all 0.3s ease-in-out;
-        text-decoration: none;
-    }
-
-    .social-icon-footer:hover {
-        transform: translateY(-5px) scale(1.1);
-        background-position: 1 !important;
-        background-color: rgba(255, 255, 255, 0.9) !important;
-        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
-    }
-
-    .fb-hover:hover {
-        color: #1877F2 !important;
-    }
-
-    .ig-hover:hover {
-        color: #FF1493 !important;
-    }
-
-    .wa-hover:hover {
-        color: #25D366 !important;
-    }
-
-    .uber-icon-hover:hover {
-        filter: none;
-        transition: 0.3s ease;
-    }
-
-    #button1 {
-        background-color: #FFD43B;
-    }
-
-    #button2 {
-        background-color: #FFD43B;
-        color: #000;
-    }
-
-    #button1:hover {
-        background-color: rgb(255, 0, 0);
-        transition-duration: 500ms;
-    }
-
-    #button2:hover {
-        background-color: rgb(255, 0, 0);
-        color: #FFF;
-        transition-duration: 500ms;
-    }
-
-    @font-face {
-        font-family: 'DiloWord';
-        src: url('/Fonts/DiloWorld.ttf') format('truetype');
-        font-weight: 600;
-    }
-
-    @font-face {
-        font-family: 'Caveat-variableFont_wgth';
-        src: url('/Fonts/Caveat-variableFont_wgth.ttf') format('truetype');
-
-    }
-
-    @font-face {
-        font-family: 'PlayfairDisplay';
-        src: url('/Fonts/Playfair_Display/PlayfairDisplay-VariableFont_wght.ttf') format('truetype');
-    }
-
-    @font-face {
-        font-family: 'Ubuntu-bold';
-        src: url('/Fonts/Ubuntu/Ubuntu-bold.ttf') format('truetype');
-    }
-
-    @font-face {
-        font-family: 'Ubuntu-boldItalic';
-        src: url('/Fonts/Ubuntu/Ubuntu-boldItalic.ttf') format('truetype');
-    }
-
-    @font-face {
-        font-family: 'Ubuntu-MediumItalic';
-        src: url('/Fonts/Ubuntu/Ubuntu-MediumItalic.ttf') format('truetype');
-    }
-
-    @font-face {
-        font-family: 'Ubuntu-Regular';
-        src: url('/Fonts/Ubuntu/Ubuntu-Regular.ttf') format('truetype');
-    }
-
-    @font-face {
-        font-family: 'Bebas_Neue';
-        src: url('/Fonts/Bebas_Neue/BebasNeue-Regular.ttf') format('truetype');
-    }
-
-    .content-box {
-        columns: 3 auto;
-        column-span: 0px;
-    }
-
-    .box {
-        column
-    }
-
-    #parr1,
-    #parr2,
-    #parr3 {
-        font-family: 'PlayfairDisplay';
-        font-weight: 550;
-        line-height: 32px;
-        text-align: center;
-    }
-
-    .group-hover-action:hover .hover-overlay {
-        opacity: 1 !important;
-    }
-
-    .group-hover-action:hover img {
-        transform: scale(1.03);
-    }
-
-    .positioning-arrows {
-        width: 5%;
-    }
-
-    .carousel-control-prev-icon,
-    .carousel-control-next-icon {
-        background-size: 50%;
-        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
-    }
-</style>
-
 <body class="antialiased">
+    <!-- Loading Page -->
+    <div id="rocket-preloader" class="preloader-overlay">
+        <div class="loader-content">
+            <div class="rocket-spinner">
+                <div class="fire-flame"></div>
+            </div>
+                <img src="{{ asset('img/Rocke.png') }}" class="loader-text rounded-circle shadow-sm me-2">
+        <h2 class="loader-sub">Cargando...</h2>
+        <h3 style="color: #000; font-family: Bebas_Neue;">Hecho Para Antojar</h3>
+        </div>
+    </div>
+
+    <!-- NavBar -->
     <nav class="navbar navbar-expand-xl navbar-light bg-white fixed-top shadow-sm py-3">
         <div class="container-fluid px-lg-5">
             <a class="navbar-brand d-flex align-items-center" href="#Hero">
@@ -323,7 +177,7 @@
             </div>
         </section>
 
-        <!-- Promociones Section -->
+        <!-- Promotions Section -->
         <section id="Promotions" class="py-5 bg-white">
             <div class="container">
                 <div class="mb-4 position-relative">
@@ -494,7 +348,7 @@
 
         <div class="text-center mt-5 pt-4 border-top border-black border-opacity-25"></div>
 
-        <!-- Platillos Section -->
+        <!-- dishes Section -->
         <section id="Dishes" class="py-3 bg-white">
             <div class="container">
                 <div class="mb-4 position-relative">
@@ -661,7 +515,7 @@
 
         <div class="text-center mt-5 pt-4 border-top border-black border-opacity-25"></div>
 
-        <!-- Visor 3D Section -->
+        <!-- 3D Section -->
         <section id="3D">
             <div>
                 <div class="mb-2 position-relative">
@@ -676,7 +530,7 @@
 
         <div class="text-center mt-5 pt-4 border-top border-black border-opacity-25"></div>
 
-        <!-- Mapa Section -->
+        <!-- Map Section -->
         <div id="Map">
             <section class="container my-5" x-data="{ sucursal: 'independencia' }">
                 <div class="row g-4 align-items-center" id="Map">
@@ -886,10 +740,24 @@
 
 </body>
 
-@vite(['resources/js/app.js'])
+@vite(['resources/js/app.js', 'resources/css/index.css'])
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+<script>
+    window.addEventListener('load', removePreloader);
 
+    document.addEventListener('DOMContentLoaded', () => {
+        setTimeout(removePreloader, 3000);
+    });
+
+    function removePreloader() {
+        const preloader = document.getElementById('rocket-preloader');
+        if (preloader && !preloader.classList.contains('preloader-hidden')) {
+            preloader.classList.add('preloader-hidden');
+            setTimeout(() => preloader.remove(), 500);
+        }
+    }
+</script>
 
 
 </html>
