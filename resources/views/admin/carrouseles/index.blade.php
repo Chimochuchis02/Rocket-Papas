@@ -74,8 +74,8 @@
                                             URL:</span>
                                         <code
                                             class="text-sm bg-gray-100 dark:bg-gray-950 px-2 py-1 rounded text-red-500 font-mono block mt-1 break-all">
-                                                                        {{ $carousel->slug }}
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </code>
+                                                                                                                {{ $carousel->slug }}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </code>
                                     </div>
 
                                     <div>
@@ -110,14 +110,14 @@
                                         @if($carousel->model_3D_path)
                                             <div>
                                                 <span class="text-xs font-bold text-gray-400 uppercase tracking-widest block mb-2"
-                                                    style="color: #000;">Modelo
-                                                    3D Interactivo:</span>
+                                                    style="color: #000;">Video Renderizado 360:</span>
                                                 <div
                                                     class="w-full h-48 bg-gray-100 dark:bg-gray-950 rounded-xl overflow-hidden relative border border-gray-200 dark:border-gray-800">
-                                                    <model-viewer src="{{ asset('storage/' . $carousel->model_3D_path) }}"
-                                                        auto-rotate camera-controls shadow-intensity="1"
-                                                        class="w-full h-full cursor-grab active:cursor-grabbing">
-                                                    </model-viewer>
+                                                    <video autoplay loop muted playsinline preload="auto"
+                                                        style="max-height: 420px; object-fit: contain; width: auto;"
+                                                        class="img-fluid rounded shadow-lg">
+                                                        <source src="{{ asset('storage/' . $carousel->model_3D_path) }}" type="video/mp4">
+                                                    </video>
                                                 </div>
                                             </div>
                                         @endif

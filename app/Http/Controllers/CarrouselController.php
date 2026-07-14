@@ -27,7 +27,10 @@ class CarrouselController extends Controller
     public function create()
     {
         $carrouseles = Carrousel::where('is_Active', true)->get();
-        return view('admin.carrouseles.create', compact('carrouseles'));
+        $platillos = Product::where('type', 'dish')
+            ->orderBy('nombre', 'asc')
+            ->get();
+        return view('admin.carrouseles.create', compact('carrouseles', 'platillos'));
     }
 
     /**
@@ -40,7 +43,8 @@ class CarrouselController extends Controller
                 'desc' => 'nullable|string|max:299',
                 'imgs' => 'required|array',
                 'imgs.*' => 'image|mimes:jpeg,png,jpg,webp|max:2048',
-                'model_3D_path' => 'nullable|file|max:51240',
+                'model_3D_path' => 'nullable|file|mimes:mp4,webm|max:20480',
+                'producto_id' => 'required|integer|exists:products,id'
             ]);
 
             $slug = Str::slug($validatedData['titulo']);
@@ -67,6 +71,7 @@ class CarrouselController extends Controller
                     'precio' => $validatedData['precio'] ?? null,
                     'imgs' => $rutasImagenes, // Importante: En el Modelo añado -> protected $casts = ['imgs' => 'array'];
                     'model_3D_path' => $rutaModel3D,
+                    'producto_id' => $validatedData['producto_id']
                 ]);
 
                 DB::commit();
@@ -85,7 +90,10 @@ class CarrouselController extends Controller
     {
         // Por ahora y paara completar este primer modulo y su CRUD....solo busca el id del carrousel...ya que productos aun no hay y eso da errores, al intentar buscar algo que no existe
         $carrousel = Carrousel::findOrFail($id);
-        return view('admin.carrouseles.edit', compact('carrousel'));
+        $platillos = Product::where('type', 'dish')
+            ->orderBy('nombre', 'asc')
+            ->get();
+        return view('admin.carrouseles.edit', compact('carrousel', 'platillos'));
     }
 
     /**
@@ -101,7 +109,8 @@ class CarrouselController extends Controller
             'precio' => 'nullable|numeric|min:0',
             'imgs' => 'nullable|array',
             'imgs.*' => 'image|mimes:jpeg,png,jpg,webp|max:2048',
-            'model_3D_path' => 'nullable|file|max:51240',
+            'model_3D_path' => 'nullable|file|mimes:mp4, webm|max:20480',
+            'producto_id' => 'nullable|integer|exists:products,id'
         ]);
 
         $slug = Str::slug($validatedData['titulo']);
@@ -142,6 +151,7 @@ class CarrouselController extends Controller
                 'precio' => $validatedData['precio'] ?? null,
                 'imgs' => $rutasImagenes,
                 'model_3D_path' => $rutaModel3D,
+                'producto_id' => $validatedData['producto_id']
             ]);
 
             DB::commit();
@@ -154,10 +164,6 @@ class CarrouselController extends Controller
 
             return back()->withInput()->with('error', 'Error al actualizar: ' . $e->getMessage());
         }
-
-
-
-
 
     }
 
@@ -173,6 +179,6 @@ class CarrouselController extends Controller
 
         $status = $carrousel->is_Active ? 'activado' : 'desactivado';
 
-        return redirect()->route('carrouseles.index')->with('success', 'Carrusel Ha Sido {$status} Correctamente.');
+        return redirect()->route('carrouseles.index')->with('success', 'El estado de un carrousel ha cambiado correctamente.');
     }
 }
