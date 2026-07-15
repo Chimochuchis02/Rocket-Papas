@@ -405,11 +405,11 @@
 
                             @if($platosFiltrados->count() > 3)
                                 <button class="carousel-control-prev positioning-arrows" type="button"
-                                    data-bs-target="#carouselPromosRocket" data-bs-slide="prev">
+                                    data-bs-target="#carouselPlatosRocket" data-bs-slide="prev">
                                     <span class="carousel-control-prev-icon bg-dark p-3 rounded-circle" aria-hidden="true"></span>
                                 </button>
                                 <button class="carousel-control-next positioning-arrows" type="button"
-                                    data-bs-target="#carouselPromosRocket" data-bs-slide="next">
+                                    data-bs-target="#carouselPlatosRocket" data-bs-slide="next">
                                     <span class="carousel-control-next-icon bg-dark p-3 rounded-circle" aria-hidden="true"></span>
                                 </button>
                             @endif
@@ -668,11 +668,16 @@
                             style="width: 45px; height: 45px; color: #25D366;"><i class="fa-brands fa-whatsapp"></i></a>
 
                         <a href="https://www.ubereats.com/mx/search?q=Rocket%20papas"
-                            class="social-icon-footer text-black bg-black bg-opacity-25 rounded-circle d-flex align-items-center justify-content-center shadow-sm"
+                            class="social-icon-footer uber-icon-hover text-black bg-black bg-opacity-25 rounded-circle d-flex align-items-center justify-content-center shadow-sm"
                             style="width: 45px; height: 45px;">
                             <img src="{{ asset('img/uber-eats-icon.png') }}"
-                                style="width: 32px; height: 32px; object-fit: contain; filter: grayscale(100%) brightness(0.3); transform: scale(1.2);"
-                                class="uber-icon-hover" /></a>
+                                style="width: 32px; height: 32px; object-fit: contain; filter: grayscale(100%) brightness(0.3); transform: scale(1.2);"/></a>
+
+                        <a href="https://www.didi-food.com/es-MX/food/search?q=Rocket%20papas"
+                            class="social-icon-footer didi-icon-hover text-black bg-black bg-opacity-25 rounded-circle d-flex align-items-center justify-content-center shadow-sm"
+                            style="width: 45px; height: 45px;">
+                            <img src="{{ asset('img/didi_food-logo.png') }}"
+                                style="width: 38px; height: 38px; object-fit: contain; filter: grayscale(100%) brightness(0.3); transform: scale(1.2);"/>  </a>
 
                     </div>
                 </div>
@@ -740,10 +745,12 @@
         </div>
     </div>
 
+    <!--Floating Whatsapp Button -->
     <div id="divFloating">
         <a href="https://wa.me/5218714262173" id="floating" class="social-icon-footer text-black bg-black bg-opacity-25 rounded-circle d-flex align-items-center justify-content-center shadow-sm" style="width: 60px; height: 60px;"> <i class="fa-brands fa-whatsapp fa-xl" style="color: rgb(14, 255, 183);" id="wha_icon"></i> </a>
     </div>
 
+    <!--Floating Arrow Button -->
     <div id="divFloatingArrow">
         <a href="#Hero" id="FloatingArrow" class="social-icon-footer text-black bg-black bg-opacity-25 rounded-circle d-flex align-items-center justify-content-center shadow-sm" style="width: 60px; height: 60px;"> <i class="fa-solid fa-arrow-down fa-rotate-180 fa-xl" style="color: rgb(99, 230, 190);"></i> </a>
     </div>
