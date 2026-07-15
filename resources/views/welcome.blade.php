@@ -622,6 +622,7 @@
         <div class="text-center mt-5 pt-4 border-top border-black border-opacity-25"></div>
     </Main>
 
+    <!-- Footer -->
     <footer class="text-white py-5" style="background-color: #fdfcfc;">
         <div class="container">
             <div class="row align-items-center text-center text-md-start">
@@ -745,16 +746,16 @@
         </div>
     </div>
 
-    <!--Floating Whatsapp Button -->
+    <!--Floating Buttons -->
     <div id="divFloating">
-        <a href="https://wa.me/5218714262173" id="floating" class="social-icon-footer text-black bg-black bg-opacity-25 rounded-circle d-flex align-items-center justify-content-center shadow-sm" style="width: 62px; height: 62px;"> <i class="fa-brands fa-whatsapp fa-xl" style="color: rgb(14, 255, 183);" id="wha_icon"></i> </a>
-    </div>
+        <a href="https://wa.me/5218714262173" id="floating" class="social-icon-footer text-black bg-black bg-opacity-25 rounded-circle d-flex align-items-center justify-content-center shadow-sm" style="width: 62px; height: 62px;"> <i class="fa-brands fa-whatsapp fa-xl" style="color: rgb(14, 255, 183);" id="wha_icon"></i> 
+        </a>
 
-    <!--Floating Arrow Button -->
-    <div id="divFloatingArrow">
+        <div>
         <a href="#Hero" id="FloatingArrow" class="social-icon-footer text-black bg-black bg-opacity-25 rounded-circle d-flex align-items-center justify-content-center shadow-sm" style="width: 60px; height: 60px;"> <i class="fa-solid fa-arrow-down fa-rotate-180 fa-xl" style="color: rgb(99, 230, 190);"></i> </a>
-    </div>
+        </div>
 
+    </div>
 </body>
 
 @vite(['resources/js/app.js', 'resources/css/index.css'])
