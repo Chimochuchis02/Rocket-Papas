@@ -626,8 +626,10 @@
         <div class="container">
             <div class="row align-items-center text-center text-md-start">
                 <div class="col-md-4 mb-4 mb-md-0">
-                    <p class="h5 mb-3" style="color:black;"><i class="fa-solid fa-phone me-2"></i> +52 1 871 426 2173
-                    </p>
+                    <a href="tel:+5218714262173" style="text-decoration: none;">
+                        <p class="h5 mb-3" style="color:black;"><i class="fa-solid fa-phone me-2"></i> +52 1 871 426 2173
+                        </p>
+                    </a>
                     <p class="h5" style="color:black;"><i class="fa-solid fa-location-dot me-2"></i> <strong> Torreon,
                             Coahuila </strong>
                     <p> <small style="color: #000; text-align: center;">Envios a toda la ciudad</small> </p>
