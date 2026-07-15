@@ -744,9 +744,13 @@
         <a href="https://wa.me/5218714262173" id="floating" class="social-icon-footer text-black bg-black bg-opacity-25 rounded-circle d-flex align-items-center justify-content-center shadow-sm" style="width: 60px; height: 60px;"> <i class="fa-brands fa-whatsapp fa-xl" style="color: rgb(14, 255, 183);" id="wha_icon"></i> </a>
     </div>
 
+    <div id="divFloatingArrow">
+        <a href="#Hero" id="FloatingArrow" class="social-icon-footer text-black bg-black bg-opacity-25 rounded-circle d-flex align-items-center justify-content-center shadow-sm" style="width: 60px; height: 60px;"> <i class="fa-solid fa-arrow-down fa-rotate-180 fa-xl" style="color: rgb(99, 230, 190);"></i> </a>
+    </div>
+
 </body>
 
 @vite(['resources/js/app.js', 'resources/css/index.css'])
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>s
+<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 </html>
