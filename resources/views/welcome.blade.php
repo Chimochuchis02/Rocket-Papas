@@ -747,7 +747,7 @@
 
     <!--Floating Whatsapp Button -->
     <div id="divFloating">
-        <a href="https://wa.me/5218714262173" id="floating" class="social-icon-footer text-black bg-black bg-opacity-25 rounded-circle d-flex align-items-center justify-content-center shadow-sm" style="width: 60px; height: 60px;"> <i class="fa-brands fa-whatsapp fa-xl" style="color: rgb(14, 255, 183);" id="wha_icon"></i> </a>
+        <a href="https://wa.me/5218714262173" id="floating" class="social-icon-footer text-black bg-black bg-opacity-25 rounded-circle d-flex align-items-center justify-content-center shadow-sm" style="width: 62px; height: 62px;"> <i class="fa-brands fa-whatsapp fa-xl" style="color: rgb(14, 255, 183);" id="wha_icon"></i> </a>
     </div>
 
     <!--Floating Arrow Button -->
