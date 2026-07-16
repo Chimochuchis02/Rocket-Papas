@@ -89,13 +89,13 @@
                     <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
                         <a class="btn btn-lg px-5 py-3 shadow-lg fw-bold" data-bs-toggle="modal"
                             data-bs-target="#modalMenuRocket" style="border-radius: 50px; border: none;" id="button1">
-                            <i class="fa-regular fa-star me-2" style="color: #000;" id="star"></i>
+                            <i class="fa-solid fa-star me-2" style="color: #000;" id="star"></i>
                             Menu
                         </a>
 
-                        <a class="btn btn-lg px-4.5 py-3 fw-bold shadow-sm" href="#"
+                        <a class="btn btn-lg px-4.5 py-3 fw-bold shadow-sm" href="tel:+5218714262173"
                             style="border-radius: 50px; border: none;" id="button2">
-                            <i class="fa-regular fa-star me-2" style="color: #000;" id="car"></i>
+                            <i class="fa-solid fa-phone me-2" style="color: #000;" id="car"></i>
                             Hacer Pedido
                         </a>
                     </div>
