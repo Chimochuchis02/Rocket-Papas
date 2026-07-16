@@ -366,7 +366,7 @@
 
                     @if($platosFiltrados->count() > 0)
 
-                        <div id="carouselPromosRocket" class="carousel slide" data-bs-ride="false" data-bs-interval="false">
+                        <div id="carouselPlatosRocket" class="carousel slide" data-bs-ride="false" data-bs-interval="false">
                             <div class="carousel-inner px-md-5">
                                 @foreach($platosFiltrados->chunk(3) as $chunkIndex => $chunk)
                                     <div class="carousel-item {{ $chunkIndex === 0 ? 'active' : '' }}">
@@ -416,7 +416,7 @@
                         </div>
 
                         @foreach($platosFiltrados as $producto)
-                            @php $promo = $producto->promotion; @endphp
+                            @php $plato = $producto->promotion; @endphp
                             <div class="modal fade" id="modalPromo{{ $producto->id }}" tabindex="-1" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered modal-xl">
                                     <div class="modal-content text-white border-0 shadow-2xl"
