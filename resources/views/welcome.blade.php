@@ -520,7 +520,7 @@
             <div>
                 <div class="mb-2 position-relative">
                     <h2 class="text-center" style="font-family: DiloWord; font-weight: 700; font-size: 52px;">
-                        Nuestras Instalaciones
+                        Conoce Nuestras Instalaciones
                     </h2>
                 </div>
                 <iframe width="100%" height="100%"
