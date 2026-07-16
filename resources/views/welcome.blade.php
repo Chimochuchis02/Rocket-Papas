@@ -44,12 +44,12 @@
             </a>
 
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navEnglishJoy" aria-controls="navEnglishJoy" aria-expanded="false"
+                data-bs-target="#navRocketPapas" aria-controls="navRocketPapas" aria-expanded="false"
                 aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="collapse navbar-collapse" id="navEnglishJoy">
+            <div class="collapse navbar-collapse" id="navRocketPapas">
                 <ul class="navbar-nav mx-auto mb-2 mb-lg-0 fw-bold text-uppercase" style="font-size: 0.85rem;">
                     <li class="nav-item px-2">
                         <a class="nav-link text-dark" href="#Hero">Inicio</a>
@@ -752,7 +752,7 @@
         </a>
 
         <div>
-        <a href="#Hero" id="FloatingArrow" class="social-icon-footer text-black bg-black bg-opacity-25 rounded-circle d-flex align-items-center justify-content-center shadow-sm" style="width: 60px; height: 60px;"> <i class="fa-solid fa-arrow-down fa-rotate-180 fa-xl" style="color: rgb(99, 230, 190);"></i> </a>
+        <a href="#Hero" id="FloatingArrow" class="text-black bg-black bg-opacity-25 rounded-circle d-flex align-items-center justify-content-center shadow-sm" style="width: 60px; height: 60px;"> <i class="fa-solid fa-arrow-down fa-rotate-180 fa-xl" style="color: rgb(10, 255, 182);"></i> </a>
         </div>
 
     </div>

@@ -229,7 +229,7 @@ main,
 
 #FloatingArrow {
     display: inline-block;
-    background-color: #1877F2 !important;
+    background: #FFF !important;
     padding: 15px 30px;
     border-radius: 50%;
     text-decoration: none;
@@ -240,7 +240,6 @@ main,
 }
 
 #floating:hover {
-    background: #FFF !important;
     transform: translateY(-3px);
 }
 
@@ -257,3 +256,18 @@ main,
     border: none;
     cursor: pointer;
 }
+
+@media(max-width: 575.98px) {
+    #floating{
+        size: 0.5rem;
+    }
+    
+    #FloatingArror{
+        size: 0.5rem;
+    }
+
+    
+
+
+}
+
