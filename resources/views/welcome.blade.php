@@ -36,9 +36,9 @@
             <a class="navbar-brand d-flex align-items-center" href="#Hero">
                 <img src="{{ asset('img/Rocke.png') }}" class="rounded-circle shadow-sm me-2"
                     style="width: 55px; height: 55px; border: 2px solid #FFF;">
-                <div class="d-none d-sm-block">
-                    <span class="fw-bold text-dark mb-0 h4 d-block" style="letter-spacing: -1px;">Rocket Papas</span>
-                    <small class="text-muted fw-bold text-uppercase"
+                <div class="d-sm-block">
+                    <span class="d-block d-sm-block d-xs-block fw-bold text-dark mb-0 h4 d-block" style="letter-spacing: -1px;">Rocket Papas</span>
+                    <small class=" d-block d-sm-block d-xs-block text-muted fw-bold text-uppercase"
                         style="font-size: 0.6rem; letter-spacing: 2px;">Hecho para antojar</small>
                 </div>
             </a>
