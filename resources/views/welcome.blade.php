@@ -36,20 +36,20 @@
             <a class="navbar-brand d-flex align-items-center" href="#Hero">
                 <img src="{{ asset('img/Rocke.png') }}" class="rounded-circle shadow-sm me-2"
                     style="width: 55px; height: 55px; border: 2px solid #FFF;">
-                <div class="d-none d-sm-block">
-                    <span class="fw-bold text-dark mb-0 h4 d-block" style="letter-spacing: -1px;">Rocket Papas</span>
-                    <small class="text-muted fw-bold text-uppercase"
+                <div class="d-sm-block">
+                    <span class="d-block d-sm-block d-xs-block fw-bold text-dark mb-0 h4 d-block" style="letter-spacing: -1px;">Rocket Papas</span>
+                    <small class=" d-block d-sm-block d-xs-block text-muted fw-bold text-uppercase"
                         style="font-size: 0.6rem; letter-spacing: 2px;">Hecho para antojar</small>
                 </div>
             </a>
 
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navEnglishJoy" aria-controls="navEnglishJoy" aria-expanded="false"
+                data-bs-target="#navRocketPapas" aria-controls="navRocketPapas" aria-expanded="false"
                 aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="collapse navbar-collapse" id="navEnglishJoy">
+            <div class="collapse navbar-collapse" id="navRocketPapas">
                 <ul class="navbar-nav mx-auto mb-2 mb-lg-0 fw-bold text-uppercase" style="font-size: 0.85rem;">
                     <li class="nav-item px-2">
                         <a class="nav-link text-dark" href="#Hero">Inicio</a>
@@ -89,13 +89,13 @@
                     <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
                         <a class="btn btn-lg px-5 py-3 shadow-lg fw-bold" data-bs-toggle="modal"
                             data-bs-target="#modalMenuRocket" style="border-radius: 50px; border: none;" id="button1">
-                            <i class="fa-regular fa-star me-2" style="color: #000;" id="star"></i>
+                            <i class="fa-solid fa-star me-2" style="color: #000;" id="star"></i>
                             Menu
                         </a>
 
-                        <a class="btn btn-lg px-4.5 py-3 fw-bold shadow-sm" href="#"
+                        <a class="btn btn-lg px-4.5 py-3 fw-bold shadow-sm" href="tel:+5218714262173"
                             style="border-radius: 50px; border: none;" id="button2">
-                            <i class="fa-regular fa-star me-2" style="color: #000;" id="car"></i>
+                            <i class="fa-solid fa-phone me-2" style="color: #000;" id="car"></i>
                             Hacer Pedido
                         </a>
                     </div>
@@ -366,7 +366,7 @@
 
                     @if($platosFiltrados->count() > 0)
 
-                        <div id="carouselPromosRocket" class="carousel slide" data-bs-ride="false" data-bs-interval="false">
+                        <div id="carouselPlatosRocket" class="carousel slide" data-bs-ride="false" data-bs-interval="false">
                             <div class="carousel-inner px-md-5">
                                 @foreach($platosFiltrados->chunk(3) as $chunkIndex => $chunk)
                                     <div class="carousel-item {{ $chunkIndex === 0 ? 'active' : '' }}">
@@ -405,18 +405,18 @@
 
                             @if($platosFiltrados->count() > 3)
                                 <button class="carousel-control-prev positioning-arrows" type="button"
-                                    data-bs-target="#carouselPromosRocket" data-bs-slide="prev">
+                                    data-bs-target="#carouselPlatosRocket" data-bs-slide="prev">
                                     <span class="carousel-control-prev-icon bg-dark p-3 rounded-circle" aria-hidden="true"></span>
                                 </button>
                                 <button class="carousel-control-next positioning-arrows" type="button"
-                                    data-bs-target="#carouselPromosRocket" data-bs-slide="next">
+                                    data-bs-target="#carouselPlatosRocket" data-bs-slide="next">
                                     <span class="carousel-control-next-icon bg-dark p-3 rounded-circle" aria-hidden="true"></span>
                                 </button>
                             @endif
                         </div>
 
                         @foreach($platosFiltrados as $producto)
-                            @php $promo = $producto->promotion; @endphp
+                            @php $plato = $producto->promotion; @endphp
                             <div class="modal fade" id="modalPromo{{ $producto->id }}" tabindex="-1" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered modal-xl">
                                     <div class="modal-content text-white border-0 shadow-2xl"
@@ -520,7 +520,7 @@
             <div>
                 <div class="mb-2 position-relative">
                     <h2 class="text-center" style="font-family: DiloWord; font-weight: 700; font-size: 52px;">
-                        Nuestras Instalaciones
+                        Conoce Nuestras Instalaciones
                     </h2>
                 </div>
                 <iframe width="100%" height="100%"
@@ -622,12 +622,15 @@
         <div class="text-center mt-5 pt-4 border-top border-black border-opacity-25"></div>
     </Main>
 
+    <!-- Footer -->
     <footer class="text-white py-5" style="background-color: #fdfcfc;">
         <div class="container">
             <div class="row align-items-center text-center text-md-start">
                 <div class="col-md-4 mb-4 mb-md-0">
-                    <p class="h5 mb-3" style="color:black;"><i class="fa-solid fa-phone me-2"></i> +52 1 871 426 2173
-                    </p>
+                    <a href="tel:+5218714262173" style="text-decoration: none;">
+                        <p class="h5 mb-3" style="color:black;"><i class="fa-solid fa-phone me-2"></i> +52 1 871 426 2173
+                        </p>
+                    </a>
                     <p class="h5" style="color:black;"><i class="fa-solid fa-location-dot me-2"></i> <strong> Torreon,
                             Coahuila </strong>
                     <p> <small style="color: #000; text-align: center;">Envios a toda la ciudad</small> </p>
@@ -666,11 +669,16 @@
                             style="width: 45px; height: 45px; color: #25D366;"><i class="fa-brands fa-whatsapp"></i></a>
 
                         <a href="https://www.ubereats.com/mx/search?q=Rocket%20papas"
-                            class="social-icon-footer text-black bg-black bg-opacity-25 rounded-circle d-flex align-items-center justify-content-center shadow-sm"
+                            class="social-icon-footer uber-icon-hover text-black bg-black bg-opacity-25 rounded-circle d-flex align-items-center justify-content-center shadow-sm"
                             style="width: 45px; height: 45px;">
                             <img src="{{ asset('img/uber-eats-icon.png') }}"
-                                style="width: 32px; height: 32px; object-fit: contain; filter: grayscale(100%) brightness(0.3); transform: scale(1.2);"
-                                class="uber-icon-hover" /></a>
+                                style="width: 32px; height: 32px; object-fit: contain; filter: grayscale(100%) brightness(0.3); transform: scale(1.2);"/></a>
+
+                        <a href="https://www.didi-food.com/es-MX/food/search?q=Rocket%20papas"
+                            class="social-icon-footer didi-icon-hover text-black bg-black bg-opacity-25 rounded-circle d-flex align-items-center justify-content-center shadow-sm"
+                            style="width: 45px; height: 45px;">
+                            <img src="{{ asset('img/didi_food-logo.png') }}"
+                                style="width: 38px; height: 38px; object-fit: contain; filter: grayscale(100%) brightness(0.3); transform: scale(1.2);"/>  </a>
 
                     </div>
                 </div>
@@ -738,9 +746,19 @@
         </div>
     </div>
 
+    <!--Floating Buttons -->
+    <div id="divFloating">
+        <a href="https://wa.me/5218714262173" id="floating" class="social-icon-footer text-black bg-black bg-opacity-25 rounded-circle d-flex align-items-center justify-content-center shadow-sm" style="width: 62px; height: 62px;"> <i class="fa-brands fa-whatsapp fa-xl" style="color: rgb(14, 255, 183);" id="wha_icon"></i> 
+        </a>
+
+        <div>
+        <a href="#Hero" id="FloatingArrow" class="text-black bg-black bg-opacity-25 rounded-circle d-flex align-items-center justify-content-center shadow-sm" style="width: 60px; height: 60px;"> <i class="fa-solid fa-arrow-down fa-rotate-180 fa-xl" style="color: rgb(10, 255, 182);"></i> </a>
+        </div>
+
+    </div>
 </body>
 
 @vite(['resources/js/app.js', 'resources/css/index.css'])
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>s
+<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 </html>

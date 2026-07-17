@@ -31,30 +31,39 @@ main,
 
 .social-icon-footer {
     transition: all 0.3s ease-in-out;
-    text-decoration: none;
 }
 
 .social-icon-footer:hover {
     transform: translateY(-5px) scale(1.1);
     background-position: 1 !important;
-    background-color: rgba(255, 255, 255, 0.9) !important;
+    background-color: rgba(255, 255, 255, 0.9);
     box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
 }
 
 .fb-hover:hover {
+    background-color: rgba(255, 255, 255, 0.9) !important;
     color: #1877F2 !important;
 }
 
 .ig-hover:hover {
+    background-color: rgba(255, 255, 255, 0.9) !important;
     color: #FF1493 !important;
 }
 
 .wa-hover:hover {
+    background-color: rgba(255, 255, 255, 0.9) !important;
     color: #25D366 !important;
 }
 
 .uber-icon-hover:hover {
-    filter: none;
+    background-color: rgba(255, 255, 255, 0.9) !important;
+    color:#FFD43B !important;
+    transition: 0.3s ease;
+}
+
+.didi-icon-hover:hover {
+    background-color: rgba(255, 255, 255, 0.9) !important;
+    color: #ff8a00 !important;
     transition: 0.3s ease;
 }
 
@@ -191,3 +200,74 @@ main,
     font-family: 'Bebas_Neue';
     src: url('../../public/Fonts/Bebas_Neue/BebasNeue-Regular.ttf') format('truetype');
 }
+
+#divFloating {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    
+}
+
+#divFloatingArrow {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+
+#floating {
+    display: inline-block;
+    background-color: #25D366 !important;
+    padding: 15px 30px;
+    margin-bottom: 10px;
+    border-radius: 50%;
+    text-decoration: none;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
+    transition: background-color 0.3s, transform 0.3s;
+    width: 62px;
+    height: 62px;
+}
+
+#FloatingArrow {
+    display: inline-block;
+    background: #FFF !important;
+    padding: 15px 30px;
+    border-radius: 50%;
+    text-decoration: none;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, transform 0.3s;
+    width: 60px;
+    height: 60px;
+}
+
+#floating:hover {
+    transform: translateY(-3px);
+}
+
+#FloatingArrow:hover {
+    background-color: #FFF !important;
+    color: #2618f2 !important;
+    transform: translateY(-3px);
+}
+
+#wha_icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+}
+
+@media(max-width: 575.98px) {
+    #floating{
+        size: 0.5rem;
+    }
+    
+    #FloatingArror{
+        size: 0.5rem;
+    }
+
+    
+
+
+}
+
