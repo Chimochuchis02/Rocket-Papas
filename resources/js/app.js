@@ -20,4 +20,26 @@ document.addEventListener("DOMContentLoaded", function () {
             window.location.href = segmentA + segmentB + segmentC;
         });
     }
+
 })
+
+window.addEventListener('load', () => {
+    const preloader = document.getElementById('rocket-preloader');
+    if (preloader) {
+        preloader.classList.add('preloader-hidden');
+    }
+});
+
+window.addEventListener('load', removePreloader);
+
+    document.addEventListener('DOMContentLoaded', () => {
+        setTimeout(removePreloader, 3000);
+    });
+
+    function removePreloader() {
+        const preloader = document.getElementById('rocket-preloader');
+        if (preloader && !preloader.classList.contains('preloader-hidden')) {
+            preloader.classList.add('preloader-hidden');
+            setTimeout(() => preloader.remove(), 500);
+        }
+    }

@@ -24,10 +24,10 @@ use App\Models\Menu;
 */
 
 Route::get('/', function () {
-    $productos = Product::with('dish', 'promotion')->latest()->get();
+    $productos = App\Models\Product::with('carrousel')->latest()->get();
     $bannerActivo = Banner::where('is_Active', 1)->first();
     $menuActivo = Menu::where('is_Active', 1)->first();
-    return view('welcome', compact('bannerActivo' , 'menuActivo' , 'productos'));
+    return view('welcome', compact('bannerActivo' , 'menuActivo', 'productos'));
 });
 
 Route::get('admin/dashboard', function () {

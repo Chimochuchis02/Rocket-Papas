@@ -51,34 +51,34 @@
 
                             <div class="row mb-4">
                                 <div class="col-md-6">
-                                    <label for="model_3D_path" class="form-label text-warning fw-bold">Actualizar Modelo
-                                        3D (.glb, .gltf)</label>
+                                    <label for="model_3D_path" class="form-label text-warning fw-bold">Actualizar Video Renderizado (.MP4, .WEBm)</label>
                                     <input type="file" class="form-control bg-secondary text-white" id="model_3D_path"
                                         name="model_3D_path">
-                                    <small class="text-muted">Deja este campo vacío si no deseas cambiar el modelo
+                                    <small style="color: #FFF;">Deje este campo vacío si no desea cambiar el video
                                         actual.</small>
                                 </div>
                                 <div class="col-md-6 text-center">
-                                    <span class="text-xs text-gray-400 d-block mb-2">Estado del Modelo Actual:</span>
+                                    <span class="text-xs text-gray-400 d-block mb-2">Estado Del Video Actual:</span>
                                     @if($carrousel->model_3D_path)
                                         <span class="badge bg-success"><i class="fa-solid fa-check"
-                                                style="color: rgb(99, 230, 190);"></i> Archivo 3D Cargado</span>
+                                                style="color: rgb(99, 230, 190);"></i> Video renderizado Cargado</span>
                                     @else
                                         <span class="badge bg-danger"><i class="fa-solid fa-x"
-                                                style="color: rgb(255, 0, 0);"></i>Sin Modelo Asociado</span>
+                                                style="color: rgb(255, 0, 0);"></i>Sin Video Asociado</span>
                                     @endif
                                 </div>
                             </div>
 
                             <div class="row mb-4">
                                 <div class="col-md-6">
-                                    <label for="model_3D_path" class="form-label text-warning fw-bold">Actualizar
+                                    <label for="imgs" class="form-label text-warning fw-bold">Actualizar
                                         Imagenes (.jpeg, .png, .jpg, .webp)</label>
                                     <input type="file" name="imgs[]" multiple accept="imgs/*" id="imgs"
                                         class="form-control bg-secondary text-white">
-                                    <small class="text-muted">Deja este campo vacío si no deseas cambiar las imagenes
+                                    <small style="color: #FFF;">Deja este campo vacío si no deseas cambiar las imagenes
                                         actuales.</small>
                                 </div>
+
                                 <div class="col-md-6 text-center">
                                     <span class="text-xs text-gray-400 d-block mb-2">Estado de las imagenes
                                         actuales:</span>
@@ -89,6 +89,34 @@
                                     @else
                                         <span class="badge bg-danger"><i class="fa-solid fa-x"
                                                 style="color: rgb(255, 0, 0);"></i>Sin Imagenes actualmente</span>
+                                    @endif
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label for="producto_id" class="form-label text-warning fw-bold">Actualizar
+                                        producto asignado</label>
+                                    <select name="producto_id" id="producto_id"
+                                        class="form-select bg-dark text-white border-secondary @error('producto_id') is-invalid @enderror">
+                                        <option value="">-- Seleccione el platillo protagonista --</option>
+                                        @foreach($platillos as $platillo)
+                                            <option value="{{ $platillo->id }}" {{ old('producto_id') == $platillo->id ? 'selected' : '' }}>
+                                                {{ $platillo->nombre }} (${{ number_format($platillo->precio, 2) }})
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                    <small style="color: #FFF;">Deja este campo vacío si no deseas cambiar las imagenes
+                                        actuales.</small>
+                                </div>
+
+                                <div class="col-md-6 text-center">
+                                    <span class="text-xs text-gray-400 d-block mb-2">Estado de asignacion
+                                        actuales:</span>
+                                    @if($carrousel->producto_id)
+                                        <span class="badge bg-success"><i class="fa-solid fa-check"
+                                                style="color: rgb(99, 230, 190);"></i> Ya esta asignado a un platillo</span>
+                                    @else
+                                        <span class="badge bg-danger"><i class="fa-solid fa-x"
+                                                style="color: rgb(255, 0, 0);"></i>Sin platillo asignado</span>
                                     @endif
                                 </div>
                             </div>

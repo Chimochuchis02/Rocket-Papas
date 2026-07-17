@@ -18,6 +18,7 @@ return new class extends Migration
             $table->String('desc', 299)->nullable();
             $table->json('imgs')->nullable();
             $table->String('model_3D_path')->nullable();
+            $table->foreignId('producto_id')->nullable()->constrained('products')->onDelete('set null');
             $table->boolean('is_Active')->default(true);
             $table->timestamps();
         });

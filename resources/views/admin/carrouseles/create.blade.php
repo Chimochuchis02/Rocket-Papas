@@ -69,19 +69,39 @@
                     </div>
 
                     <div class="flex flex-col">
-                        <label for="model_3D_path" class="font-semibold mb-1" style="color: #000;">Imagen modelo 3D
+                        <label for="model_3D_path" class="font-semibold mb-1" style="color: #000;">Video Render
                             (Opcional):</label>
                         <input type="file" name="model_3D_path" id="model_3D_path" accept="model_3D_path/*"
                             class="file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-yellow-50 file:text-yellow-700 hover:file:bg-yellow-100"
                             style="color: #000;" />
+                            <small class="font-semibold mb-1" style="color: #000;">Solo se aceptan videos del tipo: MP4, WEBm</small>
                     </div>
 
-                    <div class="pt-4">
-                        <button type="submit" class="w-full font-bold py-3 px-4 rounded shadow transition duration-200"
-                            style="background-color: #000; color: #FFF;">
-                            Guardar Carrousel
-                        </button>
-                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="producto_id" class="form-label fw-bold text-warning">Vincular a Platillo
+                                Estrella</label>
+                            <select name="producto_id" id="producto_id"
+                                class="form-select bg-dark text-white border-secondary @error('producto_id') is-invalid @enderror">
+                                <option value="">-- Seleccione el platillo protagonista --</option>
+                                @foreach($platillos as $platillo)
+                                    <option value="{{ $platillo->id }}" {{ old('producto_id') == $platillo->id ? 'selected' : '' }}>
+                                        {{ $platillo->nombre }} (${{ number_format($platillo->precio, 2) }})
+                                    </option>
+                                @endforeach
+                            </select>
+                            <div class="form-text text-muted-50 small">Solo se muestran los productos marcados como
+                                Platillos.</div>
+                            @error('producto_id') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                        </div>
+
+                        <div class="pt-4">
+                            <button type="submit"
+                                class="w-full font-bold py-3 px-4 rounded shadow transition duration-200"
+                                style="background-color: #000; color: #FFF;">
+                                Guardar Carrousel
+                            </button>
+                        </div>
                 </form>
             </div>
         </div>

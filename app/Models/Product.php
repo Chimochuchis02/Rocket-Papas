@@ -24,6 +24,6 @@ class Product extends Model
 
     public function carrousel()
     {
-        return $this->belongsToMany(Carrousel::class, 'carrousel_product');
+        return $this->hasMany(Carrousel::class, 'producto_id');
     }
 }
