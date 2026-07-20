@@ -81,7 +81,8 @@
 
             <div class="position-relative w-150" style="height: 500px;">
                 <div class="position-absolute bottom-0 start-0 mb-1 ms-4 ms-md-5 ps-lg-5" style="z-index: 3;">
-                    <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
+                    <div class="d-flex flex-column flex-md-row justify-content-center align-items-center gap-3 mt-4 w-100" style="z-index: 3;">
+                        
                         <a class="btn btn-lg px-5 py-3 shadow-lg fw-bold" data-bs-toggle="modal"
                             data-bs-target="#modalMenuRocket" style="border-radius: 50px; border: none;" id="button1">
                             <i class="fa-solid fa-star me-2" style="color: #000;" id="star"></i>
@@ -93,6 +94,7 @@
                             <i class="fa-solid fa-phone me-2" style="color: #000;" id="car"></i>
                             Hacer Pedido
                         </a>
+                        
                     </div>
                 </div>
             </div>
@@ -164,7 +166,7 @@
                 <div class="col-md-6">
                     <div
                         class="position-relative overflow-hidden rounded-4 shadow-lg transition-transform duration-300 hover-scale">
-                        <img src="{{ asset('img/Cheeseburguer_Papas.jpg') }}"
+                        <img src="{{ asset('img/logo_Rocket_papas_banner.jpg') }}"
                             class="img-fluid w-100 h-auto d-block object-fit-cover" style="max-height: 480px;">
                     </div>
                 </div>
