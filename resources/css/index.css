@@ -257,6 +257,11 @@ main,
     cursor: pointer;
 }
 
+#hero{
+    height: 525px;
+
+}
+
 @media(max-width: 575.98px) {
     #floating{
         size: 0.5rem;
@@ -266,8 +271,9 @@ main,
         size: 0.5rem;
     }
 
-    
-
-
+    #hero{
+        height: 320px;
+        background-size: 100% 100% !important;
+    }
 }
 
