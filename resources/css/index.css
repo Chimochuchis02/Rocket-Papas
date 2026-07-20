@@ -286,10 +286,15 @@ main,
         justify-content: center !important;
     }
 
-
     #hero {
         height: 320px;
         background-size: 100% 100% !important;
+    }
+
+    #button1{
+        display: flex;
+        align-items:start;
+        justify-content: start;
     }
 }
 
@@ -301,6 +306,8 @@ main,
     .carousel-control-next.positioning-arrows {
         right: 60px !important;
     }
+
+    
 }
 
 @media (max-width: 767.98px) {
@@ -311,4 +318,5 @@ main,
     .carousel-control-next.positioning-arrows {
         right: 5px !important;
     }
+
 }
