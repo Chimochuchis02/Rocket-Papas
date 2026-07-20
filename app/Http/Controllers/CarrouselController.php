@@ -43,7 +43,7 @@ class CarrouselController extends Controller
                 'desc' => 'nullable|string|max:299',
                 'imgs' => 'required|array',
                 'imgs.*' => 'image|mimes:jpeg,png,jpg,webp|max:2048',
-                'model_3D_path' => 'nullable|file|mimes:mp4,webm|max:20480',
+                'model_3D_path' => 'nullable|file|mimes:mp4,webm, mov|max:4048',
                 'producto_id' => 'required|integer|exists:products,id'
             ]);
 
@@ -109,7 +109,7 @@ class CarrouselController extends Controller
             'precio' => 'nullable|numeric|min:0',
             'imgs' => 'nullable|array',
             'imgs.*' => 'image|mimes:jpeg,png,jpg,webp|max:2048',
-            'model_3D_path' => 'nullable|file|mimes:mp4, webm|max:20480',
+            'model_3D_path' => 'nullable|file|mimes:mp4, webm, mov|max:4048',
             'producto_id' => 'nullable|integer|exists:products,id'
         ]);
 

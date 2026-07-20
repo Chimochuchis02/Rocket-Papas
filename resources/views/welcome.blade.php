@@ -413,93 +413,94 @@
                         </div>
 
                         @foreach($platosFiltrados as $producto)
-                            @php $plato = $producto->promotion; @endphp
-                            <div class="modal fade" id="modalPromo{{ $producto->id }}" tabindex="-1" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered modal-xl">
-                                    <div class="modal-content text-white border-0 shadow-2xl"
-                                        style="background-color: #1a1a1a; border-radius: 24px; overflow: hidden;">
-                                        <button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 m-4"
-                                            data-bs-dismiss="modal" aria-label="Close" style="z-index: 10; color: #FFF;"></button>
-                                        
-                                        <div class="row g-0">
-                                            <div class="col-md-6 bg-black d-flex align-items-center justify-content-center position-relative" style="min-height: 450px;">
-                                                <div id="carouselMedia-{{ $producto->id }}" class="carousel slide w-100 h-100" data-bs-ride="false" data-bs-interval="false">
-                                                    <div class="carousel-inner w-100 h-100">
-                                                        @php $slideIndex = 0; @endphp
-                                                        
-                                                        @foreach(($producto->carrousel ?? []) as $carrusel)
-                                                            @if(!empty($carrusel->model_3D_path))
-                                                                <div class="carousel-item active w-100 h-100" style="min-height: 450px; background-color: #111;">
-                                                                    <div class="w-100 h-100 d-flex align-items-center justify-content-center">
-                                                                        <video autoplay loop muted playsinline preload="auto" class="img-fluid rounded shadow-lg" style="max-height: 420px; object-fit: contain; width: auto;">
-                                                                            <source src="{{ asset('storage/' . $carrusel->model_3D_path) }}" type="video/mp4">
-                                                                        </video>
-                                                                    </div>
-                                                                </div>
-                                                                @php $slideIndex++; @endphp
-                                                            @endif
-                                                        @endforeach
-
-                                                        <div class="carousel-item {{ $slideIndex === 0 ? 'active' : '' }} w-100 h-100" 
-
-                                                        @php $slideIndex++; @endphp
-
-                                                        @foreach(($producto->carrousel ?? []) as $carrusel)
-                                                            @if(!empty($carrusel->imgs))
-
-                                                                @php
-                                                                    $carruselImgs = $carrusel->imgs;
-                                                                    $imagenesExtras = is_string($carruselImgs) ? json_decode($carruselImgs, true) : $carruselImgs;
-                                                                @endphp
-
-                                                                @if(is_array($imagenesExtras))
-                                                                    @foreach($imagenesExtras as $rutaImg)
-                                                                        <div class="carousel-item {{ $slideIndex === 0 ? 'active' : '' }} w-100 h-100" 
-                                                                            style="background: url({{ asset('storage/' . $rutaImg) }}) center/cover no-repeat; min-height: 450px;">
-                                                                        </div>
-                                                                        @endforeach
-                                                                        @php $slideIndex++; @endphp
-                                                                @endif
-                                                            @endif
-                                                        @endforeach
-                                                    </div>
-
-                                                    @if($slideIndex > 1)
-                                                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselMedia-{{ $producto->id }}" data-bs-slide="prev">
-                                                            <span class="carousel-control-prev-icon bg-dark p-2 rounded-circle" aria-hidden="true"></span>
-                                                        </button>
-                                                        <button class="carousel-control-next" type="button" data-bs-target="#carouselMedia-{{ $producto->id }}" data-bs-slide="next">
-                                                            <span class="carousel-control-next-icon bg-dark p-2 rounded-circle" aria-hidden="true"></span>
-                                                        </button>
-                                                    @endif
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-6 d-flex flex-column justify-content-center p-4 p-md-5 position-relative">
-                                                <span class="badge bg-danger text-white align-self-start mb-3 px-3 py-2 rounded-pill fw-bold text-uppercase tracking-wider">
-                                                <i class="fa-solid fa-star" style="color: rgb(255, 212, 59);"></i>De nuestros Platillos Estrella
-                                                </span>
-                                                <h3 class="display-6 fw-black text-uppercase mb-3"
-                                                    style="color: #ffc107; font-family: 'Lilita One', 'Arial Black', sans-serif;">
-                                                    {{ $producto->nombre }}
-                                                </h3>
-                                                <p class="text-light opacity-75 mb-4" style="font-size: 1.1rem; line-height: 1.6;">
-                                                    {{ $producto->desc ?? $producto->descripcion }}
-                                                </p>
-                                                <div class="mt-auto d-flex justify-content-between align-items-end pt-3 border-top border-secondary border-opacity-25">
-                                                    <div>
-                                                        <p class="small mb-0 fw-bold text-uppercase tracking-widest" style="color: #FFF">Precio Unico</p>
-                                                        <p class="mb-0 fw-black text-white" style="font-size: 3rem; line-height: 1;">
-                                                            <span class="fs-3 me-1" style="color: #FFF;">$</span>{{ number_format($producto->precio, 2) }}
-                                                        </p>
-                                                    </div>
-                                                </div>
+    @php $plato = $producto->promotion; @endphp
+    <div class="modal fade" id="modalPromo{{ $producto->id }}" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content text-white border-0 shadow-2xl"
+                style="background-color: #1a1a1a; border-radius: 24px; overflow: hidden;">
+                <button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 m-4"
+                    data-bs-dismiss="modal" aria-label="Close" style="z-index: 10; color: #FFF;"></button>
+                
+                <div class="row g-0">
+                    <!-- 🎬 SECCIÓN MULTIMEDIA (IZQUIERDA) -->
+                    <div class="col-md-6 bg-black d-flex align-items-center justify-content-center position-relative" style="min-height: 450px;">
+                        <div id="carouselMedia-{{ $producto->id }}" class="carousel slide w-100 h-100" data-bs-ride="false" data-bs-interval="false">
+                            <div class="carousel-inner w-100 h-100">
+                                @php $slideIndex = 0; @endphp
+                                
+                                <!-- 1. Iteración para el Video -->
+                                @foreach(($producto->carrousel ?? []) as $carrusel)
+                                    @if(!empty($carrusel->model_3D_path))
+                                        <div class="carousel-item {{ $slideIndex === 0 ? 'active' : '' }} w-100 h-100" style="min-height: 450px; background-color: #111;">
+                                            <div class="w-100 h-100 d-flex align-items-center justify-content-center">
+                                                <video autoplay loop muted playsinline preload="auto" class="img-fluid rounded shadow-lg" style="max-height: 420px; object-fit: contain; width: auto;">
+                                                    <source src="{{ asset('storage/' . $carrusel->model_3D_path) }}" type="video/mp4">
+                                                    Tu navegador no soporta video.
+                                                </video>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
+                                        @php $slideIndex++; @endphp
+                                    @endif
+                                @endforeach
+
+                                <!-- 2. Iteración para las Imágenes Extras -->
+                                @foreach(($producto->carrousel ?? []) as $carrusel)
+                                    @if(!empty($carrusel->imgs))
+                                        @php
+                                            $carruselImgs = $carrusel->imgs;
+                                            $imagenesExtras = is_string($carruselImgs) ? json_decode($carruselImgs, true) : $carruselImgs;
+                                        @endphp
+
+                                        @if(is_array($imagenesExtras))
+                                            @foreach($imagenesExtras as $rutaImg)
+                                                <div class="carousel-item {{ $slideIndex === 0 ? 'active' : '' }} w-100 h-100" 
+                                                    style="background: url({{ asset('storage/' . $rutaImg) }}) center/cover no-repeat; min-height: 450px;">
+                                                </div>
+                                                @php $slideIndex++; @endphp
+                                            @endforeach
+                                        @endif
+                                    @endif
+                                @endforeach
                             </div>
-                        @endforeach
+
+                            <!-- Flechas de navegación del carrusel interno -->
+                            @if($slideIndex > 1)
+                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselMedia-{{ $producto->id }}" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon bg-dark p-2 rounded-circle" aria-hidden="true"></span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#carouselMedia-{{ $producto->id }}" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon bg-dark p-2 rounded-circle" aria-hidden="true"></span>
+                                </button>
+                            @endif
+                        </div>
+                    </div>
+
+                    <!-- 📝 SECCIÓN DETALLES (DERECHA) -->
+                    <div class="col-md-6 d-flex flex-column justify-content-center p-4 p-md-5 position-relative">
+                        <span class="badge bg-danger text-white align-self-start mb-3 px-3 py-2 rounded-pill fw-bold text-uppercase tracking-wider">
+                            <i class="fa-solid fa-star" style="color: rgb(255, 212, 59);"></i> De nuestros Platillos Estrella
+                        </span>
+                        <h3 class="display-6 fw-black text-uppercase mb-3"
+                            style="color: #ffc107; font-family: 'Lilita One', 'Arial Black', sans-serif;">
+                            {{ $producto->nombre }}
+                        </h3>
+                        <p class="text-light opacity-75 mb-4" style="font-size: 1.1rem; line-height: 1.6;">
+                            {{ $producto->desc ?? $producto->descripcion }}
+                        </p>
+                        <div class="mt-auto d-flex justify-content-between align-items-end pt-3 border-top border-secondary border-opacity-25">
+                            <div>
+                                <p class="small mb-0 fw-bold text-uppercase tracking-widest" style="color: #FFF">Precio Unico</p>
+                                <p class="mb-0 fw-black text-white" style="font-size: 3rem; line-height: 1;">
+                                    <span class="fs-3 me-1" style="color: #FFF;">$</span>{{ number_format($producto->precio, 2) }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @endforeach
                     @else
                         <div class="col-12 text-center py-5">
                             <p class="text-muted fs-5">No hay platillos activos en este momento. ¡Pregunta por nuestras
