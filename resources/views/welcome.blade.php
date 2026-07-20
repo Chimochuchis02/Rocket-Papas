@@ -24,9 +24,9 @@
             <div class="rocket-spinner">
                 <div class="fire-flame"></div>
             </div>
-                <img src="{{ asset('img/Rocke.png') }}" class="loader-text rounded-circle shadow-sm me-2">
-        <h2 class="loader-sub">Cargando...</h2>
-        <h3 style="color: #000; font-family: Bebas_Neue;">Hecho Para Antojar</h3>
+            <img src="{{ asset('img/Rocke.png') }}" class="loader-text rounded-circle shadow-sm me-2">
+            <h2 class="loader-sub">Cargando...</h2>
+            <h3 style="color: #000; font-family: Bebas_Neue;">Hecho Para Antojar</h3>
         </div>
     </div>
 
@@ -37,7 +37,8 @@
                 <img src="{{ asset('img/Rocke.png') }}" class="rounded-circle shadow-sm me-2"
                     style="width: 55px; height: 55px; border: 2px solid #FFF;">
                 <div class="d-sm-block">
-                    <span class="d-block d-sm-block d-xs-block fw-bold text-dark mb-0 h4 d-block" style="letter-spacing: -1px;">Rocket Papas</span>
+                    <span class="d-block d-sm-block d-xs-block fw-bold text-dark mb-0 h4 d-block"
+                        style="letter-spacing: -1px;">Rocket Papas</span>
                     <small class=" d-block d-sm-block d-xs-block text-muted fw-bold text-uppercase"
                         style="font-size: 0.6rem; letter-spacing: 2px;">Hecho para antojar</small>
                 </div>
@@ -81,10 +82,12 @@
 
             <div class="position-relative w-150" style="height: 500px;">
                 <div class="position-absolute bottom-0 start-0 mb-1 ms-4 ms-md-5 ps-lg-5" style="z-index: 3;">
-                    <div class="d-flex flex-column flex-md-row justify-content-center align-items-center gap-3 mt-4 w-100" style="z-index: 3;">
-                        
+                    <div class="d-flex flex-column flex-md-row justify-content-center align-items-center gap-3 mt-4 w-100"
+                        style="z-index: 3;">
+
                         <a class="btn btn-lg px-5 py-3 shadow-lg fw-bold" data-bs-toggle="modal"
-                            data-bs-target="#modalMenuRocket" style="border-radius: 50px; border: none; margin-bottom: 10px;" id="button1">
+                            data-bs-target="#modalMenuRocket"
+                            style="border-radius: 50px; border: none; margin-bottom: 10px;" id="button1">
                             <i class="fa-solid fa-star me-2" style="color: #000;" id="star"></i>
                             Menu
                         </a>
@@ -94,7 +97,7 @@
                             <i class="fa-solid fa-phone me-2" style="color: #000;" id="car"></i>
                             Hacer Pedido
                         </a>
-                        
+
                     </div>
                 </div>
             </div>
@@ -378,7 +381,7 @@
                                                         <div class="position-relative w-100"
                                                             style="aspect-ratio: 1/1; overflow: hidden; background-color: #f8f9fa;">
                                                             <img src="{{ asset('storage/' . $producto->image_path) }}"
-                                                                class="w-100 h-100 object-cover" 
+                                                                class="w-100 h-100 object-cover"
                                                                 style="object-fit: cover; transition: transform 0.3s ease;">
 
                                                             <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center opacity-0 hover-overlay"
@@ -413,94 +416,106 @@
                         </div>
 
                         @foreach($platosFiltrados as $producto)
-    @php $plato = $producto->promotion; @endphp
-    <div class="modal fade" id="modalPromo{{ $producto->id }}" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-xl">
-            <div class="modal-content text-white border-0 shadow-2xl"
-                style="background-color: #1a1a1a; border-radius: 24px; overflow: hidden;">
-                <button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 m-4"
-                    data-bs-dismiss="modal" aria-label="Close" style="z-index: 10; color: #FFF;"></button>
-                
-                <div class="row g-0">
-                    <!-- 🎬 SECCIÓN MULTIMEDIA (IZQUIERDA) -->
-                    <div class="col-md-6 bg-black d-flex align-items-center justify-content-center position-relative" style="min-height: 450px;">
-                        <div id="carouselMedia-{{ $producto->id }}" class="carousel slide w-100 h-100" data-bs-ride="false" data-bs-interval="false">
-                            <div class="carousel-inner w-100 h-100">
-                                @php $slideIndex = 0; @endphp
-                                
-                                <!-- 1. Iteración para el Video -->
-                                @foreach(($producto->carrousel ?? []) as $carrusel)
-                                    @if(!empty($carrusel->model_3D_path))
-                                        <div class="carousel-item {{ $slideIndex === 0 ? 'active' : '' }} w-100 h-100" style="min-height: 450px; background-color: #111;">
-                                            <div class="w-100 h-100 d-flex align-items-center justify-content-center">
-                                                <video autoplay loop muted playsinline preload="auto" class="img-fluid rounded shadow-lg" style="max-height: 420px; object-fit: contain; width: auto;">
-                                                    <source src="{{ asset('storage/' . $carrusel->model_3D_path) }}" type="video/mp4">
-                                                    Tu navegador no soporta video.
-                                                </video>
+                            @php $plato = $producto->promotion; @endphp
+                            <div class="modal fade" id="modalPromo{{ $producto->id }}" tabindex="-1" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered modal-xl">
+                                    <div class="modal-content text-white border-0 shadow-2xl"
+                                        style="background-color: #1a1a1a; border-radius: 24px; overflow: hidden;">
+                                        <button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 m-4"
+                                            data-bs-dismiss="modal" aria-label="Close" style="z-index: 10; color: #FFF;"></button>
+
+                                        <div class="row g-0">
+                                            <div class="col-md-6 bg-black d-flex align-items-center justify-content-center position-relative"
+                                                style="min-height: 450px;">
+                                                <div id="carouselMedia-{{ $producto->id }}" class="carousel slide w-100 h-100"
+                                                    data-bs-ride="false" data-bs-interval="false">
+                                                    <div class="carousel-inner w-100 h-100">
+                                                        @php $slideIndex = 0; @endphp
+
+                                                        @foreach(($producto->carrousel ?? []) as $carrusel)
+                                                            @if(!empty($carrusel->model_3D_path))
+                                                                <div class="carousel-item {{ $slideIndex === 0 ? 'active' : '' }} w-100 h-100"
+                                                                    style="min-height: 450px; background-color: #111;">
+                                                                    <div
+                                                                        class="w-100 h-100 d-flex align-items-center justify-content-center">
+                                                                        <video autoplay loop muted playsinline preload="auto"
+                                                                            class="img-fluid rounded shadow-lg"
+                                                                            style="max-height: 420px; object-fit: contain; width: auto;">
+                                                                            <source src="{{ asset('storage/' . $carrusel->model_3D_path) }}"
+                                                                                type="video/mp4">
+                                                                        </video>
+                                                                    </div>
+                                                                </div>
+                                                                @php $slideIndex++; @endphp
+                                                            @endif
+                                                        @endforeach
+
+                                                        @foreach(($producto->carrousel ?? []) as $carrusel)
+                                                            @if(!empty($carrusel->imgs))
+                                                                @php
+                                                                    $carruselImgs = $carrusel->imgs;
+                                                                    $imagenesExtras = is_string($carruselImgs) ? json_decode($carruselImgs, true) : $carruselImgs;
+                                                                @endphp
+
+                                                                @if(is_array($imagenesExtras))
+                                                                    @foreach($imagenesExtras as $rutaImg)
+                                                                        <div class="carousel-item {{ $slideIndex === 0 ? 'active' : '' }} w-100 h-100"
+                                                                            style="background: url({{ asset('storage/' . $rutaImg) }}) center/cover no-repeat; min-height: 450px;">
+                                                                        </div>
+                                                                        @php $slideIndex++; @endphp
+                                                                    @endforeach
+                                                                @endif
+                                                            @endif
+                                                        @endforeach
+                                                    </div>
+
+                                                    @if($slideIndex > 1)
+                                                        <button class="carousel-control-prev" type="button"
+                                                            data-bs-target="#carouselMedia-{{ $producto->id }}" data-bs-slide="prev">
+                                                            <span class="carousel-control-prev-icon bg-dark p-2 rounded-circle"
+                                                                aria-hidden="true"></span>
+                                                        </button>
+                                                        <button class="carousel-control-next" type="button"
+                                                            data-bs-target="#carouselMedia-{{ $producto->id }}" data-bs-slide="next">
+                                                            <span class="carousel-control-next-icon bg-dark p-2 rounded-circle"
+                                                                aria-hidden="true"></span>
+                                                        </button>
+                                                    @endif
+                                                </div>
+                                            </div>
+
+                                            <div
+                                                class="col-md-6 d-flex flex-column justify-content-center p-4 p-md-5 position-relative">
+                                                <span
+                                                    class="badge bg-danger text-white align-self-start mb-3 px-3 py-2 rounded-pill fw-bold text-uppercase tracking-wider">
+                                                    <i class="fa-solid fa-star" style="color: rgb(255, 212, 59);"></i> De nuestros
+                                                    Platillos Estrella
+                                                </span>
+                                                <h3 class="display-6 fw-black text-uppercase mb-3"
+                                                    style="color: #ffc107; font-family: 'Lilita One', 'Arial Black', sans-serif;">
+                                                    {{ $producto->nombre }}
+                                                </h3>
+                                                <p class="text-light opacity-75 mb-4" style="font-size: 1.1rem; line-height: 1.6;">
+                                                    {{ $producto->desc ?? $producto->descripcion }}
+                                                </p>
+                                                <div
+                                                    class="mt-auto d-flex justify-content-between align-items-end pt-3 border-top border-secondary border-opacity-25">
+                                                    <div>
+                                                        <p class="small mb-0 fw-bold text-uppercase tracking-widest"
+                                                            style="color: #FFF">Precio Unico</p>
+                                                        <p class="mb-0 fw-black text-white"
+                                                            style="font-size: 3rem; line-height: 1;">
+                                                            <span class="fs-3 me-1"
+                                                                style="color: #FFF;">$</span>{{ number_format($producto->precio, 2) }}
+                                                        </p>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                        @php $slideIndex++; @endphp
-                                    @endif
-                                @endforeach
-
-                                <!-- 2. Iteración para las Imágenes Extras -->
-                                @foreach(($producto->carrousel ?? []) as $carrusel)
-                                    @if(!empty($carrusel->imgs))
-                                        @php
-                                            $carruselImgs = $carrusel->imgs;
-                                            $imagenesExtras = is_string($carruselImgs) ? json_decode($carruselImgs, true) : $carruselImgs;
-                                        @endphp
-
-                                        @if(is_array($imagenesExtras))
-                                            @foreach($imagenesExtras as $rutaImg)
-                                                <div class="carousel-item {{ $slideIndex === 0 ? 'active' : '' }} w-100 h-100" 
-                                                    style="background: url({{ asset('storage/' . $rutaImg) }}) center/cover no-repeat; min-height: 450px;">
-                                                </div>
-                                                @php $slideIndex++; @endphp
-                                            @endforeach
-                                        @endif
-                                    @endif
-                                @endforeach
+                                    </div>
+                                </div>
                             </div>
-
-                            <!-- Flechas de navegación del carrusel interno -->
-                            @if($slideIndex > 1)
-                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselMedia-{{ $producto->id }}" data-bs-slide="prev">
-                                    <span class="carousel-control-prev-icon bg-dark p-2 rounded-circle" aria-hidden="true"></span>
-                                </button>
-                                <button class="carousel-control-next" type="button" data-bs-target="#carouselMedia-{{ $producto->id }}" data-bs-slide="next">
-                                    <span class="carousel-control-next-icon bg-dark p-2 rounded-circle" aria-hidden="true"></span>
-                                </button>
-                            @endif
-                        </div>
-                    </div>
-
-                    <!-- 📝 SECCIÓN DETALLES (DERECHA) -->
-                    <div class="col-md-6 d-flex flex-column justify-content-center p-4 p-md-5 position-relative">
-                        <span class="badge bg-danger text-white align-self-start mb-3 px-3 py-2 rounded-pill fw-bold text-uppercase tracking-wider">
-                            <i class="fa-solid fa-star" style="color: rgb(255, 212, 59);"></i> De nuestros Platillos Estrella
-                        </span>
-                        <h3 class="display-6 fw-black text-uppercase mb-3"
-                            style="color: #ffc107; font-family: 'Lilita One', 'Arial Black', sans-serif;">
-                            {{ $producto->nombre }}
-                        </h3>
-                        <p class="text-light opacity-75 mb-4" style="font-size: 1.1rem; line-height: 1.6;">
-                            {{ $producto->desc ?? $producto->descripcion }}
-                        </p>
-                        <div class="mt-auto d-flex justify-content-between align-items-end pt-3 border-top border-secondary border-opacity-25">
-                            <div>
-                                <p class="small mb-0 fw-bold text-uppercase tracking-widest" style="color: #FFF">Precio Unico</p>
-                                <p class="mb-0 fw-black text-white" style="font-size: 3rem; line-height: 1;">
-                                    <span class="fs-3 me-1" style="color: #FFF;">$</span>{{ number_format($producto->precio, 2) }}
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    @endforeach
+                        @endforeach
                     @else
                         <div class="col-12 text-center py-5">
                             <p class="text-muted fs-5">No hay platillos activos en este momento. ¡Pregunta por nuestras
@@ -626,7 +641,8 @@
             <div class="row align-items-center text-center text-md-start">
                 <div class="col-md-4 mb-4 mb-md-0">
                     <a href="tel:+5218714262173" style="text-decoration: none;">
-                        <p class="h5 mb-3" style="color:black;"><i class="fa-solid fa-phone me-2"></i> +52 1 871 426 2173
+                        <p class="h5 mb-3" style="color:black;"><i class="fa-solid fa-phone me-2"></i> +52 1 871 426
+                            2173
                         </p>
                     </a>
                     <p class="h5" style="color:black;"><i class="fa-solid fa-location-dot me-2"></i> <strong> Torreon,
@@ -670,13 +686,14 @@
                             class="social-icon-footer uber-icon-hover text-black bg-black bg-opacity-25 rounded-circle d-flex align-items-center justify-content-center shadow-sm"
                             style="width: 45px; height: 45px;">
                             <img src="{{ asset('img/uber-eats-icon.png') }}"
-                                style="width: 32px; height: 32px; object-fit: contain; filter: grayscale(100%) brightness(0.3); transform: scale(1.2);"/></a>
+                                style="width: 32px; height: 32px; object-fit: contain; filter: grayscale(100%) brightness(0.3); transform: scale(1.2);" /></a>
 
                         <a href="https://www.didi-food.com/es-MX/food/search?q=Rocket%20papas"
                             class="social-icon-footer didi-icon-hover text-black bg-black bg-opacity-25 rounded-circle d-flex align-items-center justify-content-center shadow-sm"
                             style="width: 45px; height: 45px;">
                             <img src="{{ asset('img/didi_food-logo.png') }}"
-                                style="width: 38px; height: 38px; object-fit: contain; filter: grayscale(100%) brightness(0.3); transform: scale(1.2);"/>  </a>
+                                style="width: 38px; height: 38px; object-fit: contain; filter: grayscale(100%) brightness(0.3); transform: scale(1.2);" />
+                        </a>
 
                     </div>
                 </div>
@@ -746,11 +763,17 @@
 
     <!--Floating Buttons -->
     <div id="divFloating">
-        <a href="https://wa.me/5218714262173" id="floating" class="social-icon-footer text-black bg-black bg-opacity-25 rounded-circle d-flex align-items-center justify-content-center shadow-sm" style="width: 62px; height: 62px;"> <i class="fa-brands fa-whatsapp fa-xl" style="color: rgb(14, 255, 183);" id="wha_icon"></i> 
+        <a href="https://wa.me/5218714262173" id="floating"
+            class="social-icon-footer text-black bg-black bg-opacity-25 rounded-circle d-flex align-items-center justify-content-center shadow-sm"
+            style="width: 62px; height: 62px;"> <i class="fa-brands fa-whatsapp fa-xl" style="color: rgb(14, 255, 183);"
+                id="wha_icon"></i>
         </a>
 
         <div>
-        <a href="#Hero" id="FloatingArrow" class="text-black bg-black bg-opacity-25 rounded-circle d-flex align-items-center justify-content-center shadow-sm" style="width: 60px; height: 60px;"> <i class="fa-solid fa-arrow-down fa-rotate-180 fa-xl" style="color: rgb(10, 255, 182);"></i> </a>
+            <a href="#Hero" id="FloatingArrow"
+                class="text-black bg-black bg-opacity-25 rounded-circle d-flex align-items-center justify-content-center shadow-sm"
+                style="width: 60px; height: 60px;"> <i class="fa-solid fa-arrow-down fa-rotate-180 fa-xl"
+                    style="color: rgb(10, 255, 182);"></i> </a>
         </div>
 
     </div>
@@ -759,4 +782,5 @@
 @vite(['resources/js/app.js', 'resources/css/index.css'])
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+
 </html>
