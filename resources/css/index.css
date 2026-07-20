@@ -57,7 +57,7 @@ main,
 
 .uber-icon-hover:hover {
     background-color: rgba(255, 255, 255, 0.9) !important;
-    color:#FFD43B !important;
+    color: #FFD43B !important;
     transition: 0.3s ease;
 }
 
@@ -205,7 +205,7 @@ main,
     position: fixed;
     bottom: 20px;
     right: 20px;
-    
+
 }
 
 #divFloatingArrow {
@@ -257,35 +257,58 @@ main,
     cursor: pointer;
 }
 
-#hero{
+#hero {
     height: 525px;
 
 }
 
 @media(max-width: 575.98px) {
-    #floating{
+    #floating {
         size: 0.5rem;
     }
 
-    #FloatingArror{
+    #FloatingArror {
         size: 0.5rem;
     }
 
-    .positioning-arrows .carousel-control-prev-icon,
-    .positioning-arrows .carousel-control-next-icon{
-        width: 45px;
-        height: 45px;
-        background-size: 60% 60%;
+    .positioning-arrows.carousel-control-prev-icon,
+    .positioning-arrows.carousel-control-next-icon {
+        width: 45px !important;
+        height: 45px !important;
+        background-size: 60% 60% !important;
     }
 
-    .positioning-arrows{
-        width: 15% !important;
+    button.positioning-arrows {
+        width: 60px !important;
+        height: 60px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
     }
 
 
-    #hero{
+    #hero {
         height: 320px;
         background-size: 100% 100% !important;
     }
 }
 
+@media (min-width: 992px) {
+    .carousel-control-prev.positioning-arrows {
+        left: 60px !important;
+    }
+
+    .carousel-control-next.positioning-arrows {
+        right: 60px !important;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .carousel-control-prev.positioning-arrows {
+        left: 5px !important;
+    }
+
+    .carousel-control-next.positioning-arrows {
+        right: 5px !important;
+    }
+}

@@ -261,11 +261,11 @@
                             @if($promosFiltradas->count() > 3)
                                 <button class="carousel-control-prev positioning-arrows" type="button"
                                     data-bs-target="#carouselPromosRocket" data-bs-slide="prev">
-                                    <span class="carousel-control-prev-icon bg-dark p-3 rounded-circle" aria-hidden="true"></span>
+                                    <span class="carousel-control-prev-icon bg-dark p-4 rounded-circle" aria-hidden="true"></span>
                                 </button>
                                 <button class="carousel-control-next positioning-arrows" type="button"
                                     data-bs-target="#carouselPromosRocket" data-bs-slide="next">
-                                    <span class="carousel-control-next-icon bg-dark p-3 rounded-circle" aria-hidden="true"></span>
+                                    <span class="carousel-control-next-icon bg-dark p-4 rounded-circle" aria-hidden="true"></span>
                                 </button>
                             @endif
                         </div>
@@ -403,11 +403,11 @@
                             @if($platosFiltrados->count() > 3)
                                 <button class="carousel-control-prev positioning-arrows" type="button"
                                     data-bs-target="#carouselPlatosRocket" data-bs-slide="prev">
-                                    <span class="carousel-control-prev-icon bg-dark p-3 rounded-circle" aria-hidden="true"></span>
+                                    <span class="carousel-control-prev-icon bg-dark p-4 rounded-circle" aria-hidden="true"></span>
                                 </button>
                                 <button class="carousel-control-next positioning-arrows" type="button"
                                     data-bs-target="#carouselPlatosRocket" data-bs-slide="next">
-                                    <span class="carousel-control-next-icon bg-dark p-3 rounded-circle" aria-hidden="true"></span>
+                                    <span class="carousel-control-next-icon bg-dark p-4 rounded-circle" aria-hidden="true"></span>
                                 </button>
                             @endif
                         </div>
