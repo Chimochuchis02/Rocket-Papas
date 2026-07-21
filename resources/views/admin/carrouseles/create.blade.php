@@ -37,19 +37,26 @@
                     @csrf
 
                     <div class="flex flex-col">
-                        <label for="nombre" class="font-semibold mb-1" style="color: #000;">Titulo Del
+                        <label for="titulo" class="font-semibold mb-1" style="color: #000;">Titulo Del
                             Producto*:</label>
+
                         <input type="text" name="titulo" id="titulo" value="{{ old('titulo') }}"
                             class="rounded-md border-gray-300 dark:bg-gray-700 dark:text-white" style="color: #FFF;"
-                            required maxlength="250"/>
+                            required maxlength="250" oninput="characterTitle()"/>
+
+                        <small class="form-text"> Letras Restantes: <span id="character-counter"> 250 </span> </small>
                     </div>
 
                     <div class="flex flex-col">
                         <label for="desc" class="font-semibold mb-1" style="color: #000;">Descripción
                             (Opcional):</label>
+
                         <textarea name="desc" id="desc" rows="3"
                             class="rounded-md border-gray-300 dark:bg-gray-700 dark:text-white"
-                            style="color: #FFF;" maxlength="299">{{ old('desc') }}</textarea>
+                            style="color: #FFF;" maxlength="299" oninput="characterCount()">{{ old('desc') }}</textarea>
+
+                        <small class="form-text"> Letras Restantes: <span id="count"> 299 </span> </small>
+
                     </div>
 
                     <div class="flex flex-col">
@@ -97,5 +104,29 @@
             </div>
         </div>
     </div>
+
+    <script>
+     function characterCount(){
+        const textarea = document.getElementById('desc');
+        const contador = document.getElementById('count');
+
+        const maxCaracteres = textarea.getAttribute('maxlength');
+        
+        const caracteresActuales = textarea.value.length;
+        const caracteresRestantes = maxCaracteres - caracteresActuales;
+        contador.textContent = caracteresRestantes;
+     }
+     
+     function characterTitle(){
+        const input = document.getElementById('titulo');
+        const counter = document.getElementById('character-counter');
+
+        const maxCharacter = input.getAttribute('maxlength');
+
+        const caracteresAhora = input.value.length;
+        const caracteresQuedantes = maxCharacter - caracteresAhora;
+        counter.textContent = caracteresQuedantes;
+     }
+    </script>
 
 </x-app-layout>
