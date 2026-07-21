@@ -31,13 +31,6 @@
                             </div>
                         @endif
 
-                        @if (session('error'))
-                            <div
-                                style="background: #f8d7da; color: #721c24; padding: 15px; margin-bottom: 20px; border-radius: 5px;">
-                                {{ session('error') }}
-                            </div>
-                        @endif
-
                         <form action="{{ route('productos.update', $producto->id) }}" method="POST"
                             enctype="multipart/form-data">
                             @csrf

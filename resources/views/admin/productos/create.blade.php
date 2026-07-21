@@ -32,13 +32,6 @@
                     </div>
                 @endif
 
-                @if (session('error'))
-                    <div
-                        style="background: #f8d7da; color: #721c24; padding: 15px; margin-bottom: 20px; border-radius: 5px;">
-                        {{ session('error') }}
-                    </div>
-                @endif
-
                 <form action="{{ route('productos.store') }}" method="POST" enctype="multipart/form-data"
                     class="space-y-6">
                     @csrf
@@ -46,13 +39,18 @@
                     <div class="flex flex-col">
                         <label for="nombre" class="font-semibold mb-1" style="color: #000;">Nombre Del
                             Producto*:</label>
+
                         <input type="text" name="nombre" id="nombre" value="{{ old('nombre') }}"
                             class="rounded-md border-gray-300 dark:bg-gray-700 dark:text-white" style="color: #FFF;"
-                            required />
+                            required maxlength="250" oninput="caracteresInput()"/>
+
+                        <small class="form-text"> letras Restantes: <span id="char-counter"> 250 </span> </small>
+
                     </div>
 
                     <div class="flex flex-col">
                         <label for="precio" class="font-semibold mb-1" style="color: #000;">Precio*:</label>
+                        
                         <input type="number" name="precio" id="precio" step="0.01" value="{{ old('precio') }}"
                             class="rounded-md border-gray-300 dark:bg-gray-700 dark:text-white" style="color: #FFF;"
                             required />
@@ -61,9 +59,12 @@
                     <div class="flex flex-col">
                         <label for="desc" class="font-semibold mb-1" style="color: #000;">Descripción
                             (Opcional):</label>
+
                         <textarea name="desc" id="desc" rows="3"
                             class="rounded-md border-gray-300 dark:bg-gray-700 dark:text-white"
-                            style="color: #FFF;">{{ old('desc') }}</textarea>
+                            style="color: #FFF;" maxlength="299" oninput="contarCaracteres()" > {{ old('desc') }}</textarea>
+
+                        <small class="form-text"> letras Restantes <span id="char-count"> 299 </span> </small>
                     </div>
 
                     <div class="flex flex-col">
@@ -121,35 +122,30 @@
             </div>
         </div>
     </div>
+    
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const selectTipo = document.getElementById('type');
-            const contenedorPromocion = document.getElementById('campos-promocion');
-            const startDateInput = document.getElementById('start_date');
-            const endDateInput = document.getElementById('end_date');
+    function contarCaracteres(){
+            const textarea = document.getElementById('desc');
+            const contador = document.getElementById('char-count');
 
-            function evaluarTipo(valor) {
-                if (valor === 'promotion') {
-                    contenedorPromocion.classList.remove('hidden');
-                    startDateInput.required = true;
-                    endDateInput.required = true;
-                } else {
-                    contenedorPromocion.classList.add('hidden');
-                    startDateInput.required = false;
-                    endDateInput.required = false;
-                }
-            }
+            const maxCaracteres = textarea.getAttribute('maxlength');
+        
+            const caracteresActuales = textarea.value.length;
+            const caracteresRestantes = maxCaracteres - caracteresActuales;
+            contador.textContent = caracteresRestantes;
+    }
 
-            selectTipo.addEventListener('change', function () {
-                evaluarTipo(this.value);
-                if (this.value !== 'promotion') {
-                    startDateInput.value = '';
-                    endDateInput.value = '';
-                }
-            });
+    function caracteresInput(){
+            const input = document.getElementById('nombre');
+            const count = document.getElementById('char-counter');
 
-            evaluarTipo(selectTipo.value);
-        });
+            const maxCaracteres = input.getAttribute('maxlength');
+
+            const caracteresActuales = input.value.length;
+            const caracteresRestantes = maxCaracteres - caracteresActuales;
+            count.textContent = caracteresRestantes;
+    }
+
     </script>
 
 </x-app-layout>

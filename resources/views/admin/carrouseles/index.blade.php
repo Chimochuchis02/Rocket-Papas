@@ -1,6 +1,5 @@
 <x-app-layout>
-    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
-
+    
     <div class="py-12 bg-gray-50 dark:bg-gray-900 min-h-screen">
         <div class="max-w-4xl mx-auto sm:px-6 lg:px-8 space-y-4">
 
@@ -70,12 +69,10 @@
                                 <div class="space-y-4">
                                     <div>
                                         <span class="text-xs font-bold text-gray-400 uppercase tracking-widest block"
-                                            style="color: #000;">Slug de la
-                                            URL:</span>
+                                            style="color: #000;">Titulo del platillo:</span>
                                         <code
                                             class="text-sm bg-gray-100 dark:bg-gray-950 px-2 py-1 rounded text-red-500 font-mono block mt-1 break-all">
-                                                                                                                {{ $carousel->slug }}
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </code>
+                                            {{ $carousel->titulo }}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </code>
                                     </div>
 
                                     <div>
@@ -161,4 +158,5 @@
 
             </div>
         </div>
+
 </x-app-layout>

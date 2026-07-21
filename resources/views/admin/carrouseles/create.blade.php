@@ -41,15 +41,7 @@
                             Producto*:</label>
                         <input type="text" name="titulo" id="titulo" value="{{ old('titulo') }}"
                             class="rounded-md border-gray-300 dark:bg-gray-700 dark:text-white" style="color: #FFF;"
-                            required />
-                    </div>
-
-                    <div class="flex flex-col">
-                        <label for="nombre" class="font-semibold mb-1" style="color: #000;">Titulo De La
-                            Tarjeta*:</label>
-                        <input type="text" name="slug" id="slug" value="{{ old('slug') }}"
-                            class="rounded-md border-gray-300 dark:bg-gray-700 dark:text-white" style="color: #FFF;"
-                            required />
+                            required maxlength="250"/>
                     </div>
 
                     <div class="flex flex-col">
@@ -57,15 +49,14 @@
                             (Opcional):</label>
                         <textarea name="desc" id="desc" rows="3"
                             class="rounded-md border-gray-300 dark:bg-gray-700 dark:text-white"
-                            style="color: #FFF;">{{ old('desc') }}</textarea>
+                            style="color: #FFF;" maxlength="299">{{ old('desc') }}</textarea>
                     </div>
 
                     <div class="flex flex-col">
-                        <label for="image_path" class="font-semibold mb-1" style="color: #000;">Imagen del Producto
-                            (Opcional):</label>
+                        <label for="image_path" class="font-semibold mb-1" style="color: #000;">Imagen del Producto:</label>
                         <input type="file" name="imgs[]" id="imgs" multiple accept="imgs/*"
                             class="file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-yellow-50 file:text-yellow-700 hover:file:bg-yellow-100"
-                            style="color: #000;" />
+                            style="color: #000;" required/>
                     </div>
 
                     <div class="flex flex-col">

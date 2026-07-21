@@ -23,7 +23,7 @@
                 @if ($errors->any())
                     <div
                         class="mb-6 p-4 bg-red-100 dark:bg-red-900 border-l-4 border-red-500 text-red-700 dark:text-red-200 rounded shadow">
-                        <p class="font-bold mb-2">⚠️ Error de Validación:</p>
+                        <strong class="font-bold mb-2"> ⚠️ Error de Validación: </strong>
                         <ul class="list-disc pl-5 text-sm space-y-1">
                             @foreach ($errors->all() as $error)
                                 <li>{{ $error }}</li>
@@ -36,14 +36,18 @@
                     @csrf
                     <div class="flex flex-col">
                         <label for="titulo" class="font-semibold mb-1" style="color: #000;">Titulo Del Menu*:</label>
+
                         <input type="text" name="titulo" id="titulo" value="{{ old('titulo') }}"
                             class="rounded-md border-gray-300 dark:bg-gray-700 dark:text-white" style="color: #FFF;"
-                            required />
+                            required maxlength="250" oninput="countCharacter()"/>
+
+                        <small class="form-text"> Letras Restantes: <span id="char-count"> 250 </span> </small> 
                     </div>
 
                     <div class="flex flex-col">
                         <label for="image_path" class="font-semibold mb-1" style="color: #000;">Imagenes del
                             menu*:</label>
+
                         <input type="file" name="images_menus[]" id="images_menus" multiple accept="images_menus/*"
                             class="file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-yellow-50 file:text-yellow-700 hover:file:bg-yellow-100"
                             style="color: #000;" />
@@ -59,4 +63,17 @@
             </div>
         </div>
     </div>
+
+    <script>
+    function countCharacter(){
+        const input = document.getElementById('titulo');
+        const contador = document.getElementById('char-count');
+
+        const maxCaracteres = input.getAttribute('maxlength');
+        
+        const caracteresActuales = input.value.length;
+        const caracteresRestantes = maxCaracteres - caracteresActuales;
+        contador.textContent = caracteresRestantes;
+    }
+    </script>
 </x-app-layout>

@@ -48,7 +48,7 @@
                     <div class="pt-4">
                         <button type="submit" class="w-full font-bold py-3 px-4 rounded shadow transition duration-200"
                             style="background-color: #000; color: #FFF;">
-                            Guardar Carrousel
+                            Guardar Banner
                         </button>
                     </div>
                 </form>

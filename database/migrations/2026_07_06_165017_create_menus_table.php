@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('menus', function (Blueprint $table) {
             $table->id();
-            $table->string('titulo', 199);
+            $table->string('titulo', 250);
             $table->json('images_menus');
             $table->boolean('is_Active')->default(false);
             $table->timestamps();

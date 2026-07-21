@@ -36,7 +36,13 @@ class BannerController extends Controller
     { {
             $validatedData = $request->validate([
                 'image_banner' => 'required|image|mimes:jpeg,png,jpg,webp|max:2048',
+            ], [
+                'image_banner.required' => 'Debe Llenar el espacio de la imagen primero',
+                'image_banner.image' => 'El archivo debe ser un archivo valido',
+                'image_banner.mimes' => 'El tipo del archivo debe ser: JPEG, PNG, JPG O WEBP',
+                'image_banner.max' => 'El tamaño maximo para subir un archivo es de 2MB',
             ]);
+            
             $rutaImagen = null;
             if ($request->hasFile('image_banner')) {
                 $imagePath = $request->file('image_banner')->store('banners', 'public');
@@ -92,7 +98,11 @@ class BannerController extends Controller
     {
         $banner = Banner::findOrFail($id);
         $validatedData = $request->validate([
-            'image_banner' => 'required|image|mimes:jpeg,png,jpg,webp|max:2048',
+            'image_banner' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
+        ], [
+            'image_banner.image' => 'El archivo debe ser un archivo valido',
+            'image_banner.mimes' => 'El tipo del archivo debe ser: JPEG, PNG, JPG O WEBP',
+            'image_banner.max' => 'El tamaño maximo para subir un archivo es de 2MB',
         ]);
 
         $imagePath = $banner->image_banner;

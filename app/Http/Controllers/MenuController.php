@@ -38,6 +38,13 @@ class MenuController extends Controller
                 'titulo' => 'required|string|max:250',
                 'images_menus' => 'required|array',
                 'images_menus.*' => 'image|mimes:jpeg,png,jpg,webp|max:2048'
+            ], [
+                'titulo.required' => 'El campo de titulo es obligatorio',
+                'titulo.max' => 'El maximo del campo titulo es de 250 caracteres',
+                'images_menus.required' => 'El campo de imagenes es obligatorio',
+                'images_menus.*.image'=> 'El tipo de archivo para las imagenes debe ser un archivo valido de imagen',
+                'images_menus.*.mimes'=> 'El archivo de imagen debe ser: JPEG, PNG, JPG o WEBP',
+                'images_menus.*.max'=> 'El maximo tamaño de la imagen deb ser de 2MB',
             ]);
 
             $rutasImagenes = [];
@@ -93,6 +100,11 @@ class MenuController extends Controller
             'titulo' => 'nullable|string|max:250',
             'images_menus' => 'nullable|array',
             'images_menus.*' => 'image|mimes:jpeg,png,jpg,webp|max:2048',
+        ], [
+            'titulo.max' => 'El maximo del campo titulo es de 250 caracteres',
+            'images.menus.*.image' => 'El campo de imagenes debe de ser un tipo de archivo valido',
+            'images_menus.*.mimes' => 'El tipo de archivo debe ser: JPEG, PNG, JPG o WEBP',
+            'images_menus.*.max' => 'El maximo para un archivo es de 2MB',
         ]);
 
         $rutasImagenes = $menu->images_menus;

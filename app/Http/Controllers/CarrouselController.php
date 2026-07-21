@@ -45,6 +45,18 @@ class CarrouselController extends Controller
                 'imgs.*' => 'image|mimes:jpeg,png,jpg,webp|max:2048',
                 'model_3D_path' => 'nullable|file|mimes:mp4,webm, mov|max:4048',
                 'producto_id' => 'required|integer|exists:products,id'
+            ], [
+                'titulo.required' => 'El campo titulo es obligatorio',
+                'titulo.max' => 'El maximo de caracteres para el titulo es de 250',
+                'desc.max' => 'El maximo de caracteres para la descripcion es de 299',
+                'imgs.required' => 'El campo de imagenes es obligatorio',
+                'imgs.*.image' => 'El archivo de imagenes debe ser uno valido',
+                'imgs.*.mimes' => 'El archivo debe ser del tipo: JPEG, PNG, JPG o WEBP',
+                'imgs.*.max' => 'El maximo para subir imagenes es de maximo: 2MB',
+                'model_3D_path.file' => 'El archivo de video debe ser uno valido',
+                'model_3D_path.mimes' => 'El archivo de video debe ser del tipo: MP4, WEBM o MOV',
+                'model_3D_path.max' => 'El video renderizado debe pesar como maximo: 4MB',
+                'producto_id.required' => 'El campo de seleccion es obligatorio',
             ]);
 
             $slug = Str::slug($validatedData['titulo']);
@@ -110,6 +122,15 @@ class CarrouselController extends Controller
             'imgs.*' => 'image|mimes:jpeg,png,jpg,webp|max:2048',
             'model_3D_path' => 'nullable|file|mimes:mp4, webm, mov|max:4048',
             'producto_id' => 'nullable|integer|exists:products,id'
+        ], [
+            'titulo.max' => 'El maximo de caracteres para el titulo es de 250',
+            'desc.max' => 'El maximo de caracteres para la descripcion es de 299',
+            'imgs.*.image' => 'El archivo de imagenes debe ser uno valido',
+            'imgs.*.mimes' => 'El archivo debe ser del tipo: JPEG, PNG, JPG o WEBP',
+            'imgs.*.max' => 'El maximo para subir imagenes es de maximo: 2MB',
+            'model_3D_path.file' => 'El archivo de video debe ser uno valido',
+            'model_3D_path.mimes' => 'El archivo de video debe ser del tipo: MP4, WEBM o MOV',
+            'model_3D_path.max' => 'El video renderizado debe pesar como maximo: 4MB',
         ]);
 
         $slug = Str::slug($validatedData['titulo']);
