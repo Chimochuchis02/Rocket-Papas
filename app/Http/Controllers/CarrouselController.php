@@ -69,7 +69,7 @@ class CarrouselController extends Controller
                     'slug' => $slug,
                     'desc' => $validatedData['desc'] ?? null,
                     'precio' => $validatedData['precio'] ?? null,
-                    'imgs' => $rutasImagenes, // Importante: En el Modelo añado -> protected $casts = ['imgs' => 'array'];
+                    'imgs' => $rutasImagenes, 
                     'model_3D_path' => $rutaModel3D,
                     'producto_id' => $validatedData['producto_id']
                 ]);
@@ -88,7 +88,6 @@ class CarrouselController extends Controller
      */
     public function edit($id)
     {
-        // Por ahora y paara completar este primer modulo y su CRUD....solo busca el id del carrousel...ya que productos aun no hay y eso da errores, al intentar buscar algo que no existe
         $carrousel = Carrousel::findOrFail($id);
         $platillos = Product::where('type', 'dish')
             ->orderBy('nombre', 'asc')
@@ -104,7 +103,7 @@ class CarrouselController extends Controller
         $carrousel = Carrousel::findOrFail($id);
 
         $validatedData = $request->validate([
-            'titulo' => 'nullable|string|max:50',
+            'titulo' => 'nullable|string|max:250',
             'desc' => 'nullable|string|max:250',
             'precio' => 'nullable|numeric|min:0',
             'imgs' => 'nullable|array',

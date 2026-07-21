@@ -47,7 +47,7 @@ class BannerController extends Controller
 
             try {
                 $banner = Banner::create([
-                    'image_banner' => $validatedData['image_banner'], // Asignada la ruta real
+                    'image_banner' => $validatedData['image_banner'],
                 ]);
 
                 DB::commit();
@@ -125,13 +125,10 @@ class BannerController extends Controller
      */
     public function activate(Banner $banner)
     {
-        // Usamos una transacción para asegurarnos de que si algo falla, no nos quedemos sin banner
     DB::transaction(function () use ($banner) {
         
-        // 1. Apagamos TODOS los banners existentes de golpe
         Banner::query()->update(['is_Active' => 0]);
 
-        // 2. Encendemos únicamente el banner seleccionado
         $banner->update(['is_Active' => 1]);
     });
 

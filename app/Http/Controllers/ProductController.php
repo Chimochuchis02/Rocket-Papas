@@ -39,19 +39,16 @@ class ProductController extends Controller
     {
 
         $validatedData = $request->validate([
-            // Datos Básicos
             'nombre' => 'required|string|max:250',
             'precio' => 'required|numeric|min:0',
             'desc' => 'nullable|string|max:299',
             'image_path' => 'required|image|mimes:jpeg,png,jpg,webp|max:2048',
             'type' => 'required|in:dish,promotion',
 
-            // Datos Promociones
             'start_date' => 'nullable|required_if:type,promotion|date',
             'end_date' => 'nullable|required_if:type,promotion|date|after_or_equal:start_date',
         ]);
 
-        // 🛠️ CORRECCIÓN 1: Procesar la imagen correctamente en la variable que se va a insertar
         $rutaImagen = null;
         if ($request->hasFile('image_path')) {
             $imagePath = $request->file('image_path')->store('productos', 'public');
@@ -66,7 +63,7 @@ class ProductController extends Controller
                 'type' => $validatedData['type'],
                 'precio' => $validatedData['precio'],
                 'desc' => $validatedData['desc'] ?? null,
-                'image_path' => $validatedData['image_path'], // Asignada la ruta real
+                'image_path' => $validatedData['image_path'],
             ]);
 
             if ($validatedData['type'] === 'dish') {
@@ -143,7 +140,6 @@ class ProductController extends Controller
         }
 
         DB::beginTransaction();
-        // Actualizo los campos de la tabla padre
         try {
             $product->update([
                 'nombre' => $validatedData['nombre'],
@@ -182,7 +178,6 @@ class ProductController extends Controller
         DB::beginTransaction();
 
         try {
-            // Identificamos el tipo y volteamos el booleano 'is_Active' de la tabla hija
             if ($producto->type === 'dish' && $producto->dish) {
 
                 $producto->dish->update([

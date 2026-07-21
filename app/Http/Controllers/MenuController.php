@@ -53,7 +53,7 @@ class MenuController extends Controller
             try {
                 $menu = Menu::create([
                     'titulo' => $validatedData['titulo'],
-                    'images_menus' => $rutasImagenes, // Asignada la ruta real
+                    'images_menus' => $rutasImagenes,
                 ]);
 
                 DB::commit();
@@ -137,7 +137,6 @@ class MenuController extends Controller
 
             Menu::query()->update(['is_Active' => 0]);
 
-            // 2. Encendemos únicamente el banner seleccionado
             $menu->update(['is_Active' => 1]);
         });
 
