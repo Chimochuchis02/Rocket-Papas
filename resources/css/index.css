@@ -292,9 +292,41 @@ main,
     }
 
     #button1{
+        top: auto !important;
+        bottom: 15px !important; 
+        left: 50% !important;
+        transform: translateX(-20px) !important;
+        transform: translateY(80px) !important; 
+        width: 80% !important;
+        height: 50px !important;
+        max-width: 220px !important;
+        font-size: 0.9rem !important;
+        padding: 8px 16px !important;
+        z-index: 3;
+        justify-content: center;
+    }
+
+    #button2{
+        top: auto !important;
+        bottom: 15px !important; 
+        left: 40% !important;
+        transform: translateX(100%) !important;
+        width: 80% !important;
+        max-width: 220px !important;
+        font-size: 0.9rem !important;
+        padding: 8px 16px !important;
+        z-index: 3;
+        margin-left: 10px;
+
+    }
+
+    #button1, 
+    #button2{
         display: flex;
-        align-items:start;
-        justify-content: start;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        gap: 4px;
     }
 }
 
@@ -310,13 +342,40 @@ main,
     
 }
 
-@media (max-width: 767.98px) {
-    .carousel-control-prev.positioning-arrows {
-        left: 5px !important;
+@media only screen and (min-width: 575.98px) and  (max-width: 1200.98px) {
+    #button1{
+        top: auto !important;
+        bottom: 15px !important; 
+        left: 50% !important;
+        transform: translateX(-20px) !important;
+        transform: translateY(80px) !important; 
+        width: 80% !important;
+        height: 50px !important;
+        max-width: 220px !important;
+        font-size: 0.9rem !important;
+        padding: 8px 16px !important;
+        z-index: 3;
     }
 
-    .carousel-control-next.positioning-arrows {
-        right: 5px !important;
+    #button2{
+        top: auto !important;
+        bottom: 15px !important; 
+        left: 40% !important;
+        transform: translateX(100%) !important;
+        width: 80% !important;
+        max-width: 220px !important;
+        font-size: 0.9rem !important;
+        padding: 8px 16px !important;
+        z-index: 3;
+        margin-left: 10px;
     }
 
+    #button1, 
+    #button2{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        gap: 10px;
+    }
 }

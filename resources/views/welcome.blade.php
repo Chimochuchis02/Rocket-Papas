@@ -82,7 +82,7 @@
 
             <div class="position-relative w-150" style="height: 500px;">
                 <div class="position-absolute bottom-0 start-0 mb-1 ms-4 ms-md-5 ps-lg-5" style="z-index: 3;">
-                    <div class="d-flex flex-column flex-md-row justify-content-center align-items-center gap-3 mt-4 w-100"
+                    <div class="d-flex flex-column flex-xl-row justify-content-center align-items-center gap-3 mt-4 w-100"
                         style="z-index: 3;">
 
                         <a class="btn btn-lg px-5 py-3 shadow-lg fw-bold" data-bs-toggle="modal"
