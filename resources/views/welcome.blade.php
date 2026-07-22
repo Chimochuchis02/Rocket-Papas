@@ -215,22 +215,19 @@
                     </h2>
                 </div>
 
-                @isset($productos)
-                    @php
-                        $promosFiltradas = $productos->filter(function ($p) {
-                            return $p->promotion;
-                        });
-                    @endphp
-
-                    @if($promosFiltradas->count() > 0)
+                @isset($promociones)
+                    @if($promociones->count() > 0)
 
                         <div id="carouselPromosRocket" class="carousel slide" data-bs-ride="false" data-bs-interval="false">
                             <div class="carousel-inner px-md-5">
-                                @foreach($promosFiltradas->chunk(3) as $chunkIndex => $chunk)
+                                @foreach($promociones->chunk(3) as $chunkIndex => $chunk)
                                     <div class="carousel-item {{ $chunkIndex === 0 ? 'active' : '' }}">
                                         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
 
-                                            @foreach($chunk as $producto)
+                                            @foreach($chunk as $promocion)
+                                            @php
+                                            $product = $promocion->product;
+                                            @endphp
                                                 <div class="col">
 
                                                     <div class="card h-100 border-0 shadow-lg overflow-hidden position-relative group-hover-action"
@@ -238,8 +235,8 @@
 
                                                         <div class="position-relative w-100"
                                                             style="aspect-ratio: 1/1; overflow: hidden; background-color: #f8f9fa;">
-                                                            <img src="{{ asset('storage/' . $producto->image_path) }}"
-                                                                class="w-100 h-100 object-cover" alt="{{ $producto->nombre }}"
+                                                            <img src="{{ asset('storage/' . $product->image_path) }}"
+                                                                class="w-100 h-100 object-cover" alt="{{ $product->nombre }}"
                                                                 style="object-fit: cover; transition: transform 0.3s ease;">
 
                                                             <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center opacity-0 hover-overlay"
@@ -247,7 +244,7 @@
                                                                 <button type="button"
                                                                     class="btn btn-warning fw-black text-uppercase px-4 py-2 rounded-pill shadow-lg transform transition hover:scale-105"
                                                                     data-bs-toggle="modal"
-                                                                    data-bs-target="#modalPromo{{ $producto->id }}">
+                                                                    data-bs-target="#modalPromo{{ $promocion->id }}">
                                                                     Ver Detalles
                                                                 </button>
                                                             </div>
@@ -261,7 +258,7 @@
                                 @endforeach
                             </div>
 
-                            @if($promosFiltradas->count() > 3)
+                            @if($promociones->count() > 3)
                                 <button class="carousel-control-prev positioning-arrows" type="button"
                                     data-bs-target="#carouselPromosRocket" data-bs-slide="prev">
                                     <span class="carousel-control-prev-icon bg-dark p-4 rounded-circle" aria-hidden="true"></span>
@@ -273,9 +270,11 @@
                             @endif
                         </div>
 
-                        @foreach($promosFiltradas as $producto)
-                            @php $promo = $producto->promotion; @endphp
-                            <div class="modal fade" id="modalPromo{{ $producto->id }}" tabindex="-1" aria-hidden="true">
+                        @foreach($promociones as $promocion)
+                        @php
+                        $product = $promocion->product;
+                        @endphp
+                            <div class="modal fade" id="modalPromo{{ $promocion->id }}" tabindex="-1" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered modal-xl">
                                     <div class="modal-content text-white border-0 shadow-2xl"
                                         style="background-color: #1a1a1a; border-radius: 24px; overflow: hidden;">
@@ -283,10 +282,10 @@
                                             data-bs-dismiss="modal" aria-label="Close" style="z-index: 10; color: #FFF;"></button>
                                         <div class="row g-0">
                                             <div class="col-md-6 d-none d-md-block"
-                                                style="background: url('{{ asset('storage/' . $producto->image_path) }}') center/cover no-repeat; min-height: 450px;">
+                                                style="background: url('{{ asset('storage/' . $product->image_path) }}') center/cover no-repeat; min-height: 450px;">
                                             </div>
                                             <div class="col-12 d-md-none">
-                                                <img src="{{ asset('storage/' . $producto->image_path) }}" class="w-100"
+                                                <img src="{{ asset('storage/' . $product->image_path) }}" class="w-100"
                                                     style="max-height: 300px; object-fit: cover;">
                                             </div>
                                             <div
@@ -296,10 +295,10 @@
                                                     Limitado</span>
                                                 <h3 class="display-6 fw-black text-uppercase mb-3"
                                                     style="color: #ffc107; font-family: 'Lilita One', 'Arial Black', sans-serif;">
-                                                    {{ $producto->nombre }}
+                                                    {{ $product->nombre }}
                                                 </h3>
                                                 <p class="text-light opacity-75 mb-4" style="font-size: 1.1rem; line-height: 1.6;">
-                                                    {{ $producto->desc ?? $producto->descripcion }}
+                                                    {{ $product->desc ?? $product->descripcion }}
                                                 </p>
                                                 <div
                                                     class="bg-black bg-opacity-50 rounded-4 p-3 mb-4 border border-secondary border-opacity-25 shadow-sm">
@@ -308,14 +307,14 @@
                                                             style="width: 32px; height: 32px;"><i
                                                                 class="fa-solid fa-play text-white small"></i></div>
                                                         <span class="text-light fw-bold">Inicia: <span
-                                                                class="fw-normal opacity-75 ms-1">{{ \Carbon\Carbon::parse($promo->start_date)->translatedFormat('d \d\e F, Y') }}</span></span>
+                                                                class="fw-normal opacity-75 ms-1">{{ \Carbon\Carbon::parse($promocion->start_date)->translatedFormat('d \d\e F, Y') }}</span></span>
                                                     </div>
                                                     <div class="d-flex align-items-center">
                                                         <div class="bg-danger rounded-circle p-2 me-3 d-flex align-items-center justify-content-center"
                                                             style="width: 32px; height: 32px;"><i
                                                                 class="fa-solid fa-stop text-white small"></i></div>
                                                         <span class="text-light fw-bold">Termina: <span
-                                                                class="fw-normal opacity-75 ms-1">{{ \Carbon\Carbon::parse($promo->end_date)->translatedFormat('d \d\e F, Y') }}</span></span>
+                                                                class="fw-normal opacity-75 ms-1">{{ \Carbon\Carbon::parse($promocion->end_date)->translatedFormat('d \d\e F, Y') }}</span></span>
                                                     </div>
                                                 </div>
                                                 <div
@@ -325,7 +324,7 @@
                                                             style="color: #FFF">Promocion Unica</p>
                                                         <p class="mb-0 fw-black text-white"
                                                             style="font-size: 3rem; line-height: 1;"><span class="fs-3 me-1"
-                                                                style="color: #FFF;">$</span>{{ number_format($producto->precio, 2) }}
+                                                                style="color: #FFF;">$</span>{{ number_format($product->precio, 2) }}
                                                         </p>
                                                     </div>
                                                 </div>
@@ -357,22 +356,19 @@
                     </h2>
                 </div>
 
-                @isset($productos)
-                    @php
-                        $platosFiltrados = $productos->filter(function ($p) {
-                            return $p->dish;
-                        });
-                    @endphp
-
-                    @if($platosFiltrados->count() > 0)
+                @isset($platillos)
+                    @if($platillos->count() > 0)
 
                         <div id="carouselPlatosRocket" class="carousel slide" data-bs-ride="false" data-bs-interval="false">
                             <div class="carousel-inner px-md-5">
-                                @foreach($platosFiltrados->chunk(3) as $chunkIndex => $chunk)
+                                @foreach($platillos->chunk(3) as $chunkIndex => $chunk)
                                     <div class="carousel-item {{ $chunkIndex === 0 ? 'active' : '' }}">
                                         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
 
-                                            @foreach($chunk as $producto)
+                                            @foreach($chunk as $platillo)
+                                            @php
+                                            $producto = $platillo->product;
+                                            @endphp
                                                 <div class="col">
 
                                                     <div class="card h-100 border-0 shadow-lg overflow-hidden position-relative group-hover-action"
@@ -403,7 +399,7 @@
                                 @endforeach
                             </div>
 
-                            @if($platosFiltrados->count() > 3)
+                            @if($platillo->count() > 3)
                                 <button class="carousel-control-prev positioning-arrows" type="button"
                                     data-bs-target="#carouselPlatosRocket" data-bs-slide="prev">
                                     <span class="carousel-control-prev-icon bg-dark p-4 rounded-circle" aria-hidden="true"></span>
@@ -415,8 +411,8 @@
                             @endif
                         </div>
 
-                        @foreach($platosFiltrados as $producto)
-                            @php $plato = $producto->promotion; @endphp
+                        @foreach($platillos as $plato)
+                            @php $producto = $plato->product; @endphp
                             <div class="modal fade" id="modalPromo{{ $producto->id }}" tabindex="-1" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered modal-xl">
                                     <div class="modal-content text-white border-0 shadow-2xl"

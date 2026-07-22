@@ -8,6 +8,8 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\MenuController;
 use App\Models\Product;
+use App\Models\Promotion;
+use App\Models\Dish;
 use App\Models\Banner;
 use App\Models\Menu;
 
@@ -25,9 +27,11 @@ use App\Models\Menu;
 
 Route::get('/', function () {
     $productos = App\Models\Product::with('carrousel')->latest()->get();
+    $promociones = Promotion::with('product')->where('is_Active',1)->latest()->get();
+    $platillos = Dish::with('product')->where('is_Active', 1)->latest()->get();
     $bannerActivo = Banner::where('is_Active', 1)->first();
     $menuActivo = Menu::where('is_Active', 1)->first();
-    return view('welcome', compact('bannerActivo' , 'menuActivo', 'productos'));
+    return view('welcome', compact('bannerActivo' , 'menuActivo', 'productos', 'platillos', 'promociones'));
 });
 
 Route::get('admin/dashboard', function () {
