@@ -379,3 +379,24 @@ main,
         gap: 10px;
     }
 }
+
+@media only screen and (min-width: 768px) and (max-width: 1024px){
+    .feature-grid .feature-text{
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+        margin-bottom: 25px !important;
+        margin-top: 15px !important;
+    }
+
+    .feature-text{
+        font-size: 15px !important;
+    }
+
+    .feature-grid .d-flex{
+        flex-direction: column !important;
+        text-align: center !important;
+        justify-content: center !important;
+        gap: 6px !important;
+    }
+
+}

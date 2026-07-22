@@ -135,30 +135,30 @@
                         Ingredientes de calidad, sabor único y el mejor servicio a domicilio
                     </h4>
 
-                    <div class="row pt-2 text-center text-md-left">
+                    <div class="row pt-2 text-center text-md-left feature-grid">
                         <div class="col-4">
                             <div class="d-flex flex-column align-items-center flex-md-row gap-2">
-                                <i class="fa-solid fa-star fa-xl" style="color: rgb(255, 0, 0);"></i>
-                                <span class="font-weight-bold text-uppercase small text-dark d-block mt-1"
-                                    style="font-family: DiloWord; font-weight: 600; font-size: 20px; line-height: 140%;">
+                                <i class="fa-solid fa-star fa-xl feature-icon" style="color: rgb(255, 0, 0);"></i>
+                                <span class="font-weight-bold text-uppercase small text-dark d-block mt-1 feature-text"
+                                    style="font-family: DiloWord; font-weight: 600; font-size: 20px; line-height: 120%;">
                                     Ingredientes de Calidad
                                 </span>
                             </div>
                         </div>
                         <div class="col-4">
                             <div class="d-flex flex-column align-items-center flex-md-row gap-2">
-                                <i class="fa-solid fa-house fa-xl" style="color: rgb(255, 0, 0);"></i>
-                                <span class="font-weight-bold text-uppercase small text-dark d-block mt-1"
-                                    style="font-family: DiloWord; font-weight: 600; font-size: 20px; line-height: 140%;">
+                                <i class="fa-solid fa-house fa-xl feature-icon" style="color: rgb(255, 0, 0);"></i>
+                                <span class="font-weight-bold text-uppercase small text-dark d-block mt-1 feature-text"
+                                    style="font-family: DiloWord; font-weight: 600; font-size: 20px; line-height: 120%;">
                                     Servicio a Domicilio
                                 </span>
                             </div>
                         </div>
                         <div class="col-4">
                             <div class="d-flex flex-column align-items-center flex-md-row gap-2">
-                                <i class="fa-solid fa-fire fa-xl" style="color: rgb(255, 0, 0);"></i>
-                                <span class="font-weight-bold text-uppercase small text-dark d-block mt-1"
-                                    style="font-family: DiloWord; font-weight: 600; font-size: 20px; line-height: 140%;">
+                                <i class="fa-solid fa-fire fa-xl feature-icon" style="color: rgb(255, 0, 0);"></i>
+                                <span class="font-weight-bold text-uppercase small text-dark d-block mt-1 feature-text"
+                                    style="font-family: DiloWord; font-weight: 600; font-size: 20px; line-height: 120%;">
                                     Sabor que te hace volver
                                 </span>
                             </div>
