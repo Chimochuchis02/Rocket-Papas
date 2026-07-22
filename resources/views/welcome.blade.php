@@ -667,7 +667,7 @@
 
                 <div class="col-md-4 text-center text-md-end">
                     <h5 class="fw-bold mb-3" style="color: #000;">¡Síguenos en redes sociales!</h5>
-                    <div class="d-flex justify-content-center justify-content-md-end gap-3">
+                    <div class="d-flex flex-wrap justify-content-center justify-content-lg-end justify-content-md-end gap-2 gap-md-3">
                         <a href="https://www.facebook.com/people/Rocket-Papas/61555615209607/?locale=es_LA"
                             class="social-icon-footer fb-hover text-black bg-black bg-opacity-25 rounded-circle d-flex align-items-center justify-content-center shadow-sm"
                             style="width: 45px; height: 45px; color: #1877F2;"><i
