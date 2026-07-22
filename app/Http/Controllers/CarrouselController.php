@@ -43,7 +43,7 @@ class CarrouselController extends Controller
                 'desc' => 'nullable|string|max:299',
                 'imgs' => 'required|array',
                 'imgs.*' => 'image|mimes:jpeg,png,jpg,webp|max:2048',
-                'model_3D_path' => 'nullable|file|mimes:mp4,webm, mov|max:4048',
+                'model_3D_path' => 'nullable|file|mimes:mp4,webm, mov|max:12000',
                 'producto_id' => 'required|integer|exists:products,id'
             ], [
                 'titulo.required' => 'El campo titulo es obligatorio',
@@ -55,7 +55,7 @@ class CarrouselController extends Controller
                 'imgs.*.max' => 'El maximo para subir imagenes es de maximo: 2MB',
                 'model_3D_path.file' => 'El archivo de video debe ser uno valido',
                 'model_3D_path.mimes' => 'El archivo de video debe ser del tipo: MP4, WEBM o MOV',
-                'model_3D_path.max' => 'El video renderizado debe pesar como maximo: 4MB',
+                'model_3D_path.max' => 'El video renderizado debe pesar como maximo: 12MB',
                 'producto_id.required' => 'El campo de seleccion es obligatorio',
             ]);
 
@@ -120,7 +120,7 @@ class CarrouselController extends Controller
             'precio' => 'nullable|numeric|min:0',
             'imgs' => 'nullable|array',
             'imgs.*' => 'image|mimes:jpeg,png,jpg,webp|max:2048',
-            'model_3D_path' => 'nullable|file|mimes:mp4, webm, mov|max:4048',
+            'model_3D_path' => 'nullable|file|mimes:mp4, webm, mov|max:12000',
             'producto_id' => 'nullable|integer|exists:products,id'
         ], [
             'titulo.max' => 'El maximo de caracteres para el titulo es de 250',
@@ -130,7 +130,7 @@ class CarrouselController extends Controller
             'imgs.*.max' => 'El maximo para subir imagenes es de maximo: 2MB',
             'model_3D_path.file' => 'El archivo de video debe ser uno valido',
             'model_3D_path.mimes' => 'El archivo de video debe ser del tipo: MP4, WEBM o MOV',
-            'model_3D_path.max' => 'El video renderizado debe pesar como maximo: 4MB',
+            'model_3D_path.max' => 'El video renderizado debe pesar como maximo: 12MB',
         ]);
 
         $slug = Str::slug($validatedData['titulo']);

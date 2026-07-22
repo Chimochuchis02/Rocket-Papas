@@ -132,7 +132,7 @@ class MenuController extends Controller
                 ]);
 
                 DB::commit();
-                return redirect()->route('menus.index')->with('success', '¡Menu actualizado con exito!');
+                return back()->with('success', '¡Menu actualizado con exito!');
             } catch (\Exception $e) {
                 DB::rollBack();
                 return back()->withInput()->with('error', 'Error al actualizar el menu: ' . $e->getMessage());

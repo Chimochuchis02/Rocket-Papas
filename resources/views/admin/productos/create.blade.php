@@ -80,7 +80,7 @@
                         <label for="type" class="font-semibold mb-1" style="color: #000;">Tipo de
                             Registro*:</label>
                         <select name="type" id="type"
-                            class="rounded-md border-gray-300 dark:bg-gray-700 dark:text-white" required>
+                            class="rounded-md border-gray-300 dark:bg-gray-700 dark:text-white" onchange="alternarPromocion(this.value)" required>
                             <option value="" style="color: #FFF;">-- Seleccione una opción --</option>
                             <option value="dish" {{ old('type') == 'dish' ? 'selected' : '' }}>Platillo</option>
                             <option value="promotion" {{ old('type') == 'promotion' ? 'selected' : '' }}>Promoción
@@ -97,7 +97,7 @@
                                     Promoción*:</label>
                                 <input type="date" name="start_date" id="start_date" value="{{ old('start_date') }}"
                                     class="rounded-md border-gray-300 dark:bg-gray-700 dark:text-white"
-                                    style="color: #FFF;" required />
+                                    style="color: #FFF;" />
                             </div>
 
                             <div class="flex flex-col">
@@ -107,7 +107,7 @@
                                     Promoción*:</label>
                                 <input type="date" name="end_date" id="end_date" value="{{ old('end_date') }}"
                                     class="rounded-md border-gray-300 dark:bg-gray-700 dark:text-white"
-                                    style="color: #FFF;" required />
+                                    style="color: #FFF;" />
                             </div>
                         </div>
                     </div>
@@ -146,6 +146,23 @@
             count.textContent = caracteresRestantes;
     }
 
+    function alternarPromocion(valorTipo) {
+    const contenedor = document.getElementById('campos-promocion');
+    if (!contenedor) return;
+
+    if (valorTipo === 'promotion') {
+        contenedor.classList.remove('hidden');
+    } else {
+        contenedor.classList.add('hidden');
+    }
+}
+
+    document.addEventListener('DOMContentLoaded', function () {
+    const selectDish = document.getElementById('dish');
+        if (selectDish) {
+        alternarPromocion(selectDish.value);
+    }
+    });
     </script>
 
 </x-app-layout>
