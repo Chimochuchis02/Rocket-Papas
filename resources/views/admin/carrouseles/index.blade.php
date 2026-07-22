@@ -122,7 +122,7 @@
                                             <form action="{{ route('carrousels.toggle-active', $carousel->id) }}" method="POST"
                                                 class="d-inline">
                                                 @csrf
-                                                @method('PATCH') <!-- Uso PATCH porque solo se va a modificar un campo -->
+                                                @method('PATCH')
 
                                                 @if($carousel->is_Active)
                                                     <button type="submit" class="btn btn-warning btn-sm" data-bs-toggle="tooltip"

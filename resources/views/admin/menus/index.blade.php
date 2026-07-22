@@ -34,7 +34,7 @@
             @if($menus->isEmpty())
                 <div
                     class="text-center p-8 bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm">
-                    <p class="text-white-500 dark:text-gray-400 font-medium">No hay carruseles registrados actualmente.</p>
+                    <p class="text-white-500 dark:text-gray-400 font-medium">No hay Menus       registrados actualmente.</p>
                 </div>
 
             @else
@@ -90,13 +90,11 @@
 
                                         <div class="mt-4 flex items-center justify-between">
                                             @if($menu->is_Active)
-                                                <!-- Badge Esmeralda de Banner Actual -->
                                                 <span
                                                     class="px-3 py-1.5 bg-emerald-600 text-white text-xs font-bold rounded-lg shadow-sm">
                                                     Menu Actual
                                                 </span>
                                             @else
-                                                <!-- Formulario para Asignar como nuevo -->
                                                 <form action="{{ route('menus.activate', $menu->id) }}" method="POST">
                                                     @csrf
                                                     @method('PUT')

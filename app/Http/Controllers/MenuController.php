@@ -93,52 +93,43 @@ class MenuController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, $id)
-    {
-        $menu = Menu::findOrFail($id);
+{
+    $menu = Menu::findOrFail($id);
 
-        $validatedData = $request->validate([
-            'titulo' => 'nullable|string|max:250',
-            'images_menus' => 'nullable|array',
-            'images_menus.*' => 'image|mimes:jpeg,png,jpg,webp|max:2048',
-        ], [
-            'titulo.max' => 'El maximo del campo titulo es de 250 caracteres',
-            'images.menus.*.image' => 'El campo de imagenes debe de ser un tipo de archivo valido',
-            'images_menus.*.mimes' => 'El tipo de archivo debe ser: JPEG, PNG, JPG o WEBP',
-            'images_menus.*.max' => 'El maximo para un archivo es de 2MB',
-        ]);
+    $rutasImagenes = $menu->images_menus;
 
-        $rutasImagenes = $menu->images_menus;
-        if ($request->hasFile('images_menus')) {
+    if ($request->hasFile('images_menus')) {
 
-            if (!empty($menu->images_menus) && is_array($menu->images_menus)) {
-                foreach ($menu->images_menus as $viejaImagen) {
-                    if (Storage::disk('public')->exists($viejaImagen)) {
-                        Storage::disk('public')->delete($viejaImagen);
-                    }
+        if (!empty($menu->images_menus) && is_array($menu->images_menus)) {
+            foreach ($menu->images_menus as $viejaImagen) {
+                if (Storage::disk('public')->exists($viejaImagen)) {
+                    Storage::disk('public')->delete($viejaImagen);
                 }
             }
+        }
 
-            $rutasImagenes = [];
-            foreach ($request->file('images_menus') as $file) {
-                $path = $file->store('menus', 'public');
-                $rutasImagenes[] = $path;
-            }
-
-            DB::beginTransaction();
-            try {
-                $menu->update([
-                    'titulo' => $validatedData['titulo'],
-                    'images_menus' => $rutasImagenes,
-                ]);
-
-                DB::commit();
-                return back()->with('success', '¡Menu actualizado con exito!');
-            } catch (\Exception $e) {
-                DB::rollBack();
-                return back()->withInput()->with('error', 'Error al actualizar el menu: ' . $e->getMessage());
-            }
+        $rutasImagenes = [];
+        foreach ($request->file('images_menus') as $file) {
+            $path = $file->store('menus', 'public');
+            $rutasImagenes[] = $path;
         }
     }
+
+    DB::beginTransaction();
+    try {
+        $menu->update([
+            'titulo' => $request->titulo,
+            'images_menus' => $rutasImagenes,
+        ]);
+
+        DB::commit();
+        return redirect()->route("menus.index")->with("success", "!Menu Actualizado!");
+
+    } catch (\Exception $e) {
+        DB::rollBack();
+        return redirect()->route('menus.index')->with('error', '¡Menu no actualizado!, ocurrió un error');
+    }
+}
 
     /**
      * Remove the specified resource from storage.
