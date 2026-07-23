@@ -38,7 +38,7 @@
                             <div class="mb-3">
                                 <label for="titulo" class="form-label text-gray-400">Título </label>
                                 <input type="text" class="form-class bg-secondary text-white form-control" id="titulo"
-                                    name="titulo" value="{{ old('titulo', $carrousel->titulo) }}" required>
+                                    name="titulo" value="{{ old('titulo', $carrousel->titulo) }}">
                             </div>
 
                             <div class="mb-3">

@@ -48,6 +48,12 @@
                                     class="px-2.5 py-1 text-xs font-black uppercase rounded bg-yellow-500/10 text-yellow-500 border border-yellow-500/20">
                                     ID: {{ $banner->id }}
                                 </span>
+
+                                <span class="text-lg tracking-wide uppercase font-black"
+                                    style="color: #000;">
+                                    {{ $banner->titulo_banner }}
+
+                                </span>
                             </div>
 
                             <svg class="w-5 h-5 text-gray-500 transform transition-transform duration-200"

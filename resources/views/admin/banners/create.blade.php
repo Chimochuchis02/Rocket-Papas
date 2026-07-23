@@ -45,6 +45,17 @@
                             style="color: #000;" required />
                     </div>
 
+                    <div class="flex flex-col">
+                        <label for="titulo_banner" class="font-semibold mb-1" style="color: #000;">Titulo Del
+                            Banner*:</label>
+
+                        <input type="text" name="titulo_banner" id="titulo_banner" value="{{ old('titulo_banner') }}"
+                            class="rounded-md border-gray-300 dark:bg-gray-700 dark:text-white" style="color: #FFF;"
+                            required maxlength="90" oninput="counterCharacter()"/>
+
+                        <small class="form-text"> Letras Restantes: <span id="character-counter"> 90 </span> </small>
+                    </div>
+
                     <div class="pt-4">
                         <button type="submit" class="w-full font-bold py-3 px-4 rounded shadow transition duration-200"
                             style="background-color: #000; color: #FFF;">
@@ -56,4 +67,16 @@
         </div>
     </div>
 
+    <script>
+        function counterCharacter(){
+            const input = document.getElementById('titulo_banner');
+            const contador = document.getElementById('character-counter');
+
+            const maxCharacters = input.getAttribute('maxlength');
+
+            const caracteresActuales = input.value.length;
+            const caracteresRestantes = maxCharacters - caracteresActuales;
+            contador.textContent = caracteresRestantes;
+        }
+    </script>
 </x-app-layout>

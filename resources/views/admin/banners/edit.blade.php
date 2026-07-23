@@ -4,7 +4,7 @@
             <div class="col-md-10">
                 <div class="card bg-dark border-secondary shadow-lg">
                     <div class="card-header border-secondary d-flex justify-content-between align-items-center">
-                        <h4 class="mb-0" style="color: #FFF;">Editar Producto: {{ $banner->id }}
+                        <h4 class="mb-0 uppercase" style="color: #FFF;">Editar Producto: {{ $banner->titulo_banner }}
                         </h4>
                         <a href="{{ route('banners.index') }}" class="btn btn-danger">Cancelar</a>
                     </div>
@@ -64,6 +64,16 @@
                                                 style="color: rgb(255, 0, 0);"></i>Sin Imagen actualmente</span>
                                     @endif
                                 </div>
+
+                            <div class="flex flex-col">
+                            <label for="titulo_banner" class="font-semibold mb-1" style="color: #FFF;">Titulo Del
+                            Banner:</label>
+
+                            <input type="text" name="titulo_banner" id="titulo_banner" value="{{ old('titulo_banner') }}"
+                            class="rounded-md border-gray-300 dark:bg-gray-700 dark:text-white" style="color: #FFF;"
+                            required maxlength="90"/>
+
+                            <small class="form-text" style="color:#FFF;">Deje este campo vacio si no quiere cambiarlo</small>
                             </div>
                             <hr class="border-secondary my-4">
 
