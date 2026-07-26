@@ -39,9 +39,9 @@
 
                         <input type="text" name="titulo" id="titulo" value="{{ old('titulo') }}"
                             class="rounded-md border-gray-300 dark:bg-gray-700 dark:text-white" style="color: #FFF;"
-                            required maxlength="250" oninput="countCharacter()"/>
+                            required maxlength="35" oninput="countCharacter()"/>
 
-                        <small class="form-text"> Letras Restantes: <span id="char-count"> 250 </span> </small> 
+                        <small class="form-text"> Letras Restantes: <span id="char-count"> 35 </span> </small> 
                     </div>
 
                     <div class="flex flex-col">

@@ -35,16 +35,16 @@ class MenuController extends Controller
     public function store(Request $request)
     { {
             $validatedData = $request->validate([
-                'titulo' => 'required|string|max:250',
+                'titulo' => 'required|string|max:35',
                 'images_menus' => 'required|array',
                 'images_menus.*' => 'image|mimes:jpeg,png,jpg,webp|max:2048'
             ], [
                 'titulo.required' => 'El campo de titulo es obligatorio',
-                'titulo.max' => 'El maximo del campo titulo es de 250 caracteres',
+                'titulo.max' => 'El maximo del campo titulo es de 35 caracteres',
                 'images_menus.required' => 'El campo de imagenes es obligatorio',
-                'images_menus.*.image'=> 'El tipo de archivo para las imagenes debe ser un archivo valido de imagen',
-                'images_menus.*.mimes'=> 'El archivo de imagen debe ser: JPEG, PNG, JPG o WEBP',
-                'images_menus.*.max'=> 'El maximo tamaño de la imagen deb ser de 2MB',
+                'images_menus.*.image' => 'El tipo de archivo para las imagenes debe ser un archivo valido de imagen',
+                'images_menus.*.mimes' => 'El archivo de imagen debe ser: JPEG, PNG, JPG o WEBP',
+                'images_menus.*.max' => 'El maximo tamaño de la imagen deb ser de 2MB',
             ]);
 
             $rutasImagenes = [];
@@ -93,43 +93,53 @@ class MenuController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, $id)
-{
-    $menu = Menu::findOrFail($id);
+    {
+        $menu = Menu::findOrFail($id);
+        $validatedData = $request->validate([
+            'titulo' => 'nullable|string|max:35',
+            'images_menus' => 'nullable|array',
+            'images_menus.*' => 'image|mimes:jpeg,png,jpg,webp|max:2048'
+        ], [
+            'titulo.max' => 'El maximo del campo titulo es de 35 caracteres',
+            'images_menus.*.image' => 'El tipo de archivo para las imagenes debe ser un archivo valido de imagen',
+            'images_menus.*.mimes' => 'El archivo de imagen debe ser: JPEG, PNG, JPG o WEBP',
+            'images_menus.*.max' => 'El maximo tamaño de la imagen deb ser de 2MB',
+        ]);
 
-    $rutasImagenes = $menu->images_menus;
+        $rutasImagenes = $menu->images_menus;
 
-    if ($request->hasFile('images_menus')) {
+        if ($request->hasFile('images_menus')) {
 
-        if (!empty($menu->images_menus) && is_array($menu->images_menus)) {
-            foreach ($menu->images_menus as $viejaImagen) {
-                if (Storage::disk('public')->exists($viejaImagen)) {
-                    Storage::disk('public')->delete($viejaImagen);
+            if (!empty($menu->images_menus) && is_array($menu->images_menus)) {
+                foreach ($menu->images_menus as $viejaImagen) {
+                    if (Storage::disk('public')->exists($viejaImagen)) {
+                        Storage::disk('public')->delete($viejaImagen);
+                    }
                 }
+            }
+
+            $rutasImagenes = [];
+            foreach ($request->file('images_menus') as $file) {
+                $path = $file->store('menus', 'public');
+                $rutasImagenes[] = $path;
             }
         }
 
-        $rutasImagenes = [];
-        foreach ($request->file('images_menus') as $file) {
-            $path = $file->store('menus', 'public');
-            $rutasImagenes[] = $path;
+        DB::beginTransaction();
+        try {
+            $menu->update([
+                'titulo' => $request->titulo,
+                'images_menus' => $rutasImagenes,
+            ]);
+
+            DB::commit();
+            return redirect()->route("menus.index")->with("success", "!Menu Actualizado!");
+
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->route('menus.index')->with('error', '¡Menu no actualizado!, ocurrió un error');
         }
     }
-
-    DB::beginTransaction();
-    try {
-        $menu->update([
-            'titulo' => $request->titulo,
-            'images_menus' => $rutasImagenes,
-        ]);
-
-        DB::commit();
-        return redirect()->route("menus.index")->with("success", "!Menu Actualizado!");
-
-    } catch (\Exception $e) {
-        DB::rollBack();
-        return redirect()->route('menus.index')->with('error', '¡Menu no actualizado!, ocurrió un error');
-    }
-}
 
     /**
      * Remove the specified resource from storage.
