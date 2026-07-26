@@ -41,17 +41,12 @@
                                     name="titulo" value="{{ old('titulo', $carrousel->titulo) }}">
                             </div>
 
-                            <div class="mb-3">
-                                <label for="desc" class="form-label">Descripción Corta</label>
-                                <textarea class="form-control bg-secondary text-white" id="desc" name="desc"
-                                    rows="3">{{ old('desc', $carrousel->desc) }}</textarea>
-                            </div>
-
                             <hr class="border-secondary my-4">
 
                             <div class="row mb-4">
                                 <div class="col-md-6">
-                                    <label for="model_3D_path" class="form-label text-warning fw-bold">Actualizar Video Renderizado (.MP4, .WEBm)</label>
+                                    <label for="model_3D_path" class="form-label text-warning fw-bold">Actualizar Video
+                                        Renderizado (.MP4, .WEBm)</label>
                                     <input type="file" class="form-control bg-secondary text-white" id="model_3D_path"
                                         name="model_3D_path">
                                     <small style="color: #FFF;">Deje este campo vacío si no desea cambiar el video

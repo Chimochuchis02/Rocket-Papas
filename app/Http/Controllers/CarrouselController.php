@@ -26,7 +26,7 @@ class CarrouselController extends Controller
      */
     public function create()
     {
-        $carrouseles = Carrousel::where('is_Active', true)->get();
+        $carrouseles = Carrousel::get();
         $platillos = Product::where('type', 'dish')
             ->orderBy('nombre', 'asc')
             ->get();
@@ -40,7 +40,6 @@ class CarrouselController extends Controller
     { {
             $validatedData = $request->validate([
                 'titulo' => 'required|string|max:250',
-                'desc' => 'nullable|string|max:299',
                 'imgs' => 'required|array',
                 'imgs.*' => 'image|mimes:jpeg,png,jpg,webp|max:2048',
                 'model_3D_path' => 'nullable|file|mimes:mp4,webm, mov|max:12000',
@@ -48,7 +47,6 @@ class CarrouselController extends Controller
             ], [
                 'titulo.required' => 'El campo titulo es obligatorio',
                 'titulo.max' => 'El maximo de caracteres para el titulo es de 250',
-                'desc.max' => 'El maximo de caracteres para la descripcion es de 299',
                 'imgs.required' => 'El campo de imagenes es obligatorio',
                 'imgs.*.image' => 'El archivo de imagenes debe ser uno valido',
                 'imgs.*.mimes' => 'El archivo debe ser del tipo: JPEG, PNG, JPG o WEBP',
@@ -78,10 +76,7 @@ class CarrouselController extends Controller
             try {
                 Carrousel::create([
                     'titulo' => $validatedData['titulo'],
-                    'slug' => $slug,
-                    'desc' => $validatedData['desc'] ?? null,
-                    'precio' => $validatedData['precio'] ?? null,
-                    'imgs' => $rutasImagenes, 
+                    'imgs' => $rutasImagenes,
                     'model_3D_path' => $rutaModel3D,
                     'producto_id' => $validatedData['producto_id']
                 ]);
@@ -116,15 +111,12 @@ class CarrouselController extends Controller
 
         $validatedData = $request->validate([
             'titulo' => 'nullable|string|max:250',
-            'desc' => 'nullable|string|max:250',
-            'precio' => 'nullable|numeric|min:0',
             'imgs' => 'nullable|array',
             'imgs.*' => 'image|mimes:jpeg,png,jpg,webp|max:2048',
             'model_3D_path' => 'nullable|file|mimes:mp4, webm, mov|max:12000',
             'producto_id' => 'nullable|integer|exists:products,id'
         ], [
             'titulo.max' => 'El maximo de caracteres para el titulo es de 250',
-            'desc.max' => 'El maximo de caracteres para la descripcion es de 299',
             'imgs.*.image' => 'El archivo de imagenes debe ser uno valido',
             'imgs.*.mimes' => 'El archivo debe ser del tipo: JPEG, PNG, JPG o WEBP',
             'imgs.*.max' => 'El maximo para subir imagenes es de maximo: 2MB',
@@ -166,9 +158,7 @@ class CarrouselController extends Controller
         try {
             $carrousel->update([
                 'titulo' => $validatedData['titulo'],
-                'slug' => $slug,
                 'desc' => $validatedData['desc'] ?? null,
-                'precio' => $validatedData['precio'] ?? null,
                 'imgs' => $rutasImagenes,
                 'model_3D_path' => $rutaModel3D,
                 'producto_id' => $validatedData['producto_id']
@@ -192,13 +182,6 @@ class CarrouselController extends Controller
      */
     public function toggleActive($id)
     {
-        $carrousel = Carrousel::findOrFail($id);
-
-        $carrousel->is_Active = !$carrousel->is_Active;
-        $carrousel->save();
-
-        $status = $carrousel->is_Active ? 'activado' : 'desactivado';
-
-        return redirect()->route('carrouseles.index')->with('success', 'El estado de un carrousel ha cambiado correctamente.');
+        //
     }
 }

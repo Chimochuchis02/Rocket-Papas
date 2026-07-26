@@ -42,28 +42,17 @@
 
                         <input type="text" name="titulo" id="titulo" value="{{ old('titulo') }}"
                             class="rounded-md border-gray-300 dark:bg-gray-700 dark:text-white" style="color: #FFF;"
-                            required maxlength="250" oninput="characterTitle()"/>
+                            required maxlength="250" oninput="characterTitle()" />
 
                         <small class="form-text"> Letras Restantes: <span id="character-counter"> 250 </span> </small>
                     </div>
 
                     <div class="flex flex-col">
-                        <label for="desc" class="font-semibold mb-1" style="color: #000;">Descripción
-                            (Opcional):</label>
-
-                        <textarea name="desc" id="desc" rows="3"
-                            class="rounded-md border-gray-300 dark:bg-gray-700 dark:text-white"
-                            style="color: #FFF;" maxlength="299" oninput="characterCount()">{{ old('desc') }}</textarea>
-
-                        <small class="form-text"> Letras Restantes: <span id="count"> 299 </span> </small>
-
-                    </div>
-
-                    <div class="flex flex-col">
-                        <label for="image_path" class="font-semibold mb-1" style="color: #000;">Imagen del Producto:</label>
+                        <label for="image_path" class="font-semibold mb-1" style="color: #000;">Imagenes del
+                            Producto:</label>
                         <input type="file" name="imgs[]" id="imgs" multiple accept="imgs/*"
                             class="file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-yellow-50 file:text-yellow-700 hover:file:bg-yellow-100"
-                            style="color: #000;" required/>
+                            style="color: #000;" required />
                     </div>
 
                     <div class="flex flex-col">
@@ -72,7 +61,8 @@
                         <input type="file" name="model_3D_path" id="model_3D_path" accept="model_3D_path/*"
                             class="file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-yellow-50 file:text-yellow-700 hover:file:bg-yellow-100"
                             style="color: #000;" />
-                            <small class="font-semibold mb-1" style="color: #000;">Solo se aceptan videos del tipo: MP4, WEBm</small>
+                        <small class="font-semibold mb-1" style="color: #000;">Solo se aceptan videos del tipo: MP4,
+                            WEBm</small>
                     </div>
 
                     <div class="row">
@@ -106,27 +96,16 @@
     </div>
 
     <script>
-     function characterCount(){
-        const textarea = document.getElementById('desc');
-        const contador = document.getElementById('count');
+        function characterTitle() {
+            const input = document.getElementById('titulo');
+            const counter = document.getElementById('character-counter');
 
-        const maxCaracteres = textarea.getAttribute('maxlength');
-        
-        const caracteresActuales = textarea.value.length;
-        const caracteresRestantes = maxCaracteres - caracteresActuales;
-        contador.textContent = caracteresRestantes;
-     }
-     
-     function characterTitle(){
-        const input = document.getElementById('titulo');
-        const counter = document.getElementById('character-counter');
+            const maxCharacter = input.getAttribute('maxlength');
 
-        const maxCharacter = input.getAttribute('maxlength');
-
-        const caracteresAhora = input.value.length;
-        const caracteresQuedantes = maxCharacter - caracteresAhora;
-        counter.textContent = caracteresQuedantes;
-     }
+            const caracteresAhora = input.value.length;
+            const caracteresQuedantes = maxCharacter - caracteresAhora;
+            counter.textContent = caracteresQuedantes;
+        }
     </script>
 
 </x-app-layout>

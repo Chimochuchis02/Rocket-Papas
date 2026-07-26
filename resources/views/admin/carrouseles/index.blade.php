@@ -1,5 +1,5 @@
 <x-app-layout>
-    
+
     <div class="py-12 bg-gray-50 dark:bg-gray-900 min-h-screen">
         <div class="max-w-4xl mx-auto sm:px-6 lg:px-8 space-y-4">
 
@@ -72,17 +72,7 @@
                                             style="color: #000;">Titulo del platillo:</span>
                                         <code
                                             class="text-sm bg-gray-100 dark:bg-gray-950 px-2 py-1 rounded text-red-500 font-mono block mt-1 break-all">
-                                            {{ $carousel->titulo }}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </code>
-                                    </div>
-
-                                    <div>
-                                        <span class="text-xs font-bold text-gray-400 uppercase tracking-widest block"
-                                            style="color: #000;">Descripción
-                                            Comercial:</span>
-                                        <p class="text-sm text-gray-600 dark:text-gray-300 mt-1 font-medium leading-relaxed"
-                                            style="color: #000;">
-                                            {{ $carousel->desc ?? 'Sin descripción añadida.' }}
-                                        </p>
+                                                            {{ $carousel->titulo }}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </code>
                                     </div>
 
                                     <div class="space-y-5">
@@ -113,30 +103,12 @@
                                                     <video autoplay loop muted playsinline preload="auto"
                                                         style="max-height: 420px; object-fit: contain; width: auto;"
                                                         class="img-fluid rounded shadow-lg">
-                                                        <source src="{{ asset('storage/' . $carousel->model_3D_path) }}" type="video/mp4">
+                                                        <source src="{{ asset('storage/' . $carousel->model_3D_path) }}"
+                                                            type="video/mp4">
                                                     </video>
                                                 </div>
                                             </div>
                                         @endif
-                                        <div class="pt-4">
-                                            <form action="{{ route('carrousels.toggle-active', $carousel->id) }}" method="POST"
-                                                class="d-inline">
-                                                @csrf
-                                                @method('PATCH')
-
-                                                @if($carousel->is_Active)
-                                                    <button type="submit" class="btn btn-warning btn-sm" data-bs-toggle="tooltip"
-                                                        title="Desactivar">
-                                                        <i class="fa-solid fa-eye-slash me-1"></i> Desactivar
-                                                    </button>
-                                                @else
-                                                    <button type="submit" class="btn btn-success btn-sm" data-bs-toggle="tooltip"
-                                                        title="Activar">
-                                                        <i class="fa-solid fa-eye me-1"></i> Activar
-                                                    </button>
-                                                @endif
-                                            </form>
-                                        </div>
 
                                         <a href="{{ route('carrouseles.edit', $carousel->id) }}"
                                             class="btn btn-zinc shadow-sm rounded-3 d-flex align-items-center justify-content-center border border-white border-opacity-10"

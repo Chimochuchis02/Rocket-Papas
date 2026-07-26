@@ -14,11 +14,9 @@ return new class extends Migration
         Schema::create('carrousels', function (Blueprint $table) {
             $table->id();
             $table->String('titulo', 250);
-            $table->String('desc', 299)->nullable();
             $table->json('imgs')->nullable();
             $table->String('model_3D_path')->nullable();
             $table->foreignId('producto_id')->nullable()->constrained('products')->onDelete('set null');
-            $table->boolean('is_Active')->default(true);
             $table->timestamps();
         });
     }
