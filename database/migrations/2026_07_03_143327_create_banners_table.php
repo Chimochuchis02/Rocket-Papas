@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('banners', function (Blueprint $table) {
             $table->id();
-            $table->string('titulo_banner', 90);
+            $table->string('titulo_banner', 35);
             $table->string('image_banner');
             $table->boolean('is_Active')->default(false);
             $table->timestamps();

@@ -22,7 +22,7 @@
                         @if ($errors->any())
                             <div
                                 style="background: #f8d7da; color: #721c24; padding: 15px; margin-bottom: 20px; border-radius: 5px;">
-                                <strong>¡Fallo de validación!</strong>
+                                <strong>¡Fallo de validacion!</strong>
                                 <ul>
                                     @foreach ($errors->all() as $error)
                                         <li>{{ $error }}</li>

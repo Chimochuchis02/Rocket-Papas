@@ -36,14 +36,14 @@ class BannerController extends Controller
     { {
             $validatedData = $request->validate([
                 'image_banner' => 'required|image|mimes:jpeg,png,jpg,webp|max:2048',
-                'titulo_banner' => 'required|string|max:90',
+                'titulo_banner' => 'required|string|max:35',
             ], [
                 'image_banner.required' => 'Debe Llenar el espacio de la imagen primero',
                 'image_banner.image' => 'El archivo debe ser un archivo valido',
                 'image_banner.mimes' => 'El tipo del archivo debe ser: JPEG, PNG, JPG O WEBP',
                 'image_banner.max' => 'El tamaño maximo para subir un archivo es de 2MB',
                 'titulo_banner.required'=> 'El campo titulo es obligatorio',
-                'titulo_banner.max'=> 'El maximo de palabras para el campo titulo es de 90 caracteres',
+                'titulo_banner.max'=> 'El maximo de palabras para el campo titulo es de 35 caracteres',
             ]);
             
             $rutaImagen = null;
@@ -103,12 +103,12 @@ class BannerController extends Controller
         $banner = Banner::findOrFail($id);
         $validatedData = $request->validate([
             'image_banner' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
-            'titulo_banner'=> 'nullable|string|max:90',
+            'titulo_banner'=> 'nullable|string|max:35',
         ], [
             'image_banner.image' => 'El archivo debe ser un archivo valido',
             'image_banner.mimes' => 'El tipo del archivo debe ser: JPEG, PNG, JPG O WEBP',
             'image_banner.max' => 'El tamaño maximo para subir un archivo es de 2MB',
-            'titulo_banner.max'=> 'El maximo de palabras para el campo titulo es de 90 caracteres',
+            'titulo_banner.max'=> 'El maximo de palabras para el campo titulo es de 35 caracteres',
         ]);
 
         $imagePath = $banner->image_banner;
