@@ -51,7 +51,7 @@
 
                         <input type="text" name="titulo_banner" id="titulo_banner" value="{{ old('titulo_banner') }}"
                             class="rounded-md border-gray-300 dark:bg-gray-700 dark:text-white" style="color: #FFF;"
-                            required maxlength="90" oninput="counterCharacter()"/>
+                            required maxlength="35" oninput="counterCharacter()"/>
 
                         <small class="form-text"> Letras Restantes: <span id="character-counter"> 35 </span> </small>
                     </div>
