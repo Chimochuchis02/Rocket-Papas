@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('carrousels', function (Blueprint $table) {
             $table->id();
-            $table->String('titulo', 250);
+            $table->String('titulo', 40);
             $table->json('imgs')->nullable();
             $table->String('model_3D_path')->nullable();
             $table->foreignId('producto_id')->nullable()->constrained('products')->onDelete('set null');

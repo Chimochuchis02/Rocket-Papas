@@ -23,7 +23,7 @@
                 @if ($errors->any())
                     <div
                         class="mb-6 p-4 bg-red-100 dark:bg-red-900 border-l-4 border-red-500 text-red-700 dark:text-red-200 rounded shadow">
-                        <p class="font-bold mb-2">⚠️ Error de Validación:</p>
+                        <p class="font-bold mb-2">¡Fallo de Validacion!:</p>
                         <ul class="list-disc pl-5 text-sm space-y-1">
                             @foreach ($errors->all() as $error)
                                 <li>{{ $error }}</li>
@@ -44,7 +44,7 @@
                             class="rounded-md border-gray-300 dark:bg-gray-700 dark:text-white" style="color: #FFF;"
                             required maxlength="250" oninput="characterTitle()" />
 
-                        <small class="form-text"> Letras Restantes: <span id="character-counter"> 250 </span> </small>
+                        <small class="form-text"> Letras Restantes: <span id="character-counter"> 40 </span> </small>
                     </div>
 
                     <div class="flex flex-col">

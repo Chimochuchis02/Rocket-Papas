@@ -39,14 +39,14 @@ class CarrouselController extends Controller
     public function store(Request $request)
     { {
             $validatedData = $request->validate([
-                'titulo' => 'required|string|max:250',
+                'titulo' => 'required|string|max:40',
                 'imgs' => 'required|array',
                 'imgs.*' => 'image|mimes:jpeg,png,jpg,webp|max:2048',
                 'model_3D_path' => 'nullable|file|mimes:mp4,webm, mov|max:12000',
                 'producto_id' => 'required|integer|exists:products,id'
             ], [
                 'titulo.required' => 'El campo titulo es obligatorio',
-                'titulo.max' => 'El maximo de caracteres para el titulo es de 250',
+                'titulo.max' => 'El maximo de caracteres para el titulo es de 40',
                 'imgs.required' => 'El campo de imagenes es obligatorio',
                 'imgs.*.image' => 'El archivo de imagenes debe ser uno valido',
                 'imgs.*.mimes' => 'El archivo debe ser del tipo: JPEG, PNG, JPG o WEBP',
@@ -110,13 +110,13 @@ class CarrouselController extends Controller
         $carrousel = Carrousel::findOrFail($id);
 
         $validatedData = $request->validate([
-            'titulo' => 'nullable|string|max:250',
+            'titulo' => 'nullable|string|max:40',
             'imgs' => 'nullable|array',
             'imgs.*' => 'image|mimes:jpeg,png,jpg,webp|max:2048',
             'model_3D_path' => 'nullable|file|mimes:mp4, webm, mov|max:12000',
             'producto_id' => 'nullable|integer|exists:products,id'
         ], [
-            'titulo.max' => 'El maximo de caracteres para el titulo es de 250',
+            'titulo.max' => 'El maximo de caracteres para el titulo es de 40',
             'imgs.*.image' => 'El archivo de imagenes debe ser uno valido',
             'imgs.*.mimes' => 'El archivo debe ser del tipo: JPEG, PNG, JPG o WEBP',
             'imgs.*.max' => 'El maximo para subir imagenes es de maximo: 2MB',

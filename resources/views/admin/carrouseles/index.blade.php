@@ -21,7 +21,7 @@
             @if ($errors->any())
                 <div
                     class="mb-6 p-4 bg-red-100 dark:bg-red-900 border-l-4 border-red-500 text-red-700 dark:text-red-200 rounded shadow">
-                    <p class="font-bold mb-2">⚠️ Error de Validación:</p>
+                    <p class="font-bold mb-2"> ¡Fallo de Validacion!:</p>
                     <ul class="list-disc pl-5 text-sm space-y-1">
                         @foreach ($errors->all() as $error)
                             <li>{{ $error }}</li>
@@ -72,7 +72,7 @@
                                             style="color: #000;">Titulo del platillo:</span>
                                         <code
                                             class="text-sm bg-gray-100 dark:bg-gray-950 px-2 py-1 rounded text-red-500 font-mono block mt-1 break-all">
-                                                            {{ $carousel->titulo }}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </code>
+                                                {{ $carousel->titulo }}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </code>
                                     </div>
 
                                     <div class="space-y-5">
