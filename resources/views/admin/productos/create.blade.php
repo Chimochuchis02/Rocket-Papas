@@ -15,7 +15,7 @@
                 @if (session('success'))
                     <div
                         class="mb-6 p-4 bg-green-100 dark:bg-green-900 border-l-4 border-green-500 text-green-700 dark:text-green-200 rounded shadow flex items-center">
-                        <span class="mr-2">✅</span>
+                        <span class="mr-2"> <i class="fa-solid fa-check" style="color: rgb(99, 230, 190);"></i></span>
                         <p class="font-bold">{{ session('success') }}</p>
                     </div>
                 @endif
@@ -42,15 +42,15 @@
 
                         <input type="text" name="nombre" id="nombre" value="{{ old('nombre') }}"
                             class="rounded-md border-gray-300 dark:bg-gray-700 dark:text-white" style="color: #FFF;"
-                            required maxlength="250" oninput="caracteresInput()"/>
+                            required maxlength="40" oninput="caracteresInput()" />
 
-                        <small class="form-text"> letras Restantes: <span id="char-counter"> 250 </span> </small>
+                        <small class="form-text"> letras Restantes: <span id="char-counter"> 40 </span> </small>
 
                     </div>
 
                     <div class="flex flex-col">
                         <label for="precio" class="font-semibold mb-1" style="color: #000;">Precio*:</label>
-                        
+
                         <input type="number" name="precio" id="precio" step="0.01" value="{{ old('precio') }}"
                             class="rounded-md border-gray-300 dark:bg-gray-700 dark:text-white" style="color: #FFF;"
                             required />
@@ -61,10 +61,10 @@
                             (Opcional):</label>
 
                         <textarea name="desc" id="desc" rows="3"
-                            class="rounded-md border-gray-300 dark:bg-gray-700 dark:text-white"
-                            style="color: #FFF;" maxlength="299" oninput="contarCaracteres()" > {{ old('desc') }}</textarea>
+                            class="rounded-md border-gray-300 dark:bg-gray-700 dark:text-white" style="color: #FFF;"
+                            maxlength="250" oninput="contarCaracteres()"> {{ old('desc') }}</textarea>
 
-                        <small class="form-text"> letras Restantes <span id="char-count"> 299 </span> </small>
+                        <small class="form-text"> letras Restantes <span id="char-count"> 250 </span> </small>
                     </div>
 
                     <div class="flex flex-col">
@@ -80,7 +80,8 @@
                         <label for="type" class="font-semibold mb-1" style="color: #000;">Tipo de
                             Registro*:</label>
                         <select name="type" id="type"
-                            class="rounded-md border-gray-300 dark:bg-gray-700 dark:text-white" onchange="alternarPromocion(this.value)" required>
+                            class="rounded-md border-gray-300 dark:bg-gray-700 dark:text-white"
+                            onchange="alternarPromocion(this.value)" required>
                             <option value="" style="color: #FFF;">-- Seleccione una opción --</option>
                             <option value="dish" {{ old('type') == 'dish' ? 'selected' : '' }}>Platillo</option>
                             <option value="promotion" {{ old('type') == 'promotion' ? 'selected' : '' }}>Promoción
@@ -122,20 +123,20 @@
             </div>
         </div>
     </div>
-    
+
     <script>
-    function contarCaracteres(){
+        function contarCaracteres() {
             const textarea = document.getElementById('desc');
             const contador = document.getElementById('char-count');
 
             const maxCaracteres = textarea.getAttribute('maxlength');
-        
+
             const caracteresActuales = textarea.value.length;
             const caracteresRestantes = maxCaracteres - caracteresActuales;
             contador.textContent = caracteresRestantes;
-    }
+        }
 
-    function caracteresInput(){
+        function caracteresInput() {
             const input = document.getElementById('nombre');
             const count = document.getElementById('char-counter');
 
@@ -144,25 +145,25 @@
             const caracteresActuales = input.value.length;
             const caracteresRestantes = maxCaracteres - caracteresActuales;
             count.textContent = caracteresRestantes;
-    }
+        }
 
-    function alternarPromocion(valorTipo) {
-    const contenedor = document.getElementById('campos-promocion');
-    if (!contenedor) return;
+        function alternarPromocion(valorTipo) {
+            const contenedor = document.getElementById('campos-promocion');
+            if (!contenedor) return;
 
-    if (valorTipo === 'promotion') {
-        contenedor.classList.remove('hidden');
-    } else {
-        contenedor.classList.add('hidden');
-    }
-}
+            if (valorTipo === 'promotion') {
+                contenedor.classList.remove('hidden');
+            } else {
+                contenedor.classList.add('hidden');
+            }
+        }
 
-    document.addEventListener('DOMContentLoaded', function () {
-    const selectDish = document.getElementById('dish');
-        if (selectDish) {
-        alternarPromocion(selectDish.value);
-    }
-    });
+        document.addEventListener('DOMContentLoaded', function () {
+            const selectDish = document.getElementById('dish');
+            if (selectDish) {
+                alternarPromocion(selectDish.value);
+            }
+        });
     </script>
 
 </x-app-layout>

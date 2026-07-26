@@ -18,7 +18,6 @@ class ProductController extends Controller
     {
 
         $productos = Product::with(['dish', 'promotion'])->latest()->paginate(5);
-        //$carrousel = Product::with('carrouseles')->get();
         return view('admin.productos.index', compact('productos'));
     }
 
@@ -37,27 +36,27 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-    
+
         $validatedData = $request->validate([
-            'nombre' => 'required|string|max:250',
+            'nombre' => 'required|string|max:40',
             'precio' => 'required|numeric|min:0',
-            'desc' => 'nullable|string|max:299',
+            'desc' => 'nullable|string|max:250',
             'image_path' => 'required|image|mimes:jpeg,png,jpg,webp|max:2048',
             'type' => 'required|in:dish,promotion',
 
             'start_date' => 'nullable|required_if:type,promotion|date',
             'end_date' => 'nullable|required_if:type,promotion|date|after_or_equal:start_date',
         ], [
-        'nombre.required'      => 'El nombre del producto es obligatorio.',
-        'nombre.max'           => 'El nombre no puede tener más de 250 caracteres.',
-        'precio.required'      => 'El precio del producto es obligatorio.',
-        'precio.numeric'       => 'El precio debe ser un valor numérico válido.',
-        'precio.min'           => 'El precio no puede ser negativo.',
-        'desc.max'             => 'La descripcion no debe ser mas larga que 299 caracteres',
-        'image_path.image'     => 'El archivo seleccionado debe ser una imagen válida.',
-        'image_path.mimes'     => 'La imagen debe estar en formato JPEG, PNG, JPG o WEBP.',
-        'image_path.max'       => 'La imagen es muy pesada, el límite es de 2MB.',
-        'end_date.after_or_equal' => 'La fecha de finalizacion debe ser a la del inicio o despues de esta.',
+            'nombre.required' => 'El nombre del producto es obligatorio.',
+            'nombre.max' => 'El nombre no puede tener más de 40 caracteres.',
+            'precio.required' => 'El precio del producto es obligatorio.',
+            'precio.numeric' => 'El precio debe ser un valor numérico válido.',
+            'precio.min' => 'El precio no puede ser negativo.',
+            'desc.max' => 'La descripcion no debe ser mas larga que 250 caracteres',
+            'image_path.image' => 'El archivo seleccionado debe ser una imagen válida.',
+            'image_path.mimes' => 'La imagen debe estar en formato JPEG, PNG, JPG o WEBP.',
+            'image_path.max' => 'La imagen es muy pesada, el límite es de 2MB.',
+            'end_date.after_or_equal' => 'La fecha de finalizacion debe ser a la del inicio o despues de esta.',
         ]);
 
         $rutaImagen = null;
@@ -131,21 +130,21 @@ class ProductController extends Controller
     {
         $product = Product::findOrFail($id);
         $validatedData = $request->validate([
-            'nombre' => 'nullable|string|max:250',
+            'nombre' => 'nullable|string|max:40',
             'precio' => 'nullable|numeric|min:0',
-            'desc' => 'nullable|string|max:299',
+            'desc' => 'nullable|string|max:250',
             'image_path' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
             'start_date' => 'nullable|date',
             'end_date' => 'nullable|date|after_or_equal:start_date',
         ], [
-        'nombre.max'           => 'El nombre no puede tener más de 250 caracteres.',
-        'precio.numeric'       => 'El precio debe ser un valor numérico válido.',
-        'precio.min'           => 'El precio no puede ser negativo.',
-        'desc.max'             => 'La descripcion no debe ser mas larga que 299 caracteres',
-        'image_path.image'     => 'El archivo seleccionado debe ser una imagen válida.',
-        'image_path.mimes'     => 'La imagen debe estar en formato JPEG, PNG, JPG o WEBP.',
-        'image_path.max'       => 'La imagen es muy pesada, el límite es de 2MB.',
-        'end_date.after_or_equal' => 'La fecha de finalizacion debe ser a la del inicio o despues de esta.',
+            'nombre.max' => 'El nombre no puede tener más de 40 caracteres.',
+            'precio.numeric' => 'El precio debe ser un valor numérico válido.',
+            'precio.min' => 'El precio no puede ser negativo.',
+            'desc.max' => 'La descripcion no debe ser mas larga que 250 caracteres',
+            'image_path.image' => 'El archivo seleccionado debe ser una imagen válida.',
+            'image_path.mimes' => 'La imagen debe estar en formato JPEG, PNG, JPG o WEBP.',
+            'image_path.max' => 'La imagen es muy pesada, el límite es de 2MB.',
+            'end_date.after_or_equal' => 'La fecha de finalizacion debe ser a la del inicio o despues de esta.',
         ]);
 
         $imagePath = $product->image_path;
