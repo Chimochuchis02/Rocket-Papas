@@ -20,7 +20,7 @@
             @if ($errors->any())
                 <div
                     class="mb-6 p-4 bg-red-100 dark:bg-red-900 border-l-4 border-red-500 text-red-700 dark:text-red-200 rounded shadow">
-                    <p class="font-bold mb-2">⚠️ Error de Validación:</p>
+                    <p class="font-bold mb-2">Error de Validación:</p>
                     <ul class="list-disc pl-5 text-sm space-y-1">
                         @foreach ($errors->all() as $error)
                             <li>{{ $error }}</li>
@@ -50,7 +50,7 @@
                                 </span>
                                 <span
                                     class="px-2.5 py-1 text-xs font-black uppercase rounded bg-yellow-500/10 text-yellow-500 border border-yellow-500/20">
-                                    Tipo: {{ $producto->type }}
+                                    Tipo: {{ $producto->type === 'promotion' ? 'Promoción' : ($producto->type === 'dish' ? 'Platillo' : $producto->type) }}
                                 </span>
                                 <span class="text-lg tracking-wide uppercase font-black"
                                     style="color: #000;">{{ $producto->nombre }}</span>
