@@ -18,7 +18,7 @@
 
                         @if ($errors->any())
                             <div class="mb-4 p-4 bg-red-100 dark:bg-red-900 border-l-4 border-red-500 text-red-700 dark:text-red-200 rounded shadow">
-                                <p class="font-bold mb-2">⚠️ Error de Validación:</p>
+                                <p class="font-bold mb-2">¡Fallo de Validacion!:</p>
                                 <ul class="list-disc pl-5 text-sm space-y-1">
                                     @foreach ($errors->all() as $error)
                                         <li>{{ $error }}</li>
