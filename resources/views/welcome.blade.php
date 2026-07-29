@@ -281,13 +281,23 @@
                                         <button type="button"
                                             class="btn-close btn-close-white position-absolute top-0 end-0 m-3 m-md-4"
                                             data-bs-dismiss="modal" aria-label="Close" style="z-index: 10; color: #FFF;"></button>
+<<<<<<< HEAD
                                         <div class="row g-0">
                                             <div class="col-lg-6 d-none d-lg-block"
                                                 style="background: url('{{ asset('storage/' . $product->image_path) }}') center/cover no-repeat; min-height: 450px;">
+=======
+
+                                        <div class="row g-0 align-items-stretch">
+                                            <div class="col-md-6 d-none d-md-block position-relative" style="min-height: 450px;">
+                                                <img src="{{ asset('storage/' . $product->image_path) }}"
+                                                    class="w-100 h-100 position-absolute top-0 start-0"
+                                                    style="object-fit: cover; object-position: center;">
+>>>>>>> ff0752893fba70a2fe79b954d2b7622677159fee
                                             </div>
-                                            <div class="col-12 d-lg-none">
+
+                                            <div class="col-12 d-md-none">
                                                 <img src="{{ asset('storage/' . $product->image_path) }}" class="w-100"
-                                                    style="max-height: 280px; object-fit: cover;">
+                                                    style="max-height: 250px; object-fit: cover;" alt="{{ $product->nombre }}">
                                             </div>
                                             <div
                                                 class="col-lg-6 d-flex flex-column justify-content-center p-4 p-md-5 position-relative">
