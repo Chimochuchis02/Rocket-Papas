@@ -399,4 +399,20 @@ main,
         gap: 6px !important;
     }
 
+    modal-dialog.modal-xl .row.g-0 {
+        flex-direction: column !important;
+    }
+
+    .modal-dialog.modal-xl .col-md-6.d-none.d-md-block {
+        display: none !important;
+    }
+
+    .modal-dialog.modal-xl .col-12.d-md-none {
+        display: block !important;
+    }
+
+    .modal-dialog.modal-xl img {
+        max-height: 280px !important;
+        object-fit: cover !important;
+    }
 }
