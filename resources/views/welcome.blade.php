@@ -234,7 +234,7 @@
                                                         <div class="position-relative w-100"
                                                             style="aspect-ratio: 1/1; overflow: hidden; background-color: #f8f9fa;">
                                                             <img src="{{ asset('storage/' . $product->image_path) }}"
-                                                                class="w-100 h-100 object-cover" alt="{{ $product->nombre }}"
+                                                                class="w-100 h-100 object-cover"
                                                                 style="object-fit: cover; transition: transform 0.3s ease;">
 
                                                             <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center opacity-0 hover-overlay"
@@ -291,7 +291,7 @@
 
                                             <div class="col-12 d-md-none">
                                                 <img src="{{ asset('storage/' . $product->image_path) }}" class="w-100"
-                                                    style="max-height: 250px; object-fit: cover;" alt="{{ $product->nombre }}">
+                                                    style="max-height: 250px; object-fit: cover;">
                                             </div>
                                             <div
                                                 class="col-lg-6 d-flex flex-column justify-content-center p-4 p-md-5 position-relative">

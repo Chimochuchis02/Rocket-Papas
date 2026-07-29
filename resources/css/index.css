@@ -380,39 +380,46 @@ main,
     }
 }
 
-@media only screen and (min-width: 768px) and (max-width: 1024px){
-    .feature-grid .feature-text{
-        flex: 0 0 100% !important;
-        max-width: 100% !important;
-        margin-bottom: 25px !important;
-        margin-top: 15px !important;
-    }
-
-    .feature-text{
-        font-size: 15px !important;
-    }
-
-    .feature-grid .d-flex{
-        flex-direction: column !important;
-        text-align: center !important;
-        justify-content: center !important;
-        gap: 6px !important;
-    }
-
+@media only screen and (min-width: 768px) and (max-width: 1024px) and (orientation: portrait){
     modal-dialog.modal-xl .row.g-0 {
         flex-direction: column !important;
     }
-
-    .modal-dialog.modal-xl .col-md-6.d-none.d-md-block {
+    .modal .col-md-6.d-none.d-md-block {
         display: none !important;
     }
-
-    .modal-dialog.modal-xl .col-12.d-md-none {
+    .modal .col-12.d-md-none {
         display: block !important;
     }
+    .modal .col-md-6, .modal .col-12 {
+        width: 100% !important;
+        min-height: unset !important;
+    }
+    .modal img {
+        max-height: 250px !important;
+        height: 250px !important;
+        object-fit: cover !important;
+        width: 100% !important;
+    }
+}
 
-    .modal-dialog.modal-xl img {
-        max-height: 280px !important;
+@media only screen and (min-width: 768px) and (max-width: 1024px) and (orientation: landscape){
+    .modal-dialog.modal-xl .row.g-0 {
+        flex-direction: row !important;
+    }
+    .modal .col-md-6.d-none.d-md-block {
+        display: block !important;
+        width: 50% !important;
+    }
+    .modal .col-12.d-md-none {
+        display: none !important;
+    }
+    .modal .col-md-6 {
+        width: 50% !important;
+        max-height: 400px !important;
+    }
+    .modal img {
+        height: 100% !important;
+        max-height: 400px !important;
         object-fit: cover !important;
     }
 }
