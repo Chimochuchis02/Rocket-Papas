@@ -275,7 +275,7 @@
                                 $product = $promocion->product;
                             @endphp
                             <div class="modal fade" id="modalPromo{{ $promocion->id }}" tabindex="-1" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered modal-lg modal-xl-lg">
+                                <div class="modal-dialog modal-dialog-centered modal-lg modal-xl">
                                     <div class="modal-content text-white border-0 shadow-2xl"
                                         style="background-color: #1a1a1a; border-radius: 24px; overflow: hidden;">
                                         <button type="button"
