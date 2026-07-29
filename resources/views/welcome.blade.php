@@ -282,7 +282,7 @@
                                             class="btn-close btn-close-white position-absolute top-0 end-0 m-3 m-md-4"
                                             data-bs-dismiss="modal" aria-label="Close" style="z-index: 10; color: #FFF;"></button>
                                         <div class="row g-0">
-                                            <div class="col-lg-6 d-none d-lg-block"
+                                            <div class="col-lg-6 d-none d-md-block"
                                                 style="background: url('{{ asset('storage/' . $product->image_path) }}') center/cover no-repeat; min-height: 450px;">
                                             </div>
                                             <div class="col-12 d-lg-none">
