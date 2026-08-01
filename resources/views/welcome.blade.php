@@ -286,7 +286,7 @@
                                             <div class="col-md-6 d-none d-md-block position-relative" style="min-height: 450px;">
                                                 <img src="{{ asset('storage/' . $product->image_path) }}"
                                                     class="w-100 h-100 position-absolute top-0 start-0"
-                                                    style="object-fit: cover; object-position: center;">
+                                                    style="object-fit: cover; object-position: center">
                                             </div>
 
                                             <div class="col-12 d-md-none">

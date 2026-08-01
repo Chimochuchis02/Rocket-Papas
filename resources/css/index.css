@@ -262,6 +262,7 @@ main,
 
 }
 
+
 @media(max-width: 575.98px) {
     #floating {
         size: 0.5rem;
@@ -381,45 +382,71 @@ main,
 }
 
 @media only screen and (min-width: 768px) and (max-width: 1024px) and (orientation: portrait){
-    modal-dialog.modal-xl .row.g-0 {
+    [id^="modalPromo"] .row.g-0 {
         flex-direction: column !important;
     }
-    .modal .col-md-6.d-none.d-md-block {
-        display: none !important;
+    [id^="modalPromo"] .col-md-6.position-relative {
+        display:none !important;
     }
-    .modal .col-12.d-md-none {
+    [id^="modalPromo"] .col-12.d-md-none {
         display: block !important;
-    }
-    .modal .col-md-6, .modal .col-12 {
         width: 100% !important;
-        min-height: unset !important;
     }
-    .modal img {
-        max-height: 250px !important;
-        height: 250px !important;
+
+    [id^="modalPromo"] .col-12.d-md-none img{
+        max-height: 220px !important;
+        height: 220px !important;
+        width: 100% !important;
         object-fit: cover !important;
-        width: 100% !important;
     }
+
+    [id^="modalPromo"] .col-lg-6{
+        width: 100% !important;
+        padding: 1.5rem !important;
+    }
+
+    .feature-text {
+        font-size: 14px !important;
+        margin-top: 6px !important;
+        text-align: center !important;
+    }
+
+    .feature-icon {
+        margin-bottom: 4px !important;
+    }
+
+    .feature-grid .d-flex {
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+    }
+
 }
 
 @media only screen and (min-width: 768px) and (max-width: 1024px) and (orientation: landscape){
-    .modal-dialog.modal-xl .row.g-0 {
+    [id^="modalPromo"] .row.g-0 {
         flex-direction: row !important;
     }
-    .modal .col-md-6.d-none.d-md-block {
+
+    [id^="modalPromo"] .col-md-6.position-relative {
         display: block !important;
         width: 50% !important;
+        min-height: 100% !important;
     }
-    .modal .col-12.d-md-none {
+
+    [id^="modalPromo"] .col-12.d-md-none {
         display: none !important;
     }
-    .modal .col-md-6 {
+
+    [id^="modalPromo"] .col-lg-6 {
         width: 50% !important;
-        max-height: 400px !important;
+        padding: 2rem !important;
     }
-    .modal img {
+
+    [id^="modalPromo"] img {
         height: 100% !important;
-        max-height: 400px !important;
         object-fit: cover !important;
     }
+
+    
 }
