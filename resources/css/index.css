@@ -450,3 +450,26 @@ main,
 
     
 }
+
+@media only screen and (min-width: 768px) and (max-width: 1199px){
+
+    .feature-grid .d-flex {
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        text-align: center !important;
+    }
+
+    .feature-grid .feature-text {
+        font-size: 13px !important;
+        margin-top: 6px !important;
+        text-align: center !important;
+    }
+
+    .feature-grid .feature-icon {
+        margin-bottom: 4px !important;
+        flex-shrink: 0 !important;
+    }
+
+    
+}
