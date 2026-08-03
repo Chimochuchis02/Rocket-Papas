@@ -103,7 +103,7 @@
         </section>
 
         <!-- Nosotros Section -->
-        <section class="container my-5 py-4" id="Ubicaciones">
+        <section class="container my-5 py-4" id="Nosotros">
             <div class="row align-items-center g-5">
                 <div class="col-md-6 text-center text-md-start">
                     <span class="text-danger font-weight-bold d-block mb-2 style-title-sub"
