@@ -371,7 +371,7 @@ iframe {
     
 }
 
-@media only screen and (min-width: 575.98px) and  (max-width: 1200.98px) {
+@media only screen and (min-width: 343.98px) and  (max-width: 1200.98px) {
     #button1{
         top: auto !important;
         bottom: 15px !important; 
