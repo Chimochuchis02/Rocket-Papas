@@ -61,7 +61,7 @@
                         <a class="nav-link text-dark" href="#Dishes">Platillos</a>
                     </li>
                     <li class="nav-item px-2">
-                        <a class="nav-link text-dark" href="#3D">Recorrido 3D</a>
+                        <a class="nav-link text-dark" href="#Scenary">Recorrido 3D</a>
                     </li>
                     <li class="nav-item px-2">
                         <a class="nav-link text-dark" href="#Map">Ubicaciones</a>
@@ -564,36 +564,49 @@
         <!-- Map Section -->
         <div id="Map">
             <section class="container my-5" x-data="{ sucursal: 'independencia' }">
-                <div class="row g-4 align-items-center" id="Map">
+                <div class="row g-4 align-items-center">
+                    <div class="mb-4 position-relative">
+                        <h2 class="text-center" style="font-family: DiloWord; font-weight: 700; font-size: 52px;">
+                            Nuestras Ubicaciones
+                        </h2>
+                    </div>
 
                     <div class="col-md-4">
                         <div class="list-group shadow-sm rounded-3 overflow-hidden">
+
                             <button type="button" class="list-group-item list-group-item-action p-3 font-weight-bold"
-                                :class="sucursal === 'independencia' ? 'active bg-primary border-primary text-white' : 'text-secondary'"
+                                class="'active  border-primary text-white' : 'text-secondary'"
+                                style="font-family: Ubuntu-bold;">
+                                Presione estos botones, para que pueda ver cada una de nuestras ubicaciones en el maps.
+                            </button>
+
+                            <button type="button" class="list-group-item list-group-item-action p-3 fw-bold"
+                                :style="sucursal === 'independencia' ? 'background-color: #FF2C2C; border-color: #EE4B2B; font-family: Ubuntu-bold;' : ''"
                                 @click="sucursal = 'independencia'">
                                 HEB Independencia
                             </button>
 
-                            <button type="button" class="list-group-item list-group-item-action p-3 font-weight-bold"
-                                :class="sucursal === 'revolucion' ? 'active bg-primary border-primary text-white' : 'text-secondary'"
+                            <button type="button" class="list-group-item list-group-item-action p-3 fw-bold"
+                                :class=" text-white' : 'text-secondary'"
+                                :style="sucursal === 'revolucion' ? 'background-color: #FF2C2C; border-color: #EE4B2B; font-family: Ubuntu-bold;' : ''"
                                 @click="sucursal = 'revolucion'">
                                 HEB Revolución
                             </button>
 
-                            <button type="button" class="list-group-item list-group-item-action p-3 font-weight-bold"
-                                :class="sucursal === 'constitucion' ? 'active bg-primary border-primary text-white' : 'text-secondary'"
+                            <button type="button" class="list-group-item list-group-item-action p-3 fw-bold"
+                                :style="sucursal === 'constitucion' ? 'background-color: #FF2C2C; border-color: #EE4B2B; font-family: Ubuntu-bold;' : ''"
                                 @click="sucursal = 'constitucion'">
                                 Soriana Constitución
                             </button>
 
-                            <button type="button" class="list-group-item list-group-item-action p-3 font-weight-bold"
-                                :class="sucursal === 'rosita' ? 'active bg-primary border-primary text-white' : 'text-secondary'"
+                            <button type="button" class="list-group-item list-group-item-action p-3 fw-bold"
+                                :style="sucursal === 'rosita' ? 'background-color: #FF2C2C; border-color: #EE4B2B; font-family: Ubuntu-bold;' : ''"
                                 @click="sucursal = 'rosita'">
                                 AlSuper La Rosita
                             </button>
 
-                            <button type="button" class="list-group-item list-group-item-action p-3 font-weight-bold"
-                                :class="sucursal === 'bromo' ? 'active bg-primary border-primary text-white' : 'text-secondary'"
+                            <button type="button" class="list-group-item list-group-item-action p-3 fw-bold"
+                                :style="sucursal === 'bromo' ? 'background-color: #FF2C2C; border-color: #EE4B2B; font-family: Ubuntu-bold;' : ''"
                                 @click="sucursal = 'bromo'">
                                 Loma Real II
                             </button>
