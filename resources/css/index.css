@@ -336,6 +336,17 @@ iframe {
         text-align: center;
         gap: 4px;
     }
+
+    .sketchfab-embed-wrapper iframe,
+    section#Scenary iframe {
+    width: 100% !important;
+    height: auto !important;       
+    aspect-ratio: 16 / 9 !important;    
+    border-radius: 16px !important;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2) !important;
+    display: block !important;
+    margin: 0 auto !important;
+    }
 }
 
 @media (min-width: 992px) {
@@ -347,6 +358,16 @@ iframe {
         right: 60px !important;
     }
 
+    .sketchfab-embed-wrapper iframe,
+    section#Scenary iframe {
+    width: 100% !important;
+    height: auto !important;       
+    aspect-ratio: 16 / 9 !important;    
+    border-radius: 16px !important;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2) !important;
+    display: block !important;
+    margin: 0 auto !important;
+}
     
 }
 
@@ -385,6 +406,34 @@ iframe {
         align-items: center;
         text-align: center;
         gap: 10px;
+    }
+
+    section#Scenary {
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+    }
+
+    .sketchfab-embed-wrapper {
+        width: 100% !important;
+        max-width: 90% !important;     
+        margin: 0 auto !important;
+        display: block !important;
+    }
+
+    .sketchfab-embed-wrapper iframe,
+    section#Scenary iframe {
+    width: 100% !important;
+    height: auto !important;       
+    aspect-ratio: 16 / 9 !important;    
+    border-radius: 16px !important;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2) !important;
+    display: block !important;
+    margin: 0 auto !important;
+    }
+
+    .whatsapp-btn, .scroll-top-btn {
+        transform: scale(0.85);
+        bottom: 15px !important;
     }
 }
 
@@ -428,6 +477,17 @@ iframe {
         text-align: center !important;
     }
 
+    .sketchfab-embed-wrapper iframe,
+    section#Scenary iframe {
+    width: 100% !important;
+    height: auto !important;       
+    aspect-ratio: 16 / 9 !important;    
+    border-radius: 16px !important;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2) !important;
+    display: block !important;
+    margin: 0 auto !important;
+    }
+
 }
 
 @media only screen and (min-width: 768px) and (max-width: 1024px) and (orientation: landscape){
@@ -455,6 +515,17 @@ iframe {
         object-fit: cover !important;
     }
 
+    .sketchfab-embed-wrapper iframe,
+    section#Scenary iframe {
+    width: 100% !important;
+    height: auto !important;       
+    aspect-ratio: 16 / 9 !important;    
+    border-radius: 16px !important;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2) !important;
+    display: block !important;
+    margin: 0 auto !important;
+    }
+
     
 }
 
@@ -478,5 +549,14 @@ iframe {
         flex-shrink: 0 !important;
     }
 
-    
+    .sketchfab-embed-wrapper iframe,
+    section#Scenary iframe {
+    width: 100% !important;
+    height: auto !important;       
+    aspect-ratio: 16 / 9 !important;    
+    border-radius: 16px !important;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2) !important;
+    display: block !important;
+    margin: 0 auto !important;
+    }
 }

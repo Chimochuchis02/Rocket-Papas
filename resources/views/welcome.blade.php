@@ -543,7 +543,7 @@
         <div class="text-center mt-5 pt-4 border-top border-black border-opacity-25"></div>
 
         <!-- 3D Section -->
-        <section id="3D">
+        <section id="Scenary">
             <div>
                 <div class="mb-2 position-relative">
                     <h2 class="text-center" style="font-family: DiloWord; font-weight: 700; font-size: 52px;">
