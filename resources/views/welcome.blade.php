@@ -551,7 +551,7 @@
                     </h2>
                 </div>
                 <div class="sketchfab-embed-wrapper"> <iframe title="RocketPapas" frameborder="0" allowfullscreen
-                        mozallowfullscreen="true"
+                        mozallowfullscreen="true" webkitallowfullscreen="true"
                         allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking
                         execution-while-out-of-viewport execution-while-not-rendered web-share
                         src="https://sketchfab.com/models/f9c82a49a476438f83fa2e3684da5749/embed"> </iframe>
