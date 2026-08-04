@@ -417,13 +417,6 @@ iframe {
         padding-right: 15px !important;
     }
 
-    .sketchfab-embed-wrapper {
-        width: 100% !important;
-        max-width: 90% !important;     
-        margin: 0 auto !important;
-        display: block !important;
-    }
-
     .sketchfab-embed-wrapper iframe,
     section#Scenary iframe {
     width: 100% !important;
