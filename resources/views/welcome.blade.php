@@ -227,7 +227,7 @@
 
                                             @foreach($chunk as $promocion)
                                                 @php
-                                                    $producto = $promocion->product;
+                                                    $product = $promocion->product;
                                                 @endphp
                                                 <div class="col d-flex justify-content-center">
                                                     <div class="card border-0 shadow-lg overflow-hidden position-relative group-hover-action d-flex flex-column w-100"
@@ -235,9 +235,8 @@
 
                                                         <div class="position-relative w-100"
                                                             style="aspect-ratio: 1/1; overflow: hidden; background-color: #f8f9fa;">
-                                                            <img src="{{ asset('storage/' . $producto->image_path) }}"
+                                                            <img src="{{ asset('storage/' . $product->image_path) }}"
                                                                 class="w-100 h-100 object-cover"
-                                                                alt="{{ $producto->name ?? $producto->nombre }}"
                                                                 style="object-fit: cover; transition: transform 0.3s ease;">
 
                                                             <div class="position-absolute top-0 start-0 w-100 h-100 d-none d-md-flex align-items-center justify-content-center opacity-0 hover-overlay"
@@ -245,7 +244,7 @@
                                                                 <button type="button"
                                                                     class="btn btn-warning fw-bold text-uppercase px-4 py-2 rounded-pill shadow-lg transform transition hover:scale-105"
                                                                     data-bs-toggle="modal"
-                                                                    data-bs-target="#modalPromo{{ $producto->id }}">
+                                                                    data-bs-target="#modalPromo{{ $promocion->id }}">
                                                                     Ver Detalles
                                                                 </button>
                                                             </div>
@@ -255,27 +254,20 @@
                                                             class="card-body d-flex flex-column justify-content-between text-center p-3 bg-white">
                                                             <h5 class="card-title fw-bold text-dark mb-2 text-truncate fs-6 fs-md-5"
                                                                 style="font-family: 'Ubuntu', sans-serif;">
-                                                                {{ $producto->name ?? $producto->nombre ?? 'Platillo Especial' }}
+                                                                {{ $product->name ?? 'Promoción Especial' }}
                                                             </h5>
 
-<<<<<<< HEAD
                                                             @if(isset($product->price))
                                                                 <p class="card-text fw-black text-danger fs-6 fs-md-5 mb-2">
                                                                     ${{ number_format($product->price, 2) }}
-=======
-                                                            @if(isset($producto->price) || isset($producto->precio))
-                                                                <p class="card-text fw-black text-danger fs-5 mb-3">
-                                                                    ${{ number_format($producto->price ?? $producto->precio, 2) }}
->>>>>>> 847bc81c8691b15057388504e03a3d8e7d2cbd09
                                                                 </p>
                                                             @endif
-
 
                                                             <button type="button"
                                                                 class="btn w-100 fw-bold text-white rounded-pill py-2 shadow-sm border-0 fs-7 fs-md-6"
                                                                 style="background-color: #FF2C2C; transition: all 0.2s ease;"
-                                                                data-bs-toggle="modal" data-bs-target="#modalPromo{{ $producto->id }}">
-                                                                <i class="bi bi-eye-fill me-1"></i> Ver Promocion
+                                                                data-bs-toggle="modal" data-bs-target="#modalPromo{{ $promocion->id }}">
+                                                                <i class="bi bi-eye-fill me-1"></i> Ver Promoción
                                                             </button>
                                                         </div>
 
@@ -290,7 +282,6 @@
 
                             @if($promociones->count() > 3)
                                 <button class="carousel-control-prev positioning-arrows" type="button"
-<<<<<<< HEAD
                                     data-bs-target="#carouselPromosRocket" data-bs-slide="prev"
                                     style="top: 50%; transform: translateY(-50%); bottom: auto;">
                                     <span class="carousel-control-prev-icon bg-dark p-2 p-md-4 rounded-circle"
@@ -318,32 +309,6 @@
                                             class="btn-close btn-close-white position-absolute top-0 end-0 m-3 m-md-4"
                                             data-bs-dismiss="modal" aria-label="Close" style="z-index: 10; color: #FFF;"></button>
 
-=======
-                                    data-bs-target="#carouselPromosRocket" data-bs-slide="prev">
-                                    <span class="carousel-control-prev-icon bg-dark p-3 p-md-4 rounded-circle"
-                                        aria-hidden="true"></span>
-                                </button>
-                                <button class="carousel-control-next positioning-arrows" type="button"
-                                    data-bs-target="#carouselPromosRocket" data-bs-slide="next">
-                                    <span class="carousel-control-next-icon bg-dark p-3 p-md-4 rounded-circle"
-                                        aria-hidden="true"></span>
-                                </button>
-                            @endif
-                        </div>
-
-                        @foreach($promociones as $promocion)
-                            @php
-                                $product = $promocion->product;
-                            @endphp
-                            <div class="modal fade" id="modalPromo{{ $promocion->id }}" tabindex="-1" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered modal-lg modal-xl">
-                                    <div class="modal-content text-white border-0 shadow-2xl"
-                                        style="background-color: #1a1a1a; border-radius: 24px; overflow: hidden;">
-                                        <button type="button"
-                                            class="btn-close btn-close-white position-absolute top-0 end-0 m-3 m-md-4"
-                                            data-bs-dismiss="modal" aria-label="Close" style="z-index: 10; color: #FFF;"></button>
-
->>>>>>> 847bc81c8691b15057388504e03a3d8e7d2cbd09
                                         <div class="row g-0 align-items-stretch">
                                             <div class="col-md-6 d-none d-md-block position-relative" style="min-height: 450px;">
                                                 <img src="{{ asset('storage/' . $product->image_path) }}"
@@ -414,12 +379,8 @@
 
                     @else
                         <div class="col-12 text-center py-5">
-<<<<<<< HEAD
                             <p class="text-muted fs-5">No hay promociones activas en este momento. ¡Pregunta por
                                 nuestras
-=======
-                            <p class="text-muted fs-5">No hay promociones activas en este momento. ¡Pregunta por nuestras
->>>>>>> 847bc81c8691b15057388504e03a3d8e7d2cbd09
                                 dinámicas!</p>
                         </div>
                     @endif
