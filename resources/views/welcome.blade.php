@@ -116,17 +116,14 @@
                     </h2>
 
                     <p class="leading-relaxed mb-4"
-                        style="font-size: 20.5px; text-align: center; font-family: PlayfairDisplay; line-height: 32px; color: #000; ">
-                        Nacimos en 2019 en Torreón, Coahuila, con un concepto </p>
+                        style="font-size: 20.5px; text-align: center; font-family: PlayfairDisplay; line-height: 18px; color: #000; ">
+                        Desde 2019, en Torreón, Coahuila, llevamos la comida rápida </p>
                     <p class="leading-relaxed mb-4"
-                        style="font-size: 20.5px; text-align: center; font-family: PlayfairDisplay; line-height: 32px; color: #000;">
-                        diferente de
-                        comida rápida:
-                        papas rellenas en conos,</p>
+                        style="font-size: 20.5px; text-align: center; font-family: PlayfairDisplay; line-height: 18px; color: #000;">
+                        a otro nivel con sabores únicos, papas en cono,</p>
                     <p class="leading-relaxed mb-4"
-                        style="font-size: 20.5px; text-align: center; font-family: PlayfairDisplay; line-height: 32px; color: #000;">
-                        hamburguesas
-                        jugosas, alitas irresistibles y mucho más.</p>
+                        style="font-size: 20.5px; text-align: center; font-family: PlayfairDisplay; line-height: 18px; color: #000;">
+                        hamburguesas, alitas y una experiencia que siempre deja ganas de volver.</p>
 
 
                     <h4 class="font-weight-black text-uppercase mb-5 tracking-wide text-dark"
