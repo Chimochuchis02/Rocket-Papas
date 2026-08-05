@@ -189,7 +189,7 @@
                         style="font-family: DiloWord; font-weight: 700; color: #000; letter-spacing: -2.5px;">
                         LAS MEJORES PROMOS
 
-                        <span class="d-inline-block position-relative px-1" style="font-family: PlayfairDisplay; 
+                        <span class="d-inline-block position-relative px-1" style="font-family: DiloWord; 
                         text-transform: none; 
                         font-size: 3.5rem; 
                         position: relative; 
@@ -197,7 +197,8 @@
                         background: linear-gradient(to right, #FF8A00, #ffc107); 
                         -webkit-background-clip: text; 
                         -webkit-text-fill-color: transparent;
-                        z-index: 1; transform: rotate(-3deg);">
+                        z-index: 1; transform: rotate(-3deg);
+                        letter-spacing: -2.5px;">
                             Para ti
 
                             <span class="position-absolute start-0 bottom-0 w-100" style="height: 6px; 
@@ -205,7 +206,8 @@
                             border-radius: 4px; 
                             z-index: -1; 
                             transform: translateY(2px) rotate(-4deg); 
-                            opacity: 0.85;">
+                            opacity: 0.85;
+                            font-family: DiloWord;">
                             </span>
                         </span>
                     </h2>
